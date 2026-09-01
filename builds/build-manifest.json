@@ -1,0 +1,10 @@
+{
+  "project": "Project 2088",
+  "latest_build": null,
+  "platforms": [
+    "Meta Quest 2",
+    "Meta Quest 3"
+  ],
+  "distribution": "Standalone APK via SideQuest",
+  "builds": []
+}
