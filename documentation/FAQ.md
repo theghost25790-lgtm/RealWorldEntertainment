@@ -6,11 +6,15 @@ The intended player-facing model is free access, supported by selective sponsors
 
 ## How is it installed?
 
-Current builds are standalone APKs downloaded to a PC and installed onto a compatible Quest headset using SideQuest.
+Each current release is distributed as a complete Windows ZIP containing the APK, required OBB data, Unreal-generated installer and supporting files. Extract the ZIP, connect a developer-enabled Quest headset and run the included installation script.
+
+## Why is the OBB required?
+
+The APK contains the Android application, while the OBB contains most of Project 2088's packaged game data. Installing only the APK is incomplete.
 
 ## Can I play an older build?
 
-Recoverable APKs will be preserved through GitHub Releases. Builds sharing the same package identifier may replace one another when installed.
+Recoverable packaged builds will be preserved through GitHub Releases. Current builds share the same package identifier and will normally replace one another when installed.
 
 ## Is the Unreal Engine source public?
 
