@@ -5,6 +5,8 @@
     "Meta Quest 2",
     "Meta Quest 3"
   ],
-  "distribution": "Standalone APK via SideQuest",
+  "android_package": "com.epicgames.Project_2088_SD",
+  "distribution": "Complete Windows ZIP containing APK, OBB, installer scripts and support files",
+  "texture_format": "ASTC",
   "builds": []
 }
