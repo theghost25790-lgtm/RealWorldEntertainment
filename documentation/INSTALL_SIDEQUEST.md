@@ -1,29 +1,61 @@
-# Installing Project 2088 with SideQuest
+# Installing Project 2088 on a Quest Headset
+
+Project 2088 builds currently contain an APK and a separate OBB data file. Installing only the APK is not a complete installation.
 
 ## What you need
 
-- A compatible Meta Quest headset
-- A PC
-- A suitable USB data cable or configured wireless SideQuest connection
-- SideQuest installed and working
-- An official Project 2088 APK downloaded from GitHub Releases
+- A compatible Meta Quest headset with Developer Mode enabled
+- A Windows PC
+- A suitable USB data cable
+- The complete official Project 2088 release ZIP
+- Sufficient free storage on the headset
+- SideQuest or another working developer connection may be used to confirm that the headset is recognised
 
-## Installation
+## Files in a release package
 
-1. Download the APK attached to the required Project 2088 release.
-2. Open SideQuest on the PC.
-3. Connect the headset and confirm that SideQuest recognises it.
-4. Use SideQuest's APK installation function.
-5. Select the downloaded Project 2088 APK.
-6. Wait for the installation to complete.
-7. Put on the headset and locate the application in the appropriate unknown-sources or development-app area.
+Keep these extracted files together:
+
+- `Project_2088_SD-arm64.apk`
+- `main.1.com.epicgames.Project_2088_SD.obb`
+- `Install_Project_2088_SD-arm64.bat`
+- `Uninstall_Project_2088_SD-arm64.bat`
+- `win-x64/`
+
+The OBB contains most of the game's data and is required.
+
+## Recommended Windows installation
+
+1. Download the complete ZIP attached to the required GitHub Release.
+2. Extract the entire ZIP to a normal folder. Do not run the installer from inside the ZIP preview.
+3. Connect the Quest headset to the PC.
+4. Put on the headset and approve the USB debugging request. Choose to remember the computer when appropriate.
+5. Confirm that the headset is recognised by SideQuest or the available Android development connection.
+6. Double-click `Install_Project_2088_SD-arm64.bat`.
+7. Keep the headset connected while the script installs the APK and transfers the OBB.
+8. Wait until the window reports **Installation successful**.
+9. Find Project 2088 in the appropriate Unknown Sources or development-app section of the headset library.
+
+The Unreal-generated installer targets the package:
+
+`com.epicgames.Project_2088_SD`
 
 ## Changing versions
 
-Builds using the same Android package identifier may replace the installed Project 2088 version. Uninstalling an application may also remove locally stored save data.
+Builds currently share the same Android package identifier. Installing another version will normally replace the installed Project 2088 application rather than creating a second application.
 
-Historical releases remain available for download, but this does not guarantee that every build can be installed alongside every other build.
+Uninstalling may remove local save data. Until a release specifically confirms save compatibility, treat every version change as capable of resetting or invalidating saves.
+
+## If installation fails
+
+- Confirm that Developer Mode is enabled.
+- Approve the USB debugging prompt inside the headset.
+- Check that only the intended headset is connected.
+- Confirm that the ZIP was fully extracted.
+- Do not move the BAT file away from the APK, OBB or `win-x64` folder.
+- Check that the headset has enough storage for the APK, OBB and installation process.
+- Read the error above the final message in the installer window.
+- Use the installation-help issue template if the problem continues.
 
 ## Safety
 
-Only install APKs attached to official releases from this repository. Never share developer-mode credentials or headset account details when asking for support.
+Only run packages downloaded from official Project 2088 releases in this repository. Never share account credentials, developer credentials or signing keys when requesting support.
