@@ -6,22 +6,24 @@ Project 2088 is an independent Unreal Engine 5 VR experience set in Neo-Victoria
 
 ## Current release
 
-No public APK has been attached yet. When the first release is ready, it will appear in the repository's **Releases** section.
+No public build package has been attached yet. When the first release is ready, it will appear in the repository's **Releases** section.
 
 ## Installation
 
-Project 2088 is currently distributed as a standalone Android APK:
+Current Project 2088 packages contain an Android APK, a required OBB data file and an Unreal-generated Windows installation script.
 
-1. Download a release APK to a PC.
-2. Connect a compatible Quest headset.
-3. Use SideQuest as the installation bridge.
-4. Install the APK directly onto the headset.
+1. Download the complete ZIP for the required release.
+2. Extract the complete ZIP on a Windows PC.
+3. Connect a developer-enabled compatible Quest headset.
+4. Approve the USB debugging prompt inside the headset.
+5. Run `Install_Project_2088_SD-arm64.bat` without separating it from the other package files.
+6. Wait for **Installation successful** before disconnecting the headset.
 
 See the full [installation guide](documentation/INSTALL_SIDEQUEST.md).
 
 ## Build archive
 
-Each numbered build will be preserved as a separate GitHub Release whenever the original APK is available. This allows players to revisit earlier versions of Project 2088.
+Each numbered build will be preserved as a separate GitHub Release whenever the original packaged output is available. This allows players to revisit earlier versions of Project 2088.
 
 ## Funding principle
 
@@ -31,6 +33,6 @@ Read the [advertising principles](campaigns/advertising-principles.md).
 
 ## Important
 
-Project 2088 is a work in progress. Builds may contain unfinished systems, performance issues and breaking changes. Back up anything important before replacing an installed version.
+Project 2088 is a work in progress. Builds may contain unfinished systems, performance issues and breaking changes. Back up anything important before replacing or uninstalling an installed version.
 
 Copyright © Real World Entertainment. All rights reserved.
