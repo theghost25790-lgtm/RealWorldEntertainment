@@ -1,0 +1,1 @@
+document.addEventListener("click",async(e)=>{const b=e.target.closest("[data-copy-link]");if(!b)return;const url=b.getAttribute("data-copy-link")||window.location.href;const note=b.parentElement.querySelector(".copy-note");try{await navigator.clipboard.writeText(url);if(note)note.textContent="Permanent link copied."}catch{if(note)note.textContent=url}});
