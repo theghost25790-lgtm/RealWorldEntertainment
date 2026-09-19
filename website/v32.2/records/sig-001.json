@@ -1,0 +1,38 @@
+{
+  "record_id": "SIG-001",
+  "record_type": "signal",
+  "project": "Project 2088",
+  "canonical_path": "/signal/SIG-001",
+  "canonical_url": "https://realworldentertainment.co.uk/signal/SIG-001",
+  "title": "Channel Seventeen",
+  "status": "recovered",
+  "visibility": "draft",
+  "publish_ready": false,
+  "migration_status": "awaiting-original-transcript",
+  "published_at": null,
+  "summary": "Intercepted numbers-station transmission from the North Bridge relay.",
+  "body": null,
+  "tags": [
+    "signal",
+    "numbers-station",
+    "north-bridge-relay"
+  ],
+  "related_records": [
+    "F1100001",
+    "F1000001"
+  ],
+  "source": {
+    "website_status": "Published",
+    "game_status": "Discoverable",
+    "lore_asset": "F1100001",
+    "audio_asset": "F1000001"
+  },
+  "metadata": {
+    "origin": "North Bridge relay",
+    "classification": "Numbers station / intercepted transmission",
+    "recovery_date": null,
+    "access_class": null,
+    "reliability": null,
+    "migration_note": "Original transcript and remaining archive metadata were not present in the preserved sources available to this pass. Do not invent or paraphrase them."
+  }
+}
