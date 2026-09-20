@@ -10,15 +10,13 @@ Implemented:
 - event, schema and Bridge version fields;
 - tester vs per-session player identity separation;
 - UTC timestamps;
-- client-generated immutable event IDs for idempotent retries;
+- immutable event IDs for idempotent retries;
 - v0.3 session lifecycle;
 - lowercase dot event naming;
 - command/event separation;
-- BP_Pistol and BP_Mag lineage rules;
-- canonical examples and negative test vectors.
+- BP_Pistol and BP_Mag lineage rules.
 
-### Current machine contract
-
+Current constants:
 - `project_id`: `RWE-P2088`
 - `build_id`: `RWE-P2088-BUILD-098`
 - `schema_version`: `CER-0.3`
@@ -26,60 +24,94 @@ Implemented:
 
 ## V32.4.2 — Machine-Readable Event Type Registry ✅
 
-The exact populated rows from the canonical workbook's `03_Event Registry` are now exported into:
+`event-types.json` contains the **36 populated source event rows** from the canonical workbook.
 
-`website/v32.4/bridge/event-types.json`
-
-Preserved per event:
-- Event ID
-- canonical event name
-- version
-- domain
-- meaning
-- producer
-- consumers
-- original required fields
-- V32.4 derived payload fields
-- wire ID
-- importance
-- high-volume flag
-- PII flag
-- category
-- status
-
-The envelope validator now resolves event names and versions from this registry rather than a hard-coded three-event test set.
-
-### Registry health finding
-
-The workbook dashboard declares **38 total registered events**, while the actual Event Registry sheet contains **36 populated rows**.
-
-The machine registry therefore records:
-
+The source dashboard says 38, so the registry retains:
 `EVENT_COUNT_MISMATCH: observed 36 / declared 38`
 
 No missing events were invented.
 
-### Required-field migration
+## V32.4.3 — Entity / ID Resolution ✅
 
-The original workbook fields remain in `required_fields_original`.
+Resolver:
+`RWE-ENTITY-0.1`
 
-V32.4 runtime payload fields are derived into `required_payload_fields_v324` by subtracting only:
-- `session_id`
-- `build_id`
-- `timestamp`
+Files:
+- `entity-resolution.json`
+- `entity-resolution.md`
+- `entity-resolution-tests.json`
+- `validate-entity-resolution.mjs`
 
-Those fields now live in the stable V32.4.1 envelope.
+### Identity classes
 
-Legacy `player_id` remains untouched until an explicit identity migration is designed.
+**Permanent canonical record**
+- Build
+- Location
+- Faction / Corporation
+- Project
 
-## Validation
+**Runtime instance**
+- Event
+- Installation
+- Session
+- Tester
+- Player instance
+- Weapon instance
+- Magazine instance
+- NPC instance
+- Combat context
 
-CI now validates both:
-1. the machine Event Type Registry;
-2. the Canonical Event Envelope against that registry.
+**UE5/gameplay asset**
+- concrete weapon asset such as `MT-09_A` or `v57`
+- concrete magazine asset
+
+**Project content FormID**
+- `F#######`
+
+These identity classes are deliberately separate.
+
+### Exact resolution now enforced
+
+- `project_id` must resolve to Project 2088.
+- `build_id` must resolve to a Build record.
+- `location_id`, `previous_location_id`, and `next_location_id` resolve to Location records.
+- runtime instance fields must match their registered namespace.
+- archived Build IDs remain valid historical identities.
+- titles/aliases are not accepted where a canonical `*_id` is required.
+
+### Compatibility
+
+CER-0.1 `faction` remains an enum/string.
+
+Mapped legacy values:
+- Construct → `RWE-P2088-FACTION-CONSTRUCT`
+- Anamika → `RWE-P2088-CORP-ANAMIKA`
+- Lockhead → `RWE-P2088-CORP-LOCKHEAD`
+
+Legacy values without permanent records remain valid but advisory-unmapped:
+- Scavs
+- Mercenaries
+- Citizens
+
+No IDs are invented for them.
+
+### New resolution errors
+
+- `ERR-ID-001 UNKNOWN_CANONICAL_ID`
+- `ERR-ID-002 WRONG_ENTITY_TYPE`
+- `ERR-ID-003 INVALID_INSTANCE_ID`
+- `ERR-ID-004 ALIAS_NOT_CANONICAL_ID`
+- `WARN-ID-001 LEGACY_VALUE_UNMAPPED`
+
+## CI validation
+
+The Bridge workflow now validates:
+1. Event Type Registry
+2. Entity / ID Resolver
+3. Canonical Event Envelope against both
 
 ## Next
 
-**V32.4.3 — Entity / ID Resolution**
+**V32.4.4 — Session Lifecycle Contract**
 
-This will define how Build, Location, Faction, NPC, weapon and other canonical identifiers resolve across Website Registry → Bridge → QA → UE5.
+That phase turns the existing lifecycle states into explicit allowed transitions, offline replay rules, open/close commands, and session acceptance tests.
