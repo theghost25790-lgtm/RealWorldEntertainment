@@ -34,3 +34,31 @@ SIG-001 and RWE-VA-013 remain protected migration routes and are intentionally e
 As source records are migrated, search can expand to Signals, Visual Archive, Locations, Corporations, Factions, People, Founders, Systems, Builds and Development Records.
 
 The registry becomes a shared discovery layer rather than a second copy of archive content.
+
+## Search v1.1
+
+The search layer now supports:
+- canonical IDs
+- titles and aliases
+- tags and system keywords
+- platforms
+- summaries
+- verified related-record expansion
+- record-type filtering
+- shareable `?q=` and `?type=` URLs
+
+Ranking prioritises exact canonical identity before descriptive metadata.
+
+## Registry validation
+
+`validate-registry.mjs` checks:
+- duplicate canonical IDs
+- duplicate canonical paths
+- broken relations
+- searchable records that are not publish-ready
+- missing titles on searchable public records
+- malformed metadata arrays
+- self-relations
+- multiple builds marked current
+
+A GitHub Actions workflow runs these checks on relevant pull requests and on changes merged to `main`.
