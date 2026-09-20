@@ -1,6 +1,6 @@
 {
   "registry_id": "RWE-P2088-MASTER-REGISTRY",
-  "registry_version": "1.1.0",
+  "registry_version": "1.2.0",
   "project": "Project 2088",
   "updated_at": "2026-09-20",
   "purpose": "Canonical identity and migration registry for RWE website, Bridge, QA and future archive search.",
@@ -538,61 +538,227 @@
       "record_id": "RWE-P2088-FACTION-CONSTRUCT",
       "record_type": "faction",
       "title": "Construct",
-      "canonical_path": null,
-      "status": "proposed",
-      "publish_ready": false,
-      "searchable": false,
-      "relations": []
+      "canonical_path": "/world/construct",
+      "status": "published",
+      "publish_ready": true,
+      "searchable": true,
+      "relations": [
+        "RWE-P2088-LOC-BRITANA",
+        "RWE-P2088-LOC-LONDON",
+        "RWE-P2088-LOC-NEOVICTORIA",
+        "RWE-P2088-CORP-ANAMIKA"
+      ],
+      "summary": "The infrastructure authority that maintains Hives, logistics and the systems keeping Britana alive, built around a doctrine of order as survival.",
+      "aliases": [
+        "Construct",
+        "Construct Infrastructure Authority"
+      ],
+      "tags": [
+        "Construct",
+        "faction",
+        "corporation",
+        "infrastructure",
+        "Hives",
+        "order",
+        "logistics"
+      ],
+      "keywords": [
+        "Construct provides",
+        "order above all",
+        "infrastructure",
+        "security",
+        "stability",
+        "Hive Crown",
+        "distribution",
+        "maintenance",
+        "supply chain"
+      ],
+      "platforms": []
     },
     {
       "record_id": "RWE-P2088-CORP-ANAMIKA",
       "record_type": "corporation",
       "title": "Anamika",
-      "canonical_path": null,
-      "status": "proposed",
-      "publish_ready": false,
-      "searchable": false,
-      "relations": []
+      "canonical_path": "/world/anamika",
+      "status": "published",
+      "publish_ready": true,
+      "searchable": true,
+      "relations": [
+        "RWE-P2088-FACTION-CONSTRUCT",
+        "RWE-P2088-LOC-NEOVICTORIA"
+      ],
+      "summary": "A pharmaceutical and human-advancement power whose clinical optimism frames augmentation, research and experimentation as the perfection of humanity.",
+      "aliases": [
+        "Anamika",
+        "Anamika Pharmaceuticals"
+      ],
+      "tags": [
+        "Anamika",
+        "corporation",
+        "pharmaceuticals",
+        "research",
+        "augmentation",
+        "human advancement"
+      ],
+      "keywords": [
+        "humanity can be perfected",
+        "clinical",
+        "scientific",
+        "optimistic",
+        "human experimentation",
+        "medical research",
+        "containment"
+      ],
+      "platforms": []
     },
     {
       "record_id": "RWE-P2088-CORP-LOCKHEAD",
       "record_type": "corporation",
       "title": "Lockhead",
-      "canonical_path": null,
-      "status": "proposed",
-      "publish_ready": false,
-      "searchable": false,
-      "relations": []
+      "canonical_path": "/world/lockhead",
+      "status": "published",
+      "publish_ready": true,
+      "searchable": true,
+      "relations": [
+        "RWE-P2088-LOC-BRITANA"
+      ],
+      "summary": "Project 2088's weapons-industrial power: disciplined, confident and built around the doctrine of peace through strength.",
+      "aliases": [
+        "Lockhead",
+        "Lockhead Weapons"
+      ],
+      "tags": [
+        "Lockhead",
+        "corporation",
+        "weapons",
+        "military",
+        "arms"
+      ],
+      "keywords": [
+        "peace through strength",
+        "military",
+        "disciplined",
+        "confident",
+        "weapons manufacturer",
+        "arms"
+      ],
+      "platforms": []
     },
     {
       "record_id": "RWE-P2088-LOC-BRITANA",
       "record_type": "location",
       "title": "Britana",
-      "canonical_path": null,
-      "status": "proposed",
-      "publish_ready": false,
-      "searchable": false,
-      "relations": []
+      "canonical_path": "/world/britana",
+      "status": "published",
+      "publish_ready": true,
+      "searchable": true,
+      "relations": [
+        "RWE-P2088-LOC-LONDON",
+        "RWE-P2088-LOC-NEOVICTORIA",
+        "RWE-P2088-FACTION-CONSTRUCT",
+        "RWE-P2088-CORP-LOCKHEAD"
+      ],
+      "summary": "The country that remained: a maintained Britain of corporate Hives, free territories and infrastructure that never stopped operating.",
+      "aliases": [
+        "Britana",
+        "Britain 2088",
+        "The country that remained"
+      ],
+      "tags": [
+        "Britana",
+        "location",
+        "Britain",
+        "Hives",
+        "Free Territories",
+        "world"
+      ],
+      "keywords": [
+        "corporate Hives",
+        "Free Territories",
+        "Construct",
+        "London Hive",
+        "Neo Victoria",
+        "country that remained",
+        "maintained world"
+      ],
+      "platforms": []
     },
     {
       "record_id": "RWE-P2088-LOC-LONDON",
       "record_type": "location",
       "title": "London Prefecture",
-      "canonical_path": null,
-      "status": "proposed",
-      "publish_ready": false,
-      "searchable": false,
-      "relations": []
+      "canonical_path": "/world/london-hive",
+      "status": "published",
+      "publish_ready": true,
+      "searchable": true,
+      "relations": [
+        "RWE-P2088-LOC-BRITANA",
+        "RWE-P2088-FACTION-CONSTRUCT",
+        "RWE-P2088-LOC-NEOVICTORIA"
+      ],
+      "summary": "Britana's largest Hive: immense, bureaucratic and self-confident, acting as though the other Hives fall naturally beneath its authority.",
+      "aliases": [
+        "London Prefecture",
+        "London Hive",
+        "City of London Hive",
+        "London"
+      ],
+      "tags": [
+        "London",
+        "London Prefecture",
+        "Hive",
+        "location",
+        "Britana"
+      ],
+      "keywords": [
+        "largest Hive",
+        "self-declared centre of authority",
+        "bureaucratic",
+        "prefecture",
+        "capital",
+        "provinces"
+      ],
+      "platforms": []
     },
     {
       "record_id": "RWE-P2088-LOC-NEOVICTORIA",
       "record_type": "location",
-      "title": "Neo-Victoria",
-      "canonical_path": null,
-      "status": "proposed",
-      "publish_ready": false,
-      "searchable": false,
-      "relations": []
+      "title": "Neo Victoria",
+      "canonical_path": "/world/neo-victoria",
+      "status": "published",
+      "publish_ready": true,
+      "searchable": true,
+      "relations": [
+        "RWE-P2088-LOC-BRITANA",
+        "RWE-P2088-LOC-LONDON",
+        "RWE-P2088-FACTION-CONSTRUCT",
+        "RWE-P2088-CORP-ANAMIKA"
+      ],
+      "summary": "Nottingham's Hive and Britana's second largest, expanded down through coal pits, caves, transport tunnels and buried civil infrastructure.",
+      "aliases": [
+        "Neo Victoria",
+        "Neo-Victoria",
+        "Nottingham Hive",
+        "Nottingham"
+      ],
+      "tags": [
+        "Neo Victoria",
+        "Nottingham",
+        "Hive",
+        "location",
+        "Britana"
+      ],
+      "keywords": [
+        "second-largest Hive",
+        "coal pits",
+        "caves",
+        "transport tunnels",
+        "underground city",
+        "industrial",
+        "layered city",
+        "autonomous"
+      ],
+      "platforms": []
     }
   ],
   "search_contract": {
