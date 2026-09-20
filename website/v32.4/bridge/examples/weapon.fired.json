@@ -1,0 +1,24 @@
+{
+  "event_id": "EVT-WPN-DEMO-0001",
+  "event_name": "weapon.fired",
+  "event_version": 1,
+  "schema_version": "CER-0.3",
+  "bridge_version": "RWE-BRIDGE-0.1",
+  "timestamp": "2026-09-20T07:45:03Z",
+  "project_id": "RWE-P2088",
+  "build_id": "RWE-P2088-BUILD-098",
+  "installation_id": "INS-DEMO-0001",
+  "session_id": "SES-DEMO-0001",
+  "source_system": "UE5 BP_Pistol lineage",
+  "tester_id": "TST-DEMO-001",
+  "player_instance_id": "PLY-DEMO-0001",
+  "payload": {
+    "player_id": "PLY-DEMO-0001",
+    "weapon_instance_id": "WPNI-DEMO-0042",
+    "weapon_asset": "v57",
+    "parent_class": "BP_Pistol",
+    "rounds_fired": 1,
+    "ammo_type": "9x19",
+    "location_id": "RWE-P2088-LOC-NEOVICTORIA"
+  }
+}
