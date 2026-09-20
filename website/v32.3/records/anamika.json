@@ -1,0 +1,53 @@
+{
+  "record_id": "RWE-P2088-CORP-ANAMIKA",
+  "record_type": "corporation",
+  "project": "Project 2088",
+  "canonical_path": "/world/anamika",
+  "canonical_url": "https://realworldentertainment.co.uk/world/anamika",
+  "title": "Anamika",
+  "status": "published",
+  "visibility": "public",
+  "publish_ready": true,
+  "searchable": true,
+  "summary": "A pharmaceutical and human-advancement power whose clinical optimism frames augmentation, research and experimentation as the perfection of humanity.",
+  "aliases": [
+    "Anamika",
+    "Anamika Pharmaceuticals"
+  ],
+  "tags": [
+    "Anamika",
+    "corporation",
+    "pharmaceuticals",
+    "research",
+    "augmentation",
+    "human advancement"
+  ],
+  "keywords": [
+    "humanity can be perfected",
+    "clinical",
+    "scientific",
+    "optimistic",
+    "human experimentation",
+    "medical research",
+    "containment"
+  ],
+  "relations": [
+    "RWE-P2088-FACTION-CONSTRUCT",
+    "RWE-P2088-LOC-NEOVICTORIA"
+  ],
+  "metadata": {
+    "core_belief": "Humanity can be perfected.",
+    "speech_style": "Clinical, scientific, optimistic.",
+    "public_role": [
+      "Pharmaceuticals",
+      "Research",
+      "Human advancement"
+    ],
+    "known_activity": [
+      "Medical research",
+      "Augmentation",
+      "Human experimentation",
+      "Containment research"
+    ]
+  }
+}
