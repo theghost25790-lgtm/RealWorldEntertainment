@@ -1,0 +1,256 @@
+{
+  "resolver_id": "RWE-P2088-ENTITY-RESOLVER",
+  "resolver_version": "RWE-ENTITY-0.1",
+  "updated_at": "2026-09-20",
+  "sources": {
+    "master_record_registry": {
+      "path": "website/v32.3/master-record-registry.json",
+      "version": "1.2.0"
+    },
+    "canonical_event_registry": {
+      "version": "CER-0.1"
+    },
+    "asset_database": {
+      "name": "Project_2088_Asset_Database.xlsx",
+      "form_id_pattern": "^F\\d{7}$"
+    }
+  },
+  "principles": [
+    "Permanent canonical records, runtime instances and UE5 asset identities are distinct identity classes.",
+    "Aliases may aid lookup or migration but are never accepted as canonical *_id values.",
+    "Archived canonical records remain resolvable.",
+    "Runtime instance IDs exist only within runtime/session evidence and do not become permanent archive records.",
+    "Concrete UE5 asset names are validated by semantic parent lineage where a parent contract exists.",
+    "Do not invent canonical IDs for legacy values that do not yet have permanent records."
+  ],
+  "exact_entities": [
+    {
+      "id": "RWE-P2088",
+      "semantic_type": "project",
+      "title": "Project 2088",
+      "status": "active"
+    },
+    {
+      "id": "RWE-P2088-BUILD-096D",
+      "semantic_type": "build",
+      "title": "Project 2088 — Build 096D",
+      "status": "archived"
+    },
+    {
+      "id": "RWE-P2088-BUILD-097B",
+      "semantic_type": "build",
+      "title": "Project 2088 — Build 097B",
+      "status": "archived"
+    },
+    {
+      "id": "RWE-P2088-BUILD-098",
+      "semantic_type": "build",
+      "title": "Project 2088 — Build 098",
+      "status": "current"
+    },
+    {
+      "id": "RWE-P2088-LOC-BRITANA",
+      "semantic_type": "location",
+      "title": "Britana",
+      "status": "published"
+    },
+    {
+      "id": "RWE-P2088-LOC-LONDON",
+      "semantic_type": "location",
+      "title": "London Prefecture",
+      "status": "published"
+    },
+    {
+      "id": "RWE-P2088-LOC-NEOVICTORIA",
+      "semantic_type": "location",
+      "title": "Neo Victoria",
+      "status": "published"
+    },
+    {
+      "id": "RWE-P2088-FACTION-CONSTRUCT",
+      "semantic_type": "faction",
+      "title": "Construct",
+      "status": "published"
+    },
+    {
+      "id": "RWE-P2088-CORP-ANAMIKA",
+      "semantic_type": "corporation",
+      "title": "Anamika",
+      "status": "published"
+    },
+    {
+      "id": "RWE-P2088-CORP-LOCKHEAD",
+      "semantic_type": "corporation",
+      "title": "Lockhead",
+      "status": "published"
+    }
+  ],
+  "canonical_field_rules": {
+    "project_id": {
+      "semantic_types": [
+        "project"
+      ],
+      "nullable": false
+    },
+    "build_id": {
+      "semantic_types": [
+        "build"
+      ],
+      "nullable": false
+    },
+    "location_id": {
+      "semantic_types": [
+        "location"
+      ],
+      "nullable": false
+    },
+    "previous_location_id": {
+      "semantic_types": [
+        "location"
+      ],
+      "nullable": true
+    },
+    "next_location_id": {
+      "semantic_types": [
+        "location"
+      ],
+      "nullable": true
+    }
+  },
+  "runtime_instance_namespaces": {
+    "event_id": {
+      "prefix": "EVT-",
+      "pattern": "^EVT-[A-Za-z0-9][A-Za-z0-9_-]+$",
+      "scope": "immutable event occurrence"
+    },
+    "installation_id": {
+      "prefix": "INS-",
+      "pattern": "^INS-[A-Za-z0-9][A-Za-z0-9_-]+$",
+      "scope": "installation"
+    },
+    "session_id": {
+      "prefix": "SES-",
+      "pattern": "^SES-[A-Za-z0-9][A-Za-z0-9_-]+$",
+      "scope": "session"
+    },
+    "tester_id": {
+      "prefix": "TST-",
+      "pattern": "^TST-[A-Za-z0-9][A-Za-z0-9_-]+$",
+      "scope": "longitudinal tester",
+      "nullable": true
+    },
+    "player_instance_id": {
+      "prefix": "PLY-",
+      "pattern": "^PLY-[A-Za-z0-9][A-Za-z0-9_-]+$",
+      "scope": "per-session player actor",
+      "nullable": true
+    },
+    "weapon_instance_id": {
+      "prefix": "WPNI-",
+      "pattern": "^WPNI-[A-Za-z0-9][A-Za-z0-9_-]+$",
+      "scope": "spawned firearm instance"
+    },
+    "magazine_instance_id": {
+      "prefix": "MAGI-",
+      "pattern": "^MAGI-[A-Za-z0-9][A-Za-z0-9_-]+$",
+      "scope": "spawned magazine instance"
+    },
+    "npc_instance_id": {
+      "prefix": "NPCI-",
+      "pattern": "^NPCI-[A-Za-z0-9][A-Za-z0-9_-]+$",
+      "scope": "spawned NPC instance"
+    },
+    "combat_id": {
+      "prefix": "CMB-",
+      "pattern": "^CMB-[A-Za-z0-9][A-Za-z0-9_-]+$",
+      "scope": "combat context"
+    }
+  },
+  "asset_identity": {
+    "weapon_asset": {
+      "identity_class": "ue_asset",
+      "registry_status": "exact asset registry pending",
+      "known_examples": [
+        "MT-09_A",
+        "v57",
+        "Mac 10"
+      ],
+      "parent_contract": "BP_Pistol",
+      "rule": "A concrete firearm asset is not promoted to an RWE archive record merely because it appears in telemetry."
+    },
+    "magazine_asset": {
+      "identity_class": "ue_asset",
+      "registry_status": "exact asset registry pending",
+      "known_examples": [],
+      "parent_contract": "BP_Mag",
+      "rule": "Magazine child identity remains separate from the BP_Mag semantic parent contract."
+    },
+    "form_id": {
+      "identity_class": "permanent content asset",
+      "pattern": "^F\\d{7}$",
+      "rule": "Project 2088 Asset Database universal FormID. Separate from runtime instance IDs and gameplay child asset names."
+    }
+  },
+  "legacy_resolution": {
+    "faction": {
+      "accepted_mapped": [
+        {
+          "value": "Construct",
+          "canonical_id": "RWE-P2088-FACTION-CONSTRUCT"
+        },
+        {
+          "value": "Anamika",
+          "canonical_id": "RWE-P2088-CORP-ANAMIKA"
+        },
+        {
+          "value": "Lockhead",
+          "canonical_id": "RWE-P2088-CORP-LOCKHEAD"
+        }
+      ],
+      "accepted_unmapped": [
+        {
+          "value": "Scavs",
+          "status": "legacy-unmapped"
+        },
+        {
+          "value": "Mercenaries",
+          "status": "legacy-unmapped"
+        },
+        {
+          "value": "Citizens",
+          "status": "legacy-unmapped"
+        }
+      ],
+      "rule": "Legacy faction strings remain accepted by CER-0.1 payloads. Mapped values may expose canonical_id as derived metadata; unmapped values must not receive invented IDs."
+    }
+  },
+  "errors": [
+    {
+      "code": "ERR-ID-001",
+      "name": "UNKNOWN_CANONICAL_ID",
+      "meaning": "Canonical ID does not resolve to a registered entity."
+    },
+    {
+      "code": "ERR-ID-002",
+      "name": "WRONG_ENTITY_TYPE",
+      "meaning": "Canonical ID exists but is not valid for the field's required semantic type."
+    },
+    {
+      "code": "ERR-ID-003",
+      "name": "INVALID_INSTANCE_ID",
+      "meaning": "Runtime instance ID does not match the namespace required by its field."
+    },
+    {
+      "code": "ERR-ID-004",
+      "name": "ALIAS_NOT_CANONICAL_ID",
+      "meaning": "A title or alias was supplied where a canonical *_id value is required."
+    }
+  ],
+  "warnings": [
+    {
+      "code": "WARN-ID-001",
+      "name": "LEGACY_VALUE_UNMAPPED",
+      "meaning": "Legacy enum/string is still accepted by its source contract but has no permanent canonical record yet."
+    }
+  ]
+}
