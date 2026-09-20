@@ -3,6 +3,7 @@ import fs from "node:fs";
 const root = "website/v32.4/bridge";
 const schema = JSON.parse(fs.readFileSync(root + "/canonical-event-envelope.schema.json","utf8"));
 const contract = JSON.parse(fs.readFileSync(root + "/bridge-contract.json","utf8"));
+const vectors = JSON.parse(fs.readFileSync(root + "/test-vectors.json","utf8"));
 
 const examplePaths = [
   root + "/examples/location.entered.json",
@@ -10,61 +11,116 @@ const examplePaths = [
   root + "/examples/npc.killed.json"
 ];
 
-const registered = new Set(["location.entered","weapon.fired","npc.killed"]);
-const errors = [];
+const registeredVersions = new Map([
+  ["location.entered",1],
+  ["weapon.fired",1],
+  ["npc.killed",1]
+]);
 
-function fail(file,msg){ errors.push(file + ": " + msg); }
-function isUtcIso(v){ return typeof v === "string" && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z$/.test(v) && !Number.isNaN(Date.parse(v)); }
-function eventName(v){ return typeof v === "string" && /^[a-z][a-z0-9_]*\.[a-z][a-z0-9_]*$/.test(v); }
+const hardErrors = [];
 
-for (const file of examplePaths) {
-  const e = JSON.parse(fs.readFileSync(file,"utf8"));
-  for (const field of schema.required) if (!(field in e)) fail(file,"missing required field " + field);
-  const allowed = new Set(Object.keys(schema.properties));
-  for (const field of Object.keys(e)) if (!allowed.has(field)) fail(file,"unknown top-level field " + field);
+function isUtcIso(v){
+  return typeof v === "string" &&
+    /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z$/.test(v) &&
+    !Number.isNaN(Date.parse(v));
+}
 
-  if (!/^EVT-[A-Za-z0-9][A-Za-z0-9_-]+$/.test(e.event_id || "")) fail(file,"invalid event_id");
-  if (!eventName(e.event_name)) fail(file,"event_name must use lowercase domain.action");
-  if (!registered.has(e.event_name)) fail(file,"example event is not in the V32.4.1 registered test set");
-  if (!Number.isInteger(e.event_version) || e.event_version < 1) fail(file,"invalid event_version");
-  if (e.schema_version !== contract.schema_version) fail(file,"schema_version mismatch");
-  if (e.bridge_version !== contract.bridge_version) fail(file,"bridge_version mismatch");
-  if (!isUtcIso(e.timestamp)) fail(file,"timestamp must be ISO-8601 UTC Z");
-  if (e.project_id !== contract.project_id) fail(file,"project_id mismatch");
-  if (!e.build_id) fail(file,"build_id required");
-  if (!e.installation_id) fail(file,"installation_id required");
-  if (!e.session_id) fail(file,"session_id required");
-  if (!e.source_system) fail(file,"source_system required");
-  if (!e.payload || typeof e.payload !== "object" || Array.isArray(e.payload)) fail(file,"payload must be object");
+function eventName(v){
+  return typeof v === "string" && /^[a-z][a-z0-9_]*\.[a-z][a-z0-9_]*$/.test(v);
+}
 
-  if (e.event_name === "weapon.fired") {
-    const p=e.payload;
-    for (const f of ["player_id","weapon_instance_id","weapon_asset","parent_class","rounds_fired","ammo_type","location_id"]) if (!(f in p)) fail(file,"weapon.fired missing payload " + f);
-    if (p.parent_class !== contract.class_contracts.firearm_parent) fail(file,"weapon.fired must resolve through BP_Pistol");
-    if (!Number.isInteger(p.rounds_fired) || p.rounds_fired < 1) fail(file,"rounds_fired must be >= 1");
+function validate(e){
+  const codes=[];
+
+  for(const field of schema.required){
+    if(!(field in e)) codes.push("ERR-SCH-001");
   }
 
-  if (e.event_name === "location.entered") {
-    for (const f of ["player_id","location_id","previous_location_id"]) if (!(f in e.payload)) fail(file,"location.entered missing payload " + f);
+  if(!eventName(e.event_name) || !registeredVersions.has(e.event_name)){
+    codes.push("ERR-EVT-001");
+    return [...new Set(codes)];
   }
 
-  if (e.event_name === "npc.killed") {
-    for (const f of ["player_id","npc_instance_id","npc_type","faction","killer_id","weapon_asset","location_id"]) if (!(f in e.payload)) fail(file,"npc.killed missing payload " + f);
+  if(e.event_version !== registeredVersions.get(e.event_name)){
+    codes.push("ERR-EVT-002");
+  }
+
+  if(typeof e.event_id !== "string" || !/^EVT-[A-Za-z0-9][A-Za-z0-9_-]+$/.test(e.event_id)){
+    codes.push("ERR-SCH-002");
+  }
+  if(e.schema_version !== contract.schema_version) codes.push("ERR-SCH-002");
+  if(e.bridge_version !== contract.bridge_version) codes.push("ERR-SCH-002");
+  if(!isUtcIso(e.timestamp)) codes.push("ERR-SCH-002");
+  if(e.project_id !== contract.project_id) codes.push("ERR-SCH-002");
+  if(!e.payload || typeof e.payload !== "object" || Array.isArray(e.payload)) codes.push("ERR-SCH-002");
+
+  if(e.event_name === "weapon.fired" && e.payload){
+    const required=["player_id","weapon_instance_id","weapon_asset","parent_class","rounds_fired","ammo_type","location_id"];
+    for(const field of required) if(!(field in e.payload)) codes.push("ERR-SCH-001");
+    if(e.payload.parent_class !== contract.class_contracts.firearm_parent) codes.push("ERR-CLS-001");
+    if(!Number.isInteger(e.payload.rounds_fired) || e.payload.rounds_fired < 1) codes.push("ERR-SCH-002");
+  }
+
+  if(e.event_name === "location.entered" && e.payload){
+    for(const field of ["player_id","location_id","previous_location_id"]){
+      if(!(field in e.payload)) codes.push("ERR-SCH-001");
+    }
+  }
+
+  if(e.event_name === "npc.killed" && e.payload){
+    for(const field of ["player_id","npc_instance_id","npc_type","faction","killer_id","weapon_asset","location_id"]){
+      if(!(field in e.payload)) codes.push("ERR-SCH-001");
+    }
+  }
+
+  return [...new Set(codes)];
+}
+
+for(const file of examplePaths){
+  const e=JSON.parse(fs.readFileSync(file,"utf8"));
+  const allowed=new Set(Object.keys(schema.properties));
+  for(const field of Object.keys(e)){
+    if(!allowed.has(field)) hardErrors.push(file + ": unknown top-level field " + field);
+  }
+  const codes=validate(e);
+  if(codes.length) hardErrors.push(file + ": expected ACCEPT, got " + codes.join(", "));
+}
+
+const baseWeapon=JSON.parse(fs.readFileSync(root + "/examples/weapon.fired.json","utf8"));
+
+for(const vector of vectors.vectors){
+  const e=structuredClone(baseWeapon);
+
+  for(const [field,value] of Object.entries(vector.mutate || {})) e[field]=value;
+  for(const field of vector.remove || []) delete e[field];
+  for(const [field,value] of Object.entries(vector.mutate_payload || {})) e.payload[field]=value;
+
+  const codes=validate(e);
+  if(!codes.includes(vector.expected)){
+    hardErrors.push(vector.id + " " + vector.name + ": expected " + vector.expected + ", got " + (codes.join(", ") || "ACCEPT"));
   }
 }
 
-if (contract.session_lifecycle.join(">") !== "NO_SESSION>STARTING>OPEN>OPEN_OFFLINE>REPLAYING>ENDING>CLOSED") {
-  errors.push("bridge-contract.json: session lifecycle drift");
+if(contract.session_lifecycle.join(">") !== "NO_SESSION>STARTING>OPEN>OPEN_OFFLINE>REPLAYING>ENDING>CLOSED"){
+  hardErrors.push("bridge-contract.json: session lifecycle drift");
 }
 
-if (errors.length) {
-  errors.forEach((e)=>console.error("ERROR:",e));
-  console.error("\nCanonical Event Envelope validation failed with " + errors.length + " error(s).");
+if(contract.class_contracts.firearm_parent !== "BP_Pistol"){
+  hardErrors.push("bridge-contract.json: firearm parent drift");
+}
+if(contract.class_contracts.magazine_parent !== "BP_Mag"){
+  hardErrors.push("bridge-contract.json: magazine parent drift");
+}
+
+if(hardErrors.length){
+  hardErrors.forEach((e)=>console.error("ERROR:",e));
+  console.error("\nCanonical Event Envelope validation failed with " + hardErrors.length + " error(s).");
   process.exit(1);
 }
 
 console.log("RWE Bridge Canonical Event Envelope OK");
-console.log("Schema:", contract.schema_version);
-console.log("Bridge:", contract.bridge_version);
-console.log("Examples:", examplePaths.length);
-console.log("Current build:", contract.current_build_id);
+console.log("Schema:",contract.schema_version);
+console.log("Bridge:",contract.bridge_version);
+console.log("Valid examples:",examplePaths.length);
+console.log("Negative vectors:",vectors.vectors.length);
+console.log("Current build:",contract.current_build_id);
