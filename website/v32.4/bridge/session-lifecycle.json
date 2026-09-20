@@ -196,7 +196,8 @@
       "Accepted or duplicate-confirmed events leave the queue.",
       "Retryable transport failures remain queued.",
       "Permanent validation failures move to retained sync-failure evidence for QA rather than being silently discarded."
-    ]
+    ],
+    "offline_session_start": "When a session begins offline, session.started is created as canonical evidence and durably queued before gameplay evidence; offline_start_committed changes state only after that durable write succeeds."
   },
   "crash_recovery": {
     "resume_same_gameplay_session_after_process_restart": false,
@@ -294,5 +295,18 @@
       "name": "SESSION_START_CONFLICT",
       "meaning": "A new incompatible session.start was requested while another session context is starting/open/recoverable."
     }
-  ]
+  ],
+  "idempotence": {
+    "session_start": {
+      "same_session_same_context": "Return the existing STARTING/current session context. Do not create another session.",
+      "same_session_different_context": "ERR-SES-006 SESSION_START_CONFLICT",
+      "different_session_while_active_or_recoverable": "ERR-SES-006 SESSION_START_CONFLICT"
+    },
+    "session_end": {
+      "ENDING": "Return current ending status; do not emit a second session.ended fact.",
+      "CLOSED": "Return already-closed receipt when the same session identity is retried; do not mutate the session.",
+      "OPEN_OFFLINE_or_REPLAYING": "Set/retain end_requested=true; do not create a second close request."
+    },
+    "event_retry": "An exact retry with the same event_id represents the same fact. Accepted duplicates receive an idempotent receipt rather than a second stored event."
+  }
 }
