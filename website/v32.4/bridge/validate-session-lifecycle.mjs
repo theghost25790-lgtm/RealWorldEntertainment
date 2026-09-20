@@ -8,15 +8,9 @@ const errors=[];
 function transition(from,trigger,context={}){
   if(from==="CLOSED") return "ERR-SES-002";
 
-  if(from==="OPEN_OFFLINE" && trigger==="session.end"){
-    return "OPEN_OFFLINE";
-  }
-  if(from==="REPLAYING" && trigger==="session.end"){
-    return "REPLAYING";
-  }
-  if(from==="ENDING" && trigger==="network_unavailable"){
-    return "ENDING";
-  }
+  if(from==="OPEN_OFFLINE" && trigger==="session.end") return "OPEN_OFFLINE";
+  if(from==="REPLAYING" && trigger==="session.end") return "REPLAYING";
+  if(from==="ENDING" && trigger==="network_unavailable") return "ENDING";
 
   const candidates=c.transitions.filter(t=>t.from===from && t.trigger===trigger);
   if(!candidates.length) return "ERR-SES-002";
@@ -50,6 +44,21 @@ function eventPolicy(state){
   return "ERR-SES-002";
 }
 
+function startIdempotence(t){
+  const active=["STARTING","OPEN","OPEN_OFFLINE","REPLAYING","ENDING"];
+  if(!active.includes(t.state)) return "ERR-SES-002";
+  if(t.existing_session_id===t.requested_session_id && t.context_match) return "RETURN_EXISTING_SESSION";
+  return "ERR-SES-006";
+}
+
+function endIdempotence(t){
+  if(!t.same_session) return "ERR-SES-001";
+  if(t.state==="ENDING") return "RETURN_ENDING";
+  if(t.state==="CLOSED") return "RETURN_ALREADY_CLOSED";
+  if(t.state==="OPEN_OFFLINE" || t.state==="REPLAYING") return "SET_END_REQUESTED";
+  return "ERR-SES-002";
+}
+
 for(const t of tests.vectors){
   let actual;
 
@@ -71,6 +80,12 @@ for(const t of tests.vectors){
   } else if(t.kind==="replay_identity"){
     actual=(t.original.event_id===t.replayed.event_id && t.original.timestamp===t.replayed.timestamp)
       ? "ACCEPT" : "ERR-SES-002";
+  } else if(t.kind==="start_idempotence"){
+    actual=startIdempotence(t);
+  } else if(t.kind==="end_idempotence"){
+    actual=endIdempotence(t);
+  } else if(t.kind==="offline_start_evidence"){
+    actual=(t.state==="STARTING" && t.durable_first_event===c.source_events.started) ? "ACCEPT" : "ERR-SES-002";
   } else {
     actual="UNKNOWN_TEST";
   }
@@ -81,9 +96,7 @@ for(const t of tests.vectors){
 }
 
 const expectedStates=["NO_SESSION","STARTING","OPEN","OPEN_OFFLINE","REPLAYING","ENDING","CLOSED"];
-if(JSON.stringify(Object.keys(c.states))!==JSON.stringify(expectedStates)){
-  errors.push("state set/order drift");
-}
+if(JSON.stringify(Object.keys(c.states))!==JSON.stringify(expectedStates)) errors.push("state set/order drift");
 
 for(const transitionDef of c.transitions){
   if(!c.states[transitionDef.from]) errors.push("unknown transition from "+transitionDef.from);
@@ -94,7 +107,9 @@ if(new Set(c.end_reasons).size!==c.end_reasons.length) errors.push("duplicate en
 if(c.session_id_policy.immutable!==true) errors.push("session_id must be immutable");
 if(c.offline_queue.preserve_event_id!==true) errors.push("replay must preserve event_id");
 if(c.offline_queue.preserve_occurrence_timestamp!==true) errors.push("replay must preserve occurrence timestamp");
+if(!String(c.offline_queue.offline_session_start||"").includes("session.started")) errors.push("offline start must preserve session.started evidence");
 if(c.crash_recovery.resume_same_gameplay_session_after_process_restart!==false) errors.push("process restart gameplay-resume policy drift");
+if(!c.idempotence?.session_start || !c.idempotence?.session_end || !c.idempotence?.event_retry) errors.push("idempotence contract incomplete");
 
 if(errors.length){
   errors.forEach(e=>console.error("ERROR:",e));
