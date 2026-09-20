@@ -1,6 +1,6 @@
 {
   "registry_id": "RWE-P2088-MASTER-REGISTRY",
-  "registry_version": "1.0.0",
+  "registry_version": "1.1.0",
   "project": "Project 2088",
   "updated_at": "2026-09-20",
   "purpose": "Canonical identity and migration registry for RWE website, Bridge, QA and future archive search.",
@@ -22,6 +22,31 @@
       "searchable": true,
       "relations": [
         "RWE-P2088-BUILD-097B"
+      ],
+      "summary": "Preserved experimental standalone Meta Quest build, with Quest 3 as the primary supported headset.",
+      "aliases": [
+        "Build 096D",
+        "096D",
+        "Build 96D"
+      ],
+      "tags": [
+        "build",
+        "archive",
+        "experimental",
+        "standalone VR",
+        "Android ASTC"
+      ],
+      "keywords": [
+        "Meta Quest",
+        "Meta Quest 3",
+        "Quest 3",
+        "Windows PC",
+        "Developer Mode",
+        "Unknown Sources",
+        "preserved build"
+      ],
+      "platforms": [
+        "Meta Quest 3"
       ]
     },
     {
@@ -35,6 +60,32 @@
       "relations": [
         "RWE-P2088-BUILD-096D",
         "RWE-P2088-BUILD-098"
+      ],
+      "summary": "Archived experimental Meta Quest development build published immediately before Build 098.",
+      "aliases": [
+        "Build 097B",
+        "097B",
+        "Build 97B"
+      ],
+      "tags": [
+        "build",
+        "archive",
+        "experimental",
+        "prerelease",
+        "Android ASTC"
+      ],
+      "keywords": [
+        "Meta Quest",
+        "Meta Quest 2",
+        "Meta Quest 3",
+        "Quest 2",
+        "Quest 3",
+        "Windows PC",
+        "Unknown Sources"
+      ],
+      "platforms": [
+        "Meta Quest 2 testing",
+        "Meta Quest 3 testing"
       ]
     },
     {
@@ -48,6 +99,35 @@
       "relations": [
         "RWE-P2088-BUILD-097B",
         "RWE-P2088-DEV-158"
+      ],
+      "summary": "Current public experimental Project 2088 build for Meta Quest testing.",
+      "aliases": [
+        "Build 098",
+        "Build 98",
+        "098",
+        "98",
+        "current build"
+      ],
+      "tags": [
+        "build",
+        "current",
+        "experimental",
+        "public build",
+        "Android ASTC"
+      ],
+      "keywords": [
+        "Meta Quest",
+        "Meta Quest 2",
+        "Meta Quest 3",
+        "Quest 2",
+        "Quest 3",
+        "Windows PC",
+        "Unknown Sources",
+        "GitHub Release"
+      ],
+      "platforms": [
+        "Meta Quest 2",
+        "Meta Quest 3 testing"
       ]
     },
     {
@@ -87,6 +167,36 @@
         "RWE-P2088-DEV-157",
         "RWE-P2088-DEV-159",
         "RWE-P2088-BUILD-098"
+      ],
+      "summary": "Public build preservation, the RWE website, Bridge planning and the move toward dedicated QA infrastructure.",
+      "aliases": [
+        "Devlog 158",
+        "DEV 158",
+        "The Archive Grows",
+        "Build 098 — The Archive Grows"
+      ],
+      "tags": [
+        "devlog",
+        "Build 098",
+        "archive",
+        "preservation",
+        "RWE website",
+        "RWE Bridge",
+        "QA"
+      ],
+      "keywords": [
+        "Bridge",
+        "QA",
+        "PWA",
+        "deep links",
+        "Quest 3",
+        "build archive",
+        "session history",
+        "event history"
+      ],
+      "platforms": [
+        "Meta Quest 2",
+        "Meta Quest 3"
       ]
     },
     {
@@ -100,7 +210,35 @@
       "relations": [
         "RWE-P2088-DEV-158",
         "RWE-P2088-DEV-160"
-      ]
+      ],
+      "summary": "Canonical event language and shared architecture across Unreal Engine, RWE Bridge, QA and future services.",
+      "aliases": [
+        "Devlog 159",
+        "DEV 159",
+        "Building the Bridge"
+      ],
+      "tags": [
+        "devlog",
+        "RWE Bridge",
+        "canonical events",
+        "architecture",
+        "UE5",
+        "BDD"
+      ],
+      "keywords": [
+        "Bridge",
+        "Canonical Event Registry",
+        "Project",
+        "Build",
+        "Installation",
+        "Session",
+        "Event",
+        "BP_Pistol",
+        "BP_Mag",
+        "weapons",
+        "magazines"
+      ],
+      "platforms": []
     },
     {
       "record_id": "RWE-P2088-DEV-160",
@@ -112,6 +250,40 @@
       "searchable": true,
       "relations": [
         "RWE-P2088-DEV-159"
+      ],
+      "summary": "QA separates into its own application with mobile PWA access, desktop investigation and permanent deep links.",
+      "aliases": [
+        "Devlog 160",
+        "DEV 160",
+        "QA Becomes a System"
+      ],
+      "tags": [
+        "devlog",
+        "QA",
+        "RWE Bridge",
+        "PWA",
+        "deep links",
+        "evidence"
+      ],
+      "keywords": [
+        "QA",
+        "Bridge",
+        "tester profiles",
+        "build comparison",
+        "session timelines",
+        "flags",
+        "feedback",
+        "adaptive interviews",
+        "achievements",
+        "performance",
+        "evidence",
+        "mobile",
+        "desktop"
+      ],
+      "platforms": [
+        "mobile",
+        "tablet",
+        "desktop"
       ]
     },
     {
@@ -422,5 +594,32 @@
       "searchable": false,
       "relations": []
     }
-  ]
+  ],
+  "search_contract": {
+    "public_gate": [
+      "publish_ready=true",
+      "searchable=true"
+    ],
+    "searchable_fields": [
+      "record_id",
+      "record_type",
+      "title",
+      "status",
+      "summary",
+      "aliases",
+      "tags",
+      "keywords",
+      "platforms",
+      "relations"
+    ],
+    "relation_expansion": "A query may match the title, aliases or tags of a verified related record.",
+    "ranking": [
+      "exact record ID",
+      "exact alias/title",
+      "title/alias prefix",
+      "tag/keyword/platform",
+      "summary",
+      "verified related record"
+    ]
+  }
 }
