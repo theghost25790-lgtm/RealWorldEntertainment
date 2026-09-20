@@ -188,6 +188,45 @@
         "timestamp": "2026-09-20T10:05:00Z"
       },
       "expected": "ERR-SES-002"
+    },
+    {
+      "id": "SES-TV-023",
+      "kind": "start_idempotence",
+      "state": "STARTING",
+      "existing_session_id": "SES-DEMO-1",
+      "requested_session_id": "SES-DEMO-1",
+      "context_match": true,
+      "expected": "RETURN_EXISTING_SESSION"
+    },
+    {
+      "id": "SES-TV-024",
+      "kind": "start_idempotence",
+      "state": "OPEN",
+      "existing_session_id": "SES-DEMO-1",
+      "requested_session_id": "SES-DEMO-2",
+      "context_match": false,
+      "expected": "ERR-SES-006"
+    },
+    {
+      "id": "SES-TV-025",
+      "kind": "end_idempotence",
+      "state": "ENDING",
+      "same_session": true,
+      "expected": "RETURN_ENDING"
+    },
+    {
+      "id": "SES-TV-026",
+      "kind": "end_idempotence",
+      "state": "CLOSED",
+      "same_session": true,
+      "expected": "RETURN_ALREADY_CLOSED"
+    },
+    {
+      "id": "SES-TV-027",
+      "kind": "offline_start_evidence",
+      "state": "STARTING",
+      "durable_first_event": "session.started",
+      "expected": "ACCEPT"
     }
   ]
 }
