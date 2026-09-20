@@ -1,0 +1,426 @@
+{
+  "registry_id": "RWE-P2088-MASTER-REGISTRY",
+  "registry_version": "1.0.0",
+  "project": "Project 2088",
+  "updated_at": "2026-09-20",
+  "purpose": "Canonical identity and migration registry for RWE website, Bridge, QA and future archive search.",
+  "rules": [
+    "A canonical record ID is never recycled.",
+    "A public canonical URL remains stable after publication.",
+    "Reserved or migration-pending records are not searchable until source material is verified.",
+    "Existing source material overrides reconstructed or inferred metadata.",
+    "Superseded builds remain preserved."
+  ],
+  "records": [
+    {
+      "record_id": "RWE-P2088-BUILD-096D",
+      "record_type": "build",
+      "title": "Project 2088 — Build 096D",
+      "canonical_path": "/build/096D",
+      "status": "archived",
+      "publish_ready": true,
+      "searchable": true,
+      "relations": [
+        "RWE-P2088-BUILD-097B"
+      ]
+    },
+    {
+      "record_id": "RWE-P2088-BUILD-097B",
+      "record_type": "build",
+      "title": "Project 2088 — Build 097B",
+      "canonical_path": "/build/097B",
+      "status": "archived",
+      "publish_ready": true,
+      "searchable": true,
+      "relations": [
+        "RWE-P2088-BUILD-096D",
+        "RWE-P2088-BUILD-098"
+      ]
+    },
+    {
+      "record_id": "RWE-P2088-BUILD-098",
+      "record_type": "build",
+      "title": "Project 2088 — Build 098",
+      "canonical_path": "/build/098",
+      "status": "current",
+      "publish_ready": true,
+      "searchable": true,
+      "relations": [
+        "RWE-P2088-BUILD-097B",
+        "RWE-P2088-DEV-158"
+      ]
+    },
+    {
+      "record_id": "RWE-P2088-DEV-156",
+      "record_type": "devlog",
+      "title": "Weekly Devlog 156",
+      "canonical_path": null,
+      "status": "source-preserved",
+      "publish_ready": false,
+      "searchable": false,
+      "relations": [
+        "RWE-P2088-DEV-157"
+      ]
+    },
+    {
+      "record_id": "RWE-P2088-DEV-157",
+      "record_type": "devlog",
+      "title": null,
+      "canonical_path": "/devlog/157",
+      "status": "migration-pending",
+      "publish_ready": false,
+      "searchable": false,
+      "relations": [
+        "RWE-P2088-DEV-156",
+        "RWE-P2088-DEV-158"
+      ]
+    },
+    {
+      "record_id": "RWE-P2088-DEV-158",
+      "record_type": "devlog",
+      "title": "Build 098 — The Archive Grows",
+      "canonical_path": "/devlog/158",
+      "status": "published",
+      "publish_ready": true,
+      "searchable": true,
+      "relations": [
+        "RWE-P2088-DEV-157",
+        "RWE-P2088-DEV-159",
+        "RWE-P2088-BUILD-098"
+      ]
+    },
+    {
+      "record_id": "RWE-P2088-DEV-159",
+      "record_type": "devlog",
+      "title": "Building the Bridge",
+      "canonical_path": "/devlog/159",
+      "status": "published",
+      "publish_ready": true,
+      "searchable": true,
+      "relations": [
+        "RWE-P2088-DEV-158",
+        "RWE-P2088-DEV-160"
+      ]
+    },
+    {
+      "record_id": "RWE-P2088-DEV-160",
+      "record_type": "devlog",
+      "title": "QA Becomes a System",
+      "canonical_path": "/devlog/160",
+      "status": "published",
+      "publish_ready": true,
+      "searchable": true,
+      "relations": [
+        "RWE-P2088-DEV-159"
+      ]
+    },
+    {
+      "record_id": "SIG-001",
+      "record_type": "signal",
+      "canonical_path": "/signal/SIG-001",
+      "status": "migration-pending",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "SIG-002",
+      "record_type": "signal",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "SIG-003",
+      "record_type": "signal",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "SIG-004",
+      "record_type": "signal",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "SIG-005",
+      "record_type": "signal",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "SIG-006",
+      "record_type": "signal",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "SIG-007",
+      "record_type": "signal",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "SIG-008",
+      "record_type": "signal",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "SIG-009",
+      "record_type": "signal",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "SIG-010",
+      "record_type": "signal",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "SIG-011",
+      "record_type": "signal",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "SIG-012",
+      "record_type": "signal",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "SIG-013",
+      "record_type": "signal",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "SIG-014",
+      "record_type": "signal",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "SIG-015",
+      "record_type": "signal",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "SIG-016",
+      "record_type": "signal",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "SIG-017",
+      "record_type": "signal",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "SIG-018",
+      "record_type": "signal",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "RWE-VA-001",
+      "record_type": "visual",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "RWE-VA-002",
+      "record_type": "visual",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "RWE-VA-003",
+      "record_type": "visual",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "RWE-VA-004",
+      "record_type": "visual",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "RWE-VA-005",
+      "record_type": "visual",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "RWE-VA-006",
+      "record_type": "visual",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "RWE-VA-007",
+      "record_type": "visual",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "RWE-VA-008",
+      "record_type": "visual",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "RWE-VA-009",
+      "record_type": "visual",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "RWE-VA-010",
+      "record_type": "visual",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "RWE-VA-011",
+      "record_type": "visual",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "RWE-VA-012",
+      "record_type": "visual",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "RWE-VA-013",
+      "record_type": "visual",
+      "canonical_path": "/visual/RWE-VA-013",
+      "status": "migration-pending",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "RWE-P2088-FACTION-CONSTRUCT",
+      "record_type": "faction",
+      "title": "Construct",
+      "canonical_path": null,
+      "status": "proposed",
+      "publish_ready": false,
+      "searchable": false,
+      "relations": []
+    },
+    {
+      "record_id": "RWE-P2088-CORP-ANAMIKA",
+      "record_type": "corporation",
+      "title": "Anamika",
+      "canonical_path": null,
+      "status": "proposed",
+      "publish_ready": false,
+      "searchable": false,
+      "relations": []
+    },
+    {
+      "record_id": "RWE-P2088-CORP-LOCKHEAD",
+      "record_type": "corporation",
+      "title": "Lockhead",
+      "canonical_path": null,
+      "status": "proposed",
+      "publish_ready": false,
+      "searchable": false,
+      "relations": []
+    },
+    {
+      "record_id": "RWE-P2088-LOC-BRITANA",
+      "record_type": "location",
+      "title": "Britana",
+      "canonical_path": null,
+      "status": "proposed",
+      "publish_ready": false,
+      "searchable": false,
+      "relations": []
+    },
+    {
+      "record_id": "RWE-P2088-LOC-LONDON",
+      "record_type": "location",
+      "title": "London Prefecture",
+      "canonical_path": null,
+      "status": "proposed",
+      "publish_ready": false,
+      "searchable": false,
+      "relations": []
+    },
+    {
+      "record_id": "RWE-P2088-LOC-NEOVICTORIA",
+      "record_type": "location",
+      "title": "Neo-Victoria",
+      "canonical_path": null,
+      "status": "proposed",
+      "publish_ready": false,
+      "searchable": false,
+      "relations": []
+    }
+  ]
+}
