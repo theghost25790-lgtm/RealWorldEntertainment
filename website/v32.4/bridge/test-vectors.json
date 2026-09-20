@@ -1,0 +1,43 @@
+{
+  "vector_set": "V32.4.1-envelope",
+  "based_on": [
+    "TV-005",
+    "TV-008",
+    "TV-009",
+    "ERR-CLS-001"
+  ],
+  "vectors": [
+    {
+      "id": "V324-TV-001",
+      "name": "Unknown event spelling",
+      "mutate": {
+        "event_name": "weapon.pickup"
+      },
+      "expected": "ERR-EVT-001"
+    },
+    {
+      "id": "V324-TV-002",
+      "name": "Missing session",
+      "remove": [
+        "session_id"
+      ],
+      "expected": "ERR-SCH-001"
+    },
+    {
+      "id": "V324-TV-003",
+      "name": "Unknown event version",
+      "mutate": {
+        "event_version": 99
+      },
+      "expected": "ERR-EVT-002"
+    },
+    {
+      "id": "V324-TV-004",
+      "name": "Wrong firearm parent",
+      "mutate_payload": {
+        "parent_class": "BP_Mag"
+      },
+      "expected": "ERR-CLS-001"
+    }
+  ]
+}
