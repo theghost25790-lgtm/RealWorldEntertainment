@@ -9,9 +9,8 @@ Implemented:
 - Project → Build → Installation → Session → Event hierarchy;
 - event, schema and Bridge version fields;
 - tester vs per-session player identity separation;
-- UTC timestamps;
+- UTC occurrence timestamps;
 - immutable event IDs for idempotent retries;
-- v0.3 session lifecycle;
 - lowercase dot event naming;
 - command/event separation;
 - BP_Pistol and BP_Mag lineage rules.
@@ -36,82 +35,81 @@ No missing events were invented.
 Resolver:
 `RWE-ENTITY-0.1`
 
+Identity classes remain separate:
+- permanent canonical records;
+- runtime instance IDs;
+- UE5/gameplay asset identities;
+- Project content FormIDs.
+
+Canonical Build/Location IDs and runtime namespaces are type-checked. Legacy faction strings remain migration-safe.
+
+## V32.4.4 — Session Lifecycle Contract ✅
+
+Contract:
+`RWE-SESSION-0.1`
+
 Files:
-- `entity-resolution.json`
-- `entity-resolution.md`
-- `entity-resolution-tests.json`
-- `validate-entity-resolution.mjs`
+- `session-lifecycle.json`
+- `session-lifecycle.md`
+- `session-lifecycle-tests.json`
+- `session-record.schema.json`
+- `validate-session-lifecycle.mjs`
+- `examples/session-record.json`
 
-### Identity classes
+### States
 
-**Permanent canonical record**
-- Build
-- Location
-- Faction / Corporation
-- Project
+`NO_SESSION → STARTING → OPEN → OPEN_OFFLINE → REPLAYING → ENDING → CLOSED`
 
-**Runtime instance**
-- Event
-- Installation
-- Session
-- Tester
-- Player instance
-- Weapon instance
-- Magazine instance
-- NPC instance
-- Combat context
+### Locked behaviour
 
-**UE5/gameplay asset**
-- concrete weapon asset such as `MT-09_A` or `v57`
-- concrete magazine asset
+- gameplay events require a valid durable session context;
+- OPEN sends live;
+- OPEN_OFFLINE writes immutable events to a durable local queue;
+- REPLAYING preserves original event IDs and occurrence timestamps;
+- new events created during replay stay behind the unresolved backlog;
+- offline session.end sets `end_requested=true` instead of discarding queued evidence;
+- ENDING rejects newly-created gameplay facts while final evidence flushes;
+- CLOSED is immutable;
+- exact duplicate event/start/end retries are idempotent;
+- session build_id and installation_id are immutable bindings;
+- a process restart does not silently continue gameplay in the old session;
+- interrupted evidence is recovered/closed before new gameplay receives a new session_id.
 
-**Project content FormID**
-- `F#######`
+### End reasons
 
-These identity classes are deliberately separate.
+- `user_exit`
+- `test_completed`
+- `application_shutdown`
+- `crash_recovered`
+- `forced_reset`
+- `qa_terminated`
+- `unknown_interruption`
 
-### Exact resolution now enforced
+### Lifecycle errors
 
-- `project_id` must resolve to Project 2088.
-- `build_id` must resolve to a Build record.
-- `location_id`, `previous_location_id`, and `next_location_id` resolve to Location records.
-- runtime instance fields must match their registered namespace.
-- archived Build IDs remain valid historical identities.
-- titles/aliases are not accepted where a canonical `*_id` is required.
+- `ERR-SES-001 UNKNOWN_SESSION`
+- `ERR-SES-002 INVALID_SESSION_STATE`
+- `ERR-SES-003 SESSION_CLOSED`
+- `ERR-SES-004 BUILD_SESSION_MISMATCH`
+- `ERR-SES-005 INSTALLATION_SESSION_MISMATCH`
+- `ERR-SES-006 SESSION_START_CONFLICT`
 
-### Compatibility
+### QA completeness
 
-CER-0.1 `faction` remains an enum/string.
+A session is QA-complete only when it is CLOSED, closure evidence exists, and no replayable event remains unresolved.
 
-Mapped legacy values:
-- Construct → `RWE-P2088-FACTION-CONSTRUCT`
-- Anamika → `RWE-P2088-CORP-ANAMIKA`
-- Lockhead → `RWE-P2088-CORP-LOCKHEAD`
-
-Legacy values without permanent records remain valid but advisory-unmapped:
-- Scavs
-- Mercenaries
-- Citizens
-
-No IDs are invented for them.
-
-### New resolution errors
-
-- `ERR-ID-001 UNKNOWN_CANONICAL_ID`
-- `ERR-ID-002 WRONG_ENTITY_TYPE`
-- `ERR-ID-003 INVALID_INSTANCE_ID`
-- `ERR-ID-004 ALIAS_NOT_CANONICAL_ID`
-- `WARN-ID-001 LEGACY_VALUE_UNMAPPED`
+Permanent sync/validation failures are retained as QA evidence rather than silently discarded.
 
 ## CI validation
 
-The Bridge workflow now validates:
+The Bridge workflow validates:
 1. Event Type Registry
 2. Entity / ID Resolver
-3. Canonical Event Envelope against both
+3. Session Lifecycle + Session Record
+4. Canonical Event Envelope against the machine contracts
 
 ## Next
 
-**V32.4.4 — Session Lifecycle Contract**
+**V32.4.5 — QA Ingestion Contract**
 
-That phase turns the existing lifecycle states into explicit allowed transitions, offline replay rules, open/close commands, and session acceptance tests.
+That phase defines exactly what accepted Bridge evidence QA receives, how raw events become session timelines/flags, what QA may derive, and what stays immutable.
