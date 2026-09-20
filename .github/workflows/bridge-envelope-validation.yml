@@ -1,4 +1,4 @@
-name: Bridge Envelope Validation
+name: Bridge Contract Validation
 
 on:
   pull_request:
@@ -16,11 +16,14 @@ permissions:
 
 jobs:
   validate:
-    name: Validate canonical event envelope
+    name: Validate Bridge machine contracts
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - run: node website/v32.4/bridge/validate-envelope.mjs
+      - name: Validate event type registry
+        run: node website/v32.4/bridge/validate-event-types.mjs
+      - name: Validate canonical event envelope
+        run: node website/v32.4/bridge/validate-envelope.mjs
