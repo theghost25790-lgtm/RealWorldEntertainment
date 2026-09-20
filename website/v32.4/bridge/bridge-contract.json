@@ -1,11 +1,12 @@
 {
   "contract_id": "RWE-P2088-BRIDGE-ENVELOPE",
-  "contract_version": "0.1",
+  "contract_version": "0.2",
   "status": "locked-groundwork",
   "project_id": "RWE-P2088",
   "current_build_id": "RWE-P2088-BUILD-098",
   "schema_version": "CER-0.3",
   "bridge_version": "RWE-BRIDGE-0.1",
+  "entity_resolution_version": "RWE-ENTITY-0.1",
   "event_naming": "lowercase domain.action",
   "hierarchy": [
     "Project",
@@ -26,7 +27,10 @@
   "identity_rules": {
     "tester_id": "Longitudinal QA identity; nullable in approved anonymous/local modes.",
     "player_instance_id": "Per-session player actor identity.",
-    "event_id": "Client-generated immutable occurrence ID; reused for idempotent retries."
+    "event_id": "Client-generated immutable occurrence ID; reused for idempotent retries.",
+    "canonical_record_id": "Permanent cross-system identity resolved through the RWE Master Record Registry.",
+    "runtime_instance_id": "Temporary runtime/session evidence identity; never promoted automatically into a permanent record.",
+    "asset_identity": "Concrete gameplay/content asset identity; validated separately from canonical records and runtime instances."
   },
   "class_contracts": {
     "firearm_parent": "BP_Pistol",
@@ -36,9 +40,12 @@
     "envelope",
     "event_name",
     "event_version",
-    "build_installation_session_context",
+    "canonical_project_build_resolution",
+    "runtime_instance_namespaces",
     "producer_authorization",
     "event_payload",
+    "canonical_payload_entity_resolution",
+    "legacy_identity_resolution",
     "class_lineage",
     "persist_or_reject",
     "consumer_routing"
