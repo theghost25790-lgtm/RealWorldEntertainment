@@ -8,14 +8,12 @@ Contract: **RWE-SESSION-0.1**
 The Session Lifecycle Contract defines when Project 2088 evidence belongs to a valid play session and what happens when connectivity, shutdown or recovery interrupts the normal path.
 
 The canonical commands remain:
-
 - `session.start`
 - `session.end`
 - `event.submit`
 - `events.submit_batch`
 
 The canonical lifecycle facts remain:
-
 - `session.started`
 - `session.ended`
 
@@ -27,32 +25,14 @@ Commands request action. Events record what happened.
 
 Not every session must visit every state.
 
-A normal connected session is:
-
+Normal connected:
 `NO_SESSION → STARTING → OPEN → ENDING → CLOSED`
 
-An interrupted network path is:
-
+Network interruption:
 `OPEN → OPEN_OFFLINE → REPLAYING → OPEN`
 
-If the player requests an end while offline:
-
+Offline end:
 `OPEN_OFFLINE [end_requested=true] → REPLAYING → ENDING → CLOSED`
-
-## Why offline ending does not create another state
-
-The seven-state lifecycle remains stable.
-
-While offline, `session.end` sets `end_requested=true` but the session stays `OPEN_OFFLINE`. It cannot safely close until queued evidence has been replayed or retained as explicit sync-failure evidence.
-
-When connectivity returns:
-
-1. move to REPLAYING;
-2. submit the original queued events;
-3. preserve their event IDs and occurrence timestamps;
-4. move to ENDING after the backlog resolves;
-5. finalise `session.ended`;
-6. move to CLOSED.
 
 ## Event acceptance by state
 
@@ -62,85 +42,40 @@ When connectivity returns:
 | STARTING | Reject |
 | OPEN | Accept live |
 | OPEN_OFFLINE | Accept into durable local queue |
-| REPLAYING | Buffer behind the ordered replay backlog |
-| ENDING | Reject newly created gameplay; flush only already-existing/final lifecycle evidence |
-| CLOSED | Reject new evidence; allow idempotent acknowledgement of exact retries only |
+| REPLAYING | Buffer behind ordered replay backlog |
+| ENDING | Reject new gameplay; flush existing/final lifecycle evidence |
+| CLOSED | Reject new evidence; exact duplicate retries may receive idempotent acknowledgement |
 
 ## Offline replay
 
-Replay does not create a second fact.
+Replay never creates a second fact.
 
-If this event occurred offline:
-
-`EVT-WPN-84721`
-
-then replay submits:
-
-`EVT-WPN-84721`
-
-again.
-
-The following do not change:
+The event body remains unchanged:
 - event_id;
-- event_name/version;
+- event name/version;
 - occurrence timestamp;
 - session_id;
 - build_id;
 - installation_id;
 - payload.
 
-Backend receipt time is transport/storage metadata and is not a replacement for the canonical event timestamp.
+Backend receipt time is separate transport/storage metadata.
 
-## Queue ordering
+The local queue keeps ordering metadata outside the canonical event body and replays oldest unresolved evidence first.
 
-The local queue keeps an internal queue sequence separate from the immutable event body.
+## Session identity and binding
 
-Replay submits the oldest unresolved evidence first.
+A valid `session_id` exists before gameplay evidence begins.
 
-New events created while REPLAYING may continue to be captured, but they remain behind the older backlog until ordering is restored.
-
-## Session identity
-
-A valid session_id must exist before gameplay evidence begins.
-
-For offline operation, Bridge may create a collision-resistant `SES-...` identity before backend connectivity.
-
-Once accepted, that ID is immutable. The backend must never silently remap an offline session ID because queued event envelopes already reference it.
-
-## Build and installation immutability
-
-A session is bound to one:
-- project_id;
-- build_id;
-- installation_id.
-
-An event claiming a different build returns:
-
-`ERR-SES-004 BUILD_SESSION_MISMATCH`
-
-An event claiming a different installation returns:
-
-`ERR-SES-005 INSTALLATION_SESSION_MISMATCH`
-
-A build switch therefore creates a **new session**.
+A session is immutably bound to one project, build and installation. A build or installation mismatch is rejected. A build switch therefore creates a new session.
 
 ## Crash recovery
 
-V32.4.4 deliberately does not resume new gameplay into the previous session after a process restart.
+A process restart does not silently resume new gameplay into the previous session.
 
-Instead:
-
-1. recover the previous durable session metadata;
-2. recover/replay its queued evidence;
-3. close it with an interruption end reason;
-4. retain any permanent sync failures as QA evidence;
-5. create a fresh session for new gameplay.
-
-This keeps one process run from becoming an ambiguous continuation of an earlier run.
+Bridge recovers the old durable context and queued evidence, closes that session as interrupted, retains any sync failures as evidence, and starts a new session for later gameplay.
 
 ## End reasons
-
-Locked initial set:
 
 - `user_exit`
 - `test_completed`
@@ -153,24 +88,66 @@ Locked initial set:
 ## QA completeness
 
 A session is QA-complete when:
-- it is CLOSED;
+- state is CLOSED;
 - closure evidence exists;
-- no replayable event remains unresolved.
+- no replayable evidence remains unresolved.
 
-A closed session may still be marked **complete with sync issues** when permanent validation/sync failures are retained as evidence.
+A CLOSED session may be complete-with-sync-issues when permanent failures are retained as explicit QA evidence.
 
-That distinction is important: telemetry failure is itself useful QA evidence and must not disappear.
+## Offline start evidence
 
-## New lifecycle errors
+An offline session still creates the canonical `session.started` fact.
 
+The transition into `OPEN_OFFLINE` is only committed after that event and the session context have been written durably. `session.started` becomes the first queued lifecycle evidence and later replays with its original event ID and timestamp.
+
+## Idempotence
+
+Network acknowledgement loss must not create duplicate sessions or duplicate facts.
+
+### Repeated session.start
+
+When the same session ID and immutable context are retried while STARTING or another active/recoverable state is bound, Bridge returns the existing session context.
+
+A different session/context attempting to start while another is active or recoverable returns:
+
+`ERR-SES-006 SESSION_START_CONFLICT`
+
+### Repeated session.end
+
+- in ENDING: return the current ending state;
+- in CLOSED: return an already-closed receipt;
+- in OPEN_OFFLINE or REPLAYING: keep `end_requested=true`.
+
+A duplicate request never creates a second `session.ended` fact.
+
+### Repeated event submission
+
+The same `event_id` is the same fact.
+
+An exact retry after lost acknowledgement receives an idempotent accepted/already-stored receipt rather than another event row.
+
+## Session Record schema
+
+`session-record.schema.json` defines the durable session object shared by Bridge and later QA ingestion.
+
+It records:
+- canonical project/build context;
+- installation identity;
+- optional tester/player identity;
+- lifecycle state;
+- creation/open/activity/end timestamps;
+- end request/reason;
+- recovery status;
+- pending queue count/timestamps.
+
+## Lifecycle errors
+
+- `ERR-SES-001 UNKNOWN_SESSION`
 - `ERR-SES-002 INVALID_SESSION_STATE`
 - `ERR-SES-003 SESSION_CLOSED`
 - `ERR-SES-004 BUILD_SESSION_MISMATCH`
 - `ERR-SES-005 INSTALLATION_SESSION_MISMATCH`
 - `ERR-SES-006 SESSION_START_CONFLICT`
-
-Existing:
-- `ERR-SES-001 UNKNOWN_SESSION`
 
 ## Principle
 
