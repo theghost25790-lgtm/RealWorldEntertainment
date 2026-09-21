@@ -1,8 +1,8 @@
 {
   "registry_id": "RWE-P2088-MASTER-REGISTRY",
-  "registry_version": "1.2.0",
+  "registry_version": "1.3.0",
   "project": "Project 2088",
-  "updated_at": "2026-09-20",
+  "updated_at": "2026-09-21",
   "purpose": "Canonical identity and migration registry for RWE website, Bridge, QA and future archive search.",
   "rules": [
     "A canonical record ID is never recycled.",
@@ -249,7 +249,8 @@
       "publish_ready": true,
       "searchable": true,
       "relations": [
-        "RWE-P2088-DEV-159"
+        "RWE-P2088-DEV-159",
+        "RWE-P2088-DEV-161"
       ],
       "summary": "QA separates into its own application with mobile PWA access, desktop investigation and permanent deep links.",
       "aliases": [
@@ -285,6 +286,55 @@
         "tablet",
         "desktop"
       ]
+    },
+    {
+      "record_id": "RWE-P2088-DEV-161",
+      "record_type": "devlog",
+      "title": "The World Remembers",
+      "canonical_path": "/devlog/161",
+      "status": "published",
+      "publish_ready": true,
+      "searchable": true,
+      "relations": [
+        "RWE-P2088-DEV-160",
+        "RWE-P2088-LOC-BRITANA",
+        "RWE-P2088-LOC-NEOVICTORIA"
+      ],
+      "summary": "World Cells, Cell Health, Conflict Pressure, social observation and faction memory become one systemic world-simulation layer built on Project 2088's existing AI architecture.",
+      "aliases": [
+        "Devlog 161",
+        "DEV 161",
+        "The World Remembers"
+      ],
+      "tags": [
+        "devlog",
+        "world simulation",
+        "Cell Health",
+        "Conflict Pressure",
+        "World Cells",
+        "AI",
+        "faction reputation",
+        "witness memory",
+        "Albion",
+        "RWE Bridge"
+      ],
+      "keywords": [
+        "World Activity Director",
+        "Population Director",
+        "SpawnFaction",
+        "ST_CombatRelationship",
+        "perception",
+        "witness memory",
+        "social observation",
+        "faction memory",
+        "regional reputation",
+        "civic resilience",
+        "conflict",
+        "recovery",
+        "FarmersField",
+        "Albion"
+      ],
+      "platforms": []
     },
     {
       "record_id": "SIG-001",
