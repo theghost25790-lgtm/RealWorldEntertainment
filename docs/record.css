@@ -46,3 +46,30 @@ code,.mono{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:
 .copy-note{color:var(--muted);font-size:.78rem;margin-top:.5rem;min-height:1.2em}
 ol.install li{margin-bottom:.55rem}
 @media(max-width:780px){.layout{grid-template-columns:1fr}.nav{display:none}.sitebar-inner{min-height:56px}.record,.archive{padding-top:52px}}
+/* World atlas */
+.world-atlas{max-width:1180px}
+.atlas-levels,.battle-logic{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.atlas-levels div,.battle-logic div{border:1px solid var(--line);background:var(--panel2);border-radius:8px;padding:1rem}
+.atlas-levels strong,.battle-logic strong{display:block;font-size:.72rem;letter-spacing:.12em;margin-bottom:.35rem;color:var(--accent)}
+.atlas-levels span,.battle-logic span{display:block;color:#c2ccd6;font-size:.92rem}
+.atlas-note{margin-top:1.2rem;color:var(--muted)}
+.atlas-jump{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:0 0 18px}
+.atlas-jump a{text-decoration:none;border:1px solid var(--line);background:var(--panel);border-radius:8px;padding:.8rem;text-align:center;font-size:.78rem;letter-spacing:.08em}
+.diagram-section{scroll-margin-top:86px}
+.diagram-section>p:not(.kicker){color:#c2ccd6}
+.spider{overflow-x:auto;margin-top:1.4rem;border:1px solid var(--line);border-radius:10px;background:radial-gradient(circle at center,rgba(104,183,255,.06),transparent 48%),#0a0f16}
+.spider svg{display:block;width:100%;height:auto;min-width:700px}
+.spider-links line{stroke:#425266;stroke-width:2}
+.war-links line{stroke:#725b41;stroke-width:2.4}
+.spider-node rect{fill:#121a24;stroke:#3e4f63;stroke-width:2}
+.spider-node text{fill:#edf1f5;font-family:Inter,Segoe UI,Arial,sans-serif;font-size:15px;font-weight:800;letter-spacing:.04em;text-anchor:middle}
+.spider-node text.minor{fill:#9aa8b7;font-size:11px;font-weight:500;letter-spacing:.03em}
+.spider-node.location rect{stroke:var(--accent);stroke-width:3}
+.spider-node.area rect{stroke:var(--accent2)}
+.spider-node.cell rect{stroke:#627487}
+.spider-node.front rect{stroke:#e7b96a;stroke-width:3}
+.spider-node.support rect{stroke:#80d6a4}
+.spider-node.civilian rect{stroke:#b99cff}
+.middlelands-section{border-color:#5a4935}
+.battle-logic{margin-top:1.2rem}
+@media(max-width:780px){.spider svg{min-width:760px}.atlas-jump{grid-template-columns:repeat(2,1fr)}}
