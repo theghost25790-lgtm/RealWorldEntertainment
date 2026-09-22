@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Locations and Areas | Project 2088 | RWE</title>
+  <meta name="description" content="Explore Project 2088 locations, areas and cells through the evolving Britana world atlas.">
+  <link rel="canonical" href="https://realworldentertainment.co.uk/world/locations">
+  <link rel="stylesheet" href="../../record.css">
+</head>
+<body>
+<header class="sitebar">
+  <div class="sitebar-inner">
+    <a class="brand" href="../../">REAL WORLD ENTERTAINMENT</a>
+    <nav class="nav">
+      <a href="../../archive/search/">SEARCH</a>
+      <a href="../../world/">WORLD</a>
+      <a href="../../devlogs/">DEVLOGS</a>
+      <a href="../../builds/">BUILDS</a>
+    </nav>
+  </div>
+</header>
+
+<main class="archive world-atlas">
+  <div class="breadcrumb"><a href="../../world/">WORLD</a> / LOCATIONS AND AREAS</div>
+  <p class="kicker">PROJECT 2088 // WORLD ATLAS</p>
+  <h1>LOCATIONS<br>AND AREAS</h1>
+  <p class="lead">A living map of Britana. Locations contain areas. Areas contain cells. Every cell can hold its own population, control, Cell Health, Conflict Pressure, routes, landmarks and remembered events.</p>
+
+  <div class="statusline">
+    <span class="pill">WORLD ATLAS</span>
+    <span class="pill">ACTIVE DEVELOPMENT</span>
+    <span class="pill">LOCATION → AREA → CELL</span>
+  </div>
+
+  <section class="card">
+    <h2>Atlas structure</h2>
+    <div class="atlas-levels">
+      <div><strong>LOCATION</strong><span>Major region recognised across Britana</span></div>
+      <div><strong>AREA</strong><span>District, settlement, front sector or regional subdivision</span></div>
+      <div><strong>CELL</strong><span>Local simulation and gameplay unit</span></div>
+    </div>
+    <p class="atlas-note">Names remain stable even when ownership changes. Clifton Gate remains Clifton Gate whether it is Construct controlled, contested, abandoned or recovered.</p>
+  </section>
+
+  <nav class="atlas-jump" aria-label="Atlas diagrams">
+    <a href="#britana">BRITANA</a>
+    <a href="#neo-victoria">NEO VICTORIA</a>
+    <a href="#clifton">CLIFTON</a>
+    <a href="#central">CENTRAL</a>
+    <a href="#farmers-field">FARMER'S FIELD</a>
+    <a href="#middlelands">THE MIDDLELANDS</a>
+  </nav>
+
+  <section class="card diagram-section" id="britana">
+    <p class="kicker">DIAGRAM 01 // MASTER SPREAD</p>
+    <h2>Britana</h2>
+    <p>The national view. The first layer shows the major places and territorial systems that the player can eventually move between.</p>
+    <div class="spider">
+      <svg viewBox="0 0 1000 620" role="img" aria-labelledby="britana-title britana-desc">
+        <title id="britana-title">Britana master spread</title>
+        <desc id="britana-desc">Britana connects to London Prefecture, Neo Victoria, The Middlelands, Free Territories and Outer Settlements.</desc>
+        <g class="spider-links">
+          <line x1="500" y1="310" x2="500" y2="95"/>
+          <line x1="500" y1="310" x2="800" y2="205"/>
+          <line x1="500" y1="310" x2="770" y2="475"/>
+          <line x1="500" y1="310" x2="230" y2="475"/>
+          <line x1="500" y1="310" x2="200" y2="205"/>
+        </g>
+        <g class="spider-node location" transform="translate(390 265)">
+          <rect width="220" height="90" rx="14"/><text x="110" y="40">BRITANA</text><text class="minor" x="110" y="65">National network</text>
+        </g>
+        <g class="spider-node area" transform="translate(390 45)">
+          <rect width="220" height="76" rx="12"/><text x="110" y="34">LONDON PREFECTURE</text><text class="minor" x="110" y="56">Largest Hive</text>
+        </g>
+        <g class="spider-node area" transform="translate(700 165)">
+          <rect width="200" height="76" rx="12"/><text x="100" y="34">NEO VICTORIA</text><text class="minor" x="100" y="56">Second largest Hive</text>
+        </g>
+        <g class="spider-node front" transform="translate(665 440)">
+          <rect width="210" height="76" rx="12"/><text x="105" y="34">THE MIDDLELANDS</text><text class="minor" x="105" y="56">Contested war belt</text>
+        </g>
+        <g class="spider-node area" transform="translate(125 440)">
+          <rect width="210" height="76" rx="12"/><text x="105" y="34">FREE TERRITORIES</text><text class="minor" x="105" y="56">Independent control</text>
+        </g>
+        <g class="spider-node area" transform="translate(90 165)">
+          <rect width="220" height="76" rx="12"/><text x="110" y="34">OUTER SETTLEMENTS</text><text class="minor" x="110" y="56">Rural and edge communities</text>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <section class="card diagram-section" id="neo-victoria">
+    <p class="kicker">DIAGRAM 02 // AREA SPREAD</p>
+    <h2>Neo Victoria</h2>
+    <p>The Hive is treated as a network of recognisable districts rather than one continuous city level.</p>
+    <div class="spider spider-wide">
+      <svg viewBox="0 0 1100 760" role="img" aria-labelledby="nv-title nv-desc">
+        <title id="nv-title">Neo Victoria area spread</title>
+        <desc id="nv-desc">Neo Victoria branches into Central, Clifton, Meadows, Sneinton, Radford, Forest, Wollaton Fringe, Industrial Belt, Northern Works, Eastern Fringe, Outer Farms and Hive Perimeter.</desc>
+        <g class="spider-links">
+          <line x1="550" y1="380" x2="550" y2="85"/><line x1="550" y1="380" x2="790" y2="120"/>
+          <line x1="550" y1="380" x2="960" y2="245"/><line x1="550" y1="380" x2="965" y2="430"/>
+          <line x1="550" y1="380" x2="820" y2="620"/><line x1="550" y1="380" x2="580" y2="675"/>
+          <line x1="550" y1="380" x2="320" y2="635"/><line x1="550" y1="380" x2="130" y2="485"/>
+          <line x1="550" y1="380" x2="125" y2="285"/><line x1="550" y1="380" x2="300" y2="125"/>
+          <line x1="550" y1="380" x2="760" y2="320"/><line x1="550" y1="380" x2="350" y2="350"/>
+        </g>
+        <g class="spider-node location" transform="translate(430 335)"><rect width="240" height="90" rx="14"/><text x="120" y="40">NEO VICTORIA</text><text class="minor" x="120" y="65">Hive location</text></g>
+        <g class="spider-node area" transform="translate(470 45)"><rect width="160" height="66" rx="11"/><text x="80" y="39">CENTRAL</text></g>
+        <g class="spider-node area" transform="translate(715 85)"><rect width="150" height="66" rx="11"/><text x="75" y="39">CLIFTON</text></g>
+        <g class="spider-node area" transform="translate(895 212)"><rect width="130" height="66" rx="11"/><text x="65" y="39">MEADOWS</text></g>
+        <g class="spider-node area" transform="translate(905 397)"><rect width="120" height="66" rx="11"/><text x="60" y="39">SNEINTON</text></g>
+        <g class="spider-node area" transform="translate(750 588)"><rect width="140" height="66" rx="11"/><text x="70" y="39">RADFORD</text></g>
+        <g class="spider-node area" transform="translate(520 642)"><rect width="120" height="66" rx="11"/><text x="60" y="39">FOREST</text></g>
+        <g class="spider-node area" transform="translate(230 603)"><rect width="180" height="66" rx="11"/><text x="90" y="39">WOLLATON FRINGE</text></g>
+        <g class="spider-node area" transform="translate(45 452)"><rect width="170" height="66" rx="11"/><text x="85" y="31">INDUSTRIAL</text><text class="minor" x="85" y="50">BELT</text></g>
+        <g class="spider-node area" transform="translate(40 252)"><rect width="170" height="66" rx="11"/><text x="85" y="31">NORTHERN</text><text class="minor" x="85" y="50">WORKS</text></g>
+        <g class="spider-node area" transform="translate(215 92)"><rect width="170" height="66" rx="11"/><text x="85" y="31">EASTERN</text><text class="minor" x="85" y="50">FRINGE</text></g>
+        <g class="spider-node area" transform="translate(695 287)"><rect width="130" height="66" rx="11"/><text x="65" y="31">OUTER</text><text class="minor" x="65" y="50">FARMS</text></g>
+        <g class="spider-node area" transform="translate(275 317)"><rect width="150" height="66" rx="11"/><text x="75" y="31">HIVE</text><text class="minor" x="75" y="50">PERIMETER</text></g>
+      </svg>
+    </div>
+  </section>
+
+  <section class="card diagram-section" id="clifton">
+    <p class="kicker">DIAGRAM 03 // CELL SPREAD</p>
+    <h2>Clifton</h2>
+    <p>A first detailed playable area. Each branch is a local cell with its own routes and simulation state.</p>
+    <div class="spider">
+      <svg viewBox="0 0 1000 650" role="img" aria-labelledby="clifton-title clifton-desc">
+        <title id="clifton-title">Clifton cell spread</title>
+        <desc id="clifton-desc">Clifton contains Clifton Gate, South Estate, Old Tramway, Waterworks, Green Lane, The Cut, Depot Edge and Overpass Yard.</desc>
+        <g class="spider-links">
+          <line x1="500" y1="325" x2="500" y2="80"/><line x1="500" y1="325" x2="790" y2="125"/>
+          <line x1="500" y1="325" x2="860" y2="320"/><line x1="500" y1="325" x2="790" y2="520"/>
+          <line x1="500" y1="325" x2="500" y2="575"/><line x1="500" y1="325" x2="210" y2="520"/>
+          <line x1="500" y1="325" x2="140" y2="320"/><line x1="500" y1="325" x2="210" y2="125"/>
+        </g>
+        <g class="spider-node area" transform="translate(405 285)"><rect width="190" height="80" rx="14"/><text x="95" y="37">CLIFTON</text><text class="minor" x="95" y="59">Neo Victoria area</text></g>
+        <g class="spider-node cell" transform="translate(415 45)"><rect width="170" height="66" rx="11"/><text x="85" y="39">CLIFTON GATE</text></g>
+        <g class="spider-node cell" transform="translate(715 92)"><rect width="150" height="66" rx="11"/><text x="75" y="39">SOUTH ESTATE</text></g>
+        <g class="spider-node cell" transform="translate(795 287)"><rect width="130" height="66" rx="11"/><text x="65" y="39">OLD TRAMWAY</text></g>
+        <g class="spider-node cell" transform="translate(720 487)"><rect width="140" height="66" rx="11"/><text x="70" y="39">WATERWORKS</text></g>
+        <g class="spider-node cell" transform="translate(425 542)"><rect width="150" height="66" rx="11"/><text x="75" y="39">GREEN LANE</text></g>
+        <g class="spider-node cell" transform="translate(145 487)"><rect width="130" height="66" rx="11"/><text x="65" y="39">THE CUT</text></g>
+        <g class="spider-node cell" transform="translate(75 287)"><rect width="130" height="66" rx="11"/><text x="65" y="39">DEPOT EDGE</text></g>
+        <g class="spider-node cell" transform="translate(135 92)"><rect width="150" height="66" rx="11"/><text x="75" y="39">OVERPASS YARD</text></g>
+      </svg>
+    </div>
+  </section>
+
+  <section class="card diagram-section" id="central">
+    <p class="kicker">DIAGRAM 04 // CELL SPREAD</p>
+    <h2>Central</h2>
+    <p>A denser civic and service area built around movement, trade, administration and older Nottingham landmarks.</p>
+    <div class="spider">
+      <svg viewBox="0 0 1000 650" role="img" aria-labelledby="central-title central-desc">
+        <title id="central-title">Central cell spread</title>
+        <desc id="central-desc">Central contains Old Market, Station Quarter, Castle Approach, Civic Spine, Broadmarsh, Lower Exchange and Canal Works.</desc>
+        <g class="spider-links">
+          <line x1="500" y1="325" x2="500" y2="80"/><line x1="500" y1="325" x2="790" y2="125"/>
+          <line x1="500" y1="325" x2="860" y2="325"/><line x1="500" y1="325" x2="720" y2="540"/>
+          <line x1="500" y1="325" x2="280" y2="540"/><line x1="500" y1="325" x2="140" y2="325"/>
+          <line x1="500" y1="325" x2="210" y2="125"/>
+        </g>
+        <g class="spider-node area" transform="translate(405 285)"><rect width="190" height="80" rx="14"/><text x="95" y="37">CENTRAL</text><text class="minor" x="95" y="59">Neo Victoria area</text></g>
+        <g class="spider-node cell" transform="translate(425 45)"><rect width="150" height="66" rx="11"/><text x="75" y="39">OLD MARKET</text></g>
+        <g class="spider-node cell" transform="translate(700 92)"><rect width="180" height="66" rx="11"/><text x="90" y="39">STATION QUARTER</text></g>
+        <g class="spider-node cell" transform="translate(780 292)"><rect width="160" height="66" rx="11"/><text x="80" y="39">CASTLE APPROACH</text></g>
+        <g class="spider-node cell" transform="translate(645 507)"><rect width="150" height="66" rx="11"/><text x="75" y="39">CIVIC SPINE</text></g>
+        <g class="spider-node cell" transform="translate(205 507)"><rect width="150" height="66" rx="11"/><text x="75" y="39">BROADMARSH</text></g>
+        <g class="spider-node cell" transform="translate(65 292)"><rect width="150" height="66" rx="11"/><text x="75" y="39">LOWER EXCHANGE</text></g>
+        <g class="spider-node cell" transform="translate(135 92)"><rect width="150" height="66" rx="11"/><text x="75" y="39">CANAL WORKS</text></g>
+      </svg>
+    </div>
+  </section>
+
+  <section class="card diagram-section" id="farmers-field">
+    <p class="kicker">DIAGRAM 05 // RURAL CELL SPREAD</p>
+    <h2>Farmer's Field</h2>
+    <p>A rural contrast to the Hives. The settlement stays readable through visible landmarks, productive spaces and the surrounding landscape.</p>
+    <div class="spider">
+      <svg viewBox="0 0 1000 650" role="img" aria-labelledby="farm-title farm-desc">
+        <title id="farm-title">Farmer's Field cell spread</title>
+        <desc id="farm-desc">Farmer's Field contains Farmhouse, Workshop Yard, Greenhouses, East Ridge, Water Treatment, Lakeside and Hollow Post.</desc>
+        <g class="spider-links">
+          <line x1="500" y1="325" x2="500" y2="80"/><line x1="500" y1="325" x2="790" y2="125"/>
+          <line x1="500" y1="325" x2="860" y2="325"/><line x1="500" y1="325" x2="720" y2="540"/>
+          <line x1="500" y1="325" x2="280" y2="540"/><line x1="500" y1="325" x2="140" y2="325"/>
+          <line x1="500" y1="325" x2="210" y2="125"/>
+        </g>
+        <g class="spider-node area" transform="translate(390 285)"><rect width="220" height="80" rx="14"/><text x="110" y="37">FARMER'S FIELD</text><text class="minor" x="110" y="59">Rural settlement</text></g>
+        <g class="spider-node cell" transform="translate(425 45)"><rect width="150" height="66" rx="11"/><text x="75" y="39">FARMHOUSE</text></g>
+        <g class="spider-node cell" transform="translate(700 92)"><rect width="180" height="66" rx="11"/><text x="90" y="39">WORKSHOP YARD</text></g>
+        <g class="spider-node cell" transform="translate(790 292)"><rect width="140" height="66" rx="11"/><text x="70" y="39">GREENHOUSES</text></g>
+        <g class="spider-node cell" transform="translate(650 507)"><rect width="140" height="66" rx="11"/><text x="70" y="39">EAST RIDGE</text></g>
+        <g class="spider-node cell" transform="translate(190 507)"><rect width="180" height="66" rx="11"/><text x="90" y="39">WATER TREATMENT</text></g>
+        <g class="spider-node cell" transform="translate(75 292)"><rect width="130" height="66" rx="11"/><text x="65" y="39">LAKESIDE</text></g>
+        <g class="spider-node cell" transform="translate(140 92)"><rect width="140" height="66" rx="11"/><text x="70" y="39">HOLLOW POST</text></g>
+      </svg>
+    </div>
+  </section>
+
+  <section class="card diagram-section middlelands-section" id="middlelands">
+    <p class="kicker">DIAGRAM 06 // CONTESTED REGION</p>
+    <h2>The Middlelands</h2>
+    <p>A broad central war belt where the advance has stalled. The territory is too important to abandon, too costly to fully take and too unstable for ordinary life to recover normally.</p>
+    <div class="spider spider-wide">
+      <svg viewBox="0 0 1100 760" role="img" aria-labelledby="middle-title middle-desc">
+        <title id="middle-title">The Middlelands area spread</title>
+        <desc id="middle-desc">The Middlelands contains North Reach, Ash Corridor, The Line, Hollow Fields, Grey March, Saint Arden, Red Vale, The Breachlands, Black Fen Approach and South Reach.</desc>
+        <g class="spider-links war-links">
+          <line x1="550" y1="380" x2="550" y2="80"/><line x1="550" y1="380" x2="825" y2="115"/>
+          <line x1="550" y1="380" x2="965" y2="270"/><line x1="550" y1="380" x2="940" y2="500"/>
+          <line x1="550" y1="380" x2="720" y2="660"/><line x1="550" y1="380" x2="380" y2="660"/>
+          <line x1="550" y1="380" x2="160" y2="500"/><line x1="550" y1="380" x2="135" y2="270"/>
+          <line x1="550" y1="380" x2="275" y2="115"/><line x1="550" y1="380" x2="550" y2="205"/>
+        </g>
+        <g class="spider-node front" transform="translate(420 335)"><rect width="260" height="90" rx="14"/><text x="130" y="39">THE MIDDLELANDS</text><text class="minor" x="130" y="64">Contested regional location</text></g>
+        <g class="spider-node support" transform="translate(475 45)"><rect width="150" height="66" rx="11"/><text x="75" y="39">NORTH REACH</text></g>
+        <g class="spider-node support" transform="translate(750 82)"><rect width="150" height="66" rx="11"/><text x="75" y="39">ASH CORRIDOR</text></g>
+        <g class="spider-node front" transform="translate(900 237)"><rect width="130" height="66" rx="11"/><text x="65" y="39">THE LINE</text></g>
+        <g class="spider-node front" transform="translate(855 467)"><rect width="170" height="66" rx="11"/><text x="85" y="39">HOLLOW FIELDS</text></g>
+        <g class="spider-node cell" transform="translate(645 627)"><rect width="150" height="66" rx="11"/><text x="75" y="39">GREY MARCH</text></g>
+        <g class="spider-node civilian" transform="translate(305 627)"><rect width="150" height="66" rx="11"/><text x="75" y="39">SAINT ARDEN</text></g>
+        <g class="spider-node cell" transform="translate(85 467)"><rect width="150" height="66" rx="11"/><text x="75" y="39">RED VALE</text></g>
+        <g class="spider-node front" transform="translate(55 237)"><rect width="160" height="66" rx="11"/><text x="80" y="39">THE BREACHLANDS</text></g>
+        <g class="spider-node cell" transform="translate(190 82)"><rect width="170" height="66" rx="11"/><text x="85" y="31">BLACK FEN</text><text class="minor" x="85" y="50">APPROACH</text></g>
+        <g class="spider-node support" transform="translate(475 172)"><rect width="150" height="66" rx="11"/><text x="75" y="39">SOUTH REACH</text></g>
+      </svg>
+    </div>
+
+    <div class="battle-logic">
+      <div><strong>FRONT LINE CELLS</strong><span>Fixed positions, trenches, strongpoints and active exchanges.</span></div>
+      <div><strong>SUPPORT LINE CELLS</strong><span>Medical posts, ammunition, repair, command and reinforcement.</span></div>
+      <div><strong>REAR LINE CELLS</strong><span>Supply, rest, civilian services and protected infrastructure.</span></div>
+      <div><strong>BREACH POINTS</strong><span>Places where an offensive nearly succeeded or may reopen.</span></div>
+      <div><strong>DEAD GROUND</strong><span>Exposed crossings, abandoned fields and areas neither side can safely hold.</span></div>
+      <div><strong>CIVILIAN HOLDOUTS</strong><span>Communities that remain despite the battle line around them.</span></div>
+      <div><strong>SALVAGE ZONES</strong><span>Wrecks, abandoned stores, damaged infrastructure and risky recovery routes.</span></div>
+      <div><strong>SUPPLY CORRIDORS</strong><span>Rail, roads and service routes whose control can matter more than open territory.</span></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Simulation layer</h2>
+    <p>The atlas describes geography. The live world state sits on top of it. A cell can change controller, population state, Cell Health and Conflict Pressure without losing its identity.</p>
+    <div class="record-links">
+      <span class="record-link"><small>Local state</small>Cell Health</span>
+      <span class="record-link"><small>Local pressure</small>Conflict Pressure</span>
+      <span class="record-link"><small>Territorial state</small>Control and influence</span>
+      <span class="record-link"><small>World memory</small>Events and association</span>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Next atlas records</h2>
+    <p>This page is the overview. The structure is ready to expand into permanent pages for individual locations, areas and eventually cells.</p>
+    <div class="record-links">
+      <a class="record-link" href="../britana/"><small>Existing location record</small>Britana</a>
+      <a class="record-link" href="../neo-victoria/"><small>Existing location record</small>Neo Victoria</a>
+      <span class="record-link"><small>Planned location record</small>The Middlelands</span>
+      <span class="record-link"><small>Planned area record</small>Clifton</span>
+      <span class="record-link"><small>Planned area record</small>Central</span>
+      <span class="record-link"><small>Planned settlement record</small>Farmer's Field</span>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="sitebar-inner">
+    <span>RWE ARCHIVE // PROJECT 2088</span>
+    <a href="../../archive/">MASTER REGISTRY</a>
+  </div>
+</footer>
+<script src="../../record.js"></script>
+</body>
+</html>
