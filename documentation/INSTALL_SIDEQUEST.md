@@ -23,17 +23,16 @@ Keep these extracted files together:
 
 The OBB contains most of the game's data and is required.
 
-## Recommended Windows installation
+## Canonical Windows installation sequence
 
-1. Download the complete ZIP attached to the required GitHub Release.
-2. Extract the entire ZIP to a normal folder. Do not run the installer from inside the ZIP preview.
-3. Connect the Quest headset to the PC.
-4. Put on the headset and approve the USB debugging request. Choose to remember the computer when appropriate.
-5. Confirm that the headset is recognised by SideQuest or the available Android development connection.
-6. Double-click `Install_Project_2088_SD-arm64.bat`.
-7. Keep the headset connected while the script installs the APK and transfers the OBB.
-8. Wait until the window reports **Installation successful**.
-9. Find Project 2088 in the appropriate Unknown Sources or development-app section of the headset library.
+1. Download the complete Project 2088 Build 098 ZIP.
+2. Extract the entire archive to a normal folder. Do not run the installer from inside the ZIP preview.
+3. Connect a developer-enabled Meta Quest headset to a Windows PC using a USB data cable.
+4. Put on the headset, approve the USB debugging request and choose Always allow from this computer if offered.
+5. Run `Install_Project_2088_SD-arm64.bat`.
+6. Keep the installer running. Open Project 2088 from Unknown Sources inside the headset to establish the bridge, then wait for the PC installer to confirm completion.
+7. Disconnect the headset only after the PC installer confirms success.
+8. Launch Project 2088 again from Unknown Sources.
 
 The Unreal-generated installer targets the package:
 
@@ -54,7 +53,9 @@ Uninstalling may remove local save data. Until a release specifically confirms s
 - Do not move the BAT file away from the APK, OBB or `win-x64` folder.
 - Check that the headset has enough storage for the APK, OBB and installation process.
 - Read the error above the final message in the installer window.
-- Use the installation-help issue template if the problem continues.
+- Confirm that Project 2088 was launched from Unknown Sources while the installer was still running.
+
+[Request installation help](https://github.com/theghost25790-lgtm/RealWorldEntertainment/issues/new?assignees=&labels=installation&projects=&template=installation-help.md&title=%5BINSTALL%5D+)
 
 ## Safety
 

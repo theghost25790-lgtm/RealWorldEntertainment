@@ -45,13 +45,13 @@
     "download_url": "https://github.com/theghost25790-lgtm/RealWorldEntertainment/releases/download/Project2088-Build98/Project-2088-Build-098.zip",
     "supersedes": "RWE-P2088-BUILD-097B",
     "installation": [
-      "Download the complete Build 098 archive.",
-      "Extract the entire archive before installation.",
-      "Connect the Meta Quest headset to a Windows PC by USB.",
-      "Enable Developer Mode and USB debugging and accept the headset debugging request.",
+      "Download the complete Project 2088 Build 098 ZIP.",
+      "Extract the entire archive to a normal folder. Do not run the installer from inside the ZIP preview.",
+      "Connect a developer-enabled Meta Quest headset to a Windows PC using a USB data cable.",
+      "Put on the headset, approve the USB debugging request and choose Always allow from this computer if offered.",
       "Run Install_Project_2088_SD-arm64.bat.",
-      "Keep the installer running and launch Project 2088 from Unknown Sources in the headset to bridge the remaining file installation.",
-      "Wait for the PC installer to finish before disconnecting.",
+      "Keep the installer running. Open Project 2088 from Unknown Sources inside the headset to establish the bridge, then wait for the PC installer to confirm completion.",
+      "Disconnect the headset only after the PC installer confirms success.",
       "Launch Project 2088 again from Unknown Sources."
     ]
   }

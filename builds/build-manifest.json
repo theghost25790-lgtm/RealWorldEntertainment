@@ -1,6 +1,6 @@
 {
   "project": "Project 2088",
-  "latest_build": null,
+  "latest_build": "098",
   "platforms": [
     "Meta Quest 2",
     "Meta Quest 3"
@@ -8,5 +8,45 @@
   "android_package": "com.epicgames.Project_2088_SD",
   "distribution": "Complete Windows ZIP containing APK, OBB, installer scripts and support files",
   "texture_format": "ASTC",
-  "builds": []
+  "builds": [
+    {
+      "build": "098",
+      "status": "current",
+      "release_date": "2026-09-11",
+      "platforms": [
+        "Meta Quest 2",
+        "Meta Quest 3 testing"
+      ],
+      "release_tag": "Project2088-Build98",
+      "release_url": "https://github.com/theghost25790-lgtm/RealWorldEntertainment/releases/tag/Project2088-Build98",
+      "download_url": "https://github.com/theghost25790-lgtm/RealWorldEntertainment/releases/download/Project2088-Build98/Project-2088-Build-098.zip",
+      "sha256": "7e2e647def2d9a38b2058f26e51f5f4c56d069e85c75b8e9e486d498763f4624"
+    },
+    {
+      "build": "097B",
+      "status": "historical",
+      "release_date": "2026-09-10",
+      "platforms": [
+        "Meta Quest 2 testing",
+        "Meta Quest 3 testing"
+      ],
+      "release_tag": "build-097b",
+      "release_url": "https://github.com/theghost25790-lgtm/RealWorldEntertainment/releases/tag/build-097b",
+      "download_url": "https://github.com/theghost25790-lgtm/RealWorldEntertainment/releases/download/build-097b/Project-2088-Build-097B.zip",
+      "sha256": "db36ca4fc82f5c24b412b66bab37c0b38317dd81213076add66b8fdd7f09b254"
+    },
+    {
+      "build": "096D",
+      "status": "historical",
+      "release_date": "2026-09-01",
+      "platforms": [
+        "Meta Quest 3 primary",
+        "Meta Quest 2 compatibility not guaranteed"
+      ],
+      "release_tag": "build-096d",
+      "release_url": "https://github.com/theghost25790-lgtm/RealWorldEntertainment/releases/tag/build-096d",
+      "download_url": "https://github.com/theghost25790-lgtm/RealWorldEntertainment/releases/download/build-096d/Project2088_Build096D_Quest3_ASTC.zip",
+      "sha256": "adb64cbae5087c3cc2e3bcc2e3ed7c9d325998f656f0234c725e8238ce42a17f"
+    }
+  ]
 }
