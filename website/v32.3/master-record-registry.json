@@ -1,0 +1,841 @@
+{
+  "registry_id": "RWE-P2088-MASTER-REGISTRY",
+  "registry_version": "1.3.0",
+  "project": "Project 2088",
+  "updated_at": "2026-09-21",
+  "purpose": "Canonical identity and migration registry for RWE website, Bridge, QA and future archive search.",
+  "rules": [
+    "A canonical record ID is never recycled.",
+    "A public canonical URL remains stable after publication.",
+    "Reserved or migration-pending records are not searchable until source material is verified.",
+    "Existing source material overrides reconstructed or inferred metadata.",
+    "Superseded builds remain preserved."
+  ],
+  "records": [
+    {
+      "record_id": "RWE-P2088-BUILD-096D",
+      "record_type": "build",
+      "title": "Project 2088 — Build 096D",
+      "canonical_path": "/build/096D",
+      "status": "archived",
+      "publish_ready": true,
+      "searchable": true,
+      "relations": [
+        "RWE-P2088-BUILD-097B"
+      ],
+      "summary": "Preserved experimental standalone Meta Quest build, with Quest 3 as the primary supported headset.",
+      "aliases": [
+        "Build 096D",
+        "096D",
+        "Build 96D"
+      ],
+      "tags": [
+        "build",
+        "archive",
+        "experimental",
+        "standalone VR",
+        "Android ASTC"
+      ],
+      "keywords": [
+        "Meta Quest",
+        "Meta Quest 3",
+        "Quest 3",
+        "Windows PC",
+        "Developer Mode",
+        "Unknown Sources",
+        "preserved build"
+      ],
+      "platforms": [
+        "Meta Quest 3"
+      ]
+    },
+    {
+      "record_id": "RWE-P2088-BUILD-097B",
+      "record_type": "build",
+      "title": "Project 2088 — Build 097B",
+      "canonical_path": "/build/097B",
+      "status": "archived",
+      "publish_ready": true,
+      "searchable": true,
+      "relations": [
+        "RWE-P2088-BUILD-096D",
+        "RWE-P2088-BUILD-098"
+      ],
+      "summary": "Archived experimental Meta Quest development build published immediately before Build 098.",
+      "aliases": [
+        "Build 097B",
+        "097B",
+        "Build 97B"
+      ],
+      "tags": [
+        "build",
+        "archive",
+        "experimental",
+        "prerelease",
+        "Android ASTC"
+      ],
+      "keywords": [
+        "Meta Quest",
+        "Meta Quest 2",
+        "Meta Quest 3",
+        "Quest 2",
+        "Quest 3",
+        "Windows PC",
+        "Unknown Sources"
+      ],
+      "platforms": [
+        "Meta Quest 2 testing",
+        "Meta Quest 3 testing"
+      ]
+    },
+    {
+      "record_id": "RWE-P2088-BUILD-098",
+      "record_type": "build",
+      "title": "Project 2088 — Build 098",
+      "canonical_path": "/build/098",
+      "status": "current",
+      "publish_ready": true,
+      "searchable": true,
+      "relations": [
+        "RWE-P2088-BUILD-097B",
+        "RWE-P2088-DEV-158"
+      ],
+      "summary": "Current public experimental Project 2088 build for Meta Quest testing.",
+      "aliases": [
+        "Build 098",
+        "Build 98",
+        "098",
+        "98",
+        "current build"
+      ],
+      "tags": [
+        "build",
+        "current",
+        "experimental",
+        "public build",
+        "Android ASTC"
+      ],
+      "keywords": [
+        "Meta Quest",
+        "Meta Quest 2",
+        "Meta Quest 3",
+        "Quest 2",
+        "Quest 3",
+        "Windows PC",
+        "Unknown Sources",
+        "GitHub Release"
+      ],
+      "platforms": [
+        "Meta Quest 2",
+        "Meta Quest 3 testing"
+      ]
+    },
+    {
+      "record_id": "RWE-P2088-DEV-156",
+      "record_type": "devlog",
+      "title": "Weekly Devlog 156",
+      "canonical_path": null,
+      "status": "source-preserved",
+      "publish_ready": false,
+      "searchable": false,
+      "relations": [
+        "RWE-P2088-DEV-157"
+      ]
+    },
+    {
+      "record_id": "RWE-P2088-DEV-157",
+      "record_type": "devlog",
+      "title": null,
+      "canonical_path": "/devlog/157",
+      "status": "migration-pending",
+      "publish_ready": false,
+      "searchable": false,
+      "relations": [
+        "RWE-P2088-DEV-156",
+        "RWE-P2088-DEV-158"
+      ]
+    },
+    {
+      "record_id": "RWE-P2088-DEV-158",
+      "record_type": "devlog",
+      "title": "Build 098 — The Archive Grows",
+      "canonical_path": "/devlog/158",
+      "status": "published",
+      "publish_ready": true,
+      "searchable": true,
+      "relations": [
+        "RWE-P2088-DEV-157",
+        "RWE-P2088-DEV-159",
+        "RWE-P2088-BUILD-098"
+      ],
+      "summary": "Public build preservation, the RWE website, Bridge planning and the move toward dedicated QA infrastructure.",
+      "aliases": [
+        "Devlog 158",
+        "DEV 158",
+        "The Archive Grows",
+        "Build 098 — The Archive Grows"
+      ],
+      "tags": [
+        "devlog",
+        "Build 098",
+        "archive",
+        "preservation",
+        "RWE website",
+        "RWE Bridge",
+        "QA"
+      ],
+      "keywords": [
+        "Bridge",
+        "QA",
+        "PWA",
+        "deep links",
+        "Quest 3",
+        "build archive",
+        "session history",
+        "event history"
+      ],
+      "platforms": [
+        "Meta Quest 2",
+        "Meta Quest 3"
+      ]
+    },
+    {
+      "record_id": "RWE-P2088-DEV-159",
+      "record_type": "devlog",
+      "title": "Building the Bridge",
+      "canonical_path": "/devlog/159",
+      "status": "published",
+      "publish_ready": true,
+      "searchable": true,
+      "relations": [
+        "RWE-P2088-DEV-158",
+        "RWE-P2088-DEV-160"
+      ],
+      "summary": "Canonical event language and shared architecture across Unreal Engine, RWE Bridge, QA and future services.",
+      "aliases": [
+        "Devlog 159",
+        "DEV 159",
+        "Building the Bridge"
+      ],
+      "tags": [
+        "devlog",
+        "RWE Bridge",
+        "canonical events",
+        "architecture",
+        "UE5",
+        "BDD"
+      ],
+      "keywords": [
+        "Bridge",
+        "Canonical Event Registry",
+        "Project",
+        "Build",
+        "Installation",
+        "Session",
+        "Event",
+        "BP_Pistol",
+        "BP_Mag",
+        "weapons",
+        "magazines"
+      ],
+      "platforms": []
+    },
+    {
+      "record_id": "RWE-P2088-DEV-160",
+      "record_type": "devlog",
+      "title": "QA Becomes a System",
+      "canonical_path": "/devlog/160",
+      "status": "published",
+      "publish_ready": true,
+      "searchable": true,
+      "relations": [
+        "RWE-P2088-DEV-159",
+        "RWE-P2088-DEV-161"
+      ],
+      "summary": "QA separates into its own application with mobile PWA access, desktop investigation and permanent deep links.",
+      "aliases": [
+        "Devlog 160",
+        "DEV 160",
+        "QA Becomes a System"
+      ],
+      "tags": [
+        "devlog",
+        "QA",
+        "RWE Bridge",
+        "PWA",
+        "deep links",
+        "evidence"
+      ],
+      "keywords": [
+        "QA",
+        "Bridge",
+        "tester profiles",
+        "build comparison",
+        "session timelines",
+        "flags",
+        "feedback",
+        "adaptive interviews",
+        "achievements",
+        "performance",
+        "evidence",
+        "mobile",
+        "desktop"
+      ],
+      "platforms": [
+        "mobile",
+        "tablet",
+        "desktop"
+      ]
+    },
+    {
+      "record_id": "RWE-P2088-DEV-161",
+      "record_type": "devlog",
+      "title": "The World Remembers",
+      "canonical_path": "/devlog/161",
+      "status": "published",
+      "publish_ready": true,
+      "searchable": true,
+      "relations": [
+        "RWE-P2088-DEV-160",
+        "RWE-P2088-LOC-BRITANA",
+        "RWE-P2088-LOC-NEOVICTORIA"
+      ],
+      "summary": "World Cells, Cell Health, Conflict Pressure, social observation and faction memory become one systemic world-simulation layer built on Project 2088's existing AI architecture.",
+      "aliases": [
+        "Devlog 161",
+        "DEV 161",
+        "The World Remembers"
+      ],
+      "tags": [
+        "devlog",
+        "world simulation",
+        "Cell Health",
+        "Conflict Pressure",
+        "World Cells",
+        "AI",
+        "faction reputation",
+        "witness memory",
+        "Albion",
+        "RWE Bridge"
+      ],
+      "keywords": [
+        "World Activity Director",
+        "Population Director",
+        "SpawnFaction",
+        "ST_CombatRelationship",
+        "perception",
+        "witness memory",
+        "social observation",
+        "faction memory",
+        "regional reputation",
+        "civic resilience",
+        "conflict",
+        "recovery",
+        "FarmersField",
+        "Albion"
+      ],
+      "platforms": []
+    },
+    {
+      "record_id": "SIG-001",
+      "record_type": "signal",
+      "canonical_path": "/signal/SIG-001",
+      "status": "migration-pending",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "SIG-002",
+      "record_type": "signal",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "SIG-003",
+      "record_type": "signal",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "SIG-004",
+      "record_type": "signal",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "SIG-005",
+      "record_type": "signal",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "SIG-006",
+      "record_type": "signal",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "SIG-007",
+      "record_type": "signal",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "SIG-008",
+      "record_type": "signal",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "SIG-009",
+      "record_type": "signal",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "SIG-010",
+      "record_type": "signal",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "SIG-011",
+      "record_type": "signal",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "SIG-012",
+      "record_type": "signal",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "SIG-013",
+      "record_type": "signal",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "SIG-014",
+      "record_type": "signal",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "SIG-015",
+      "record_type": "signal",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "SIG-016",
+      "record_type": "signal",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "SIG-017",
+      "record_type": "signal",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "SIG-018",
+      "record_type": "signal",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "RWE-VA-001",
+      "record_type": "visual",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "RWE-VA-002",
+      "record_type": "visual",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "RWE-VA-003",
+      "record_type": "visual",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "RWE-VA-004",
+      "record_type": "visual",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "RWE-VA-005",
+      "record_type": "visual",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "RWE-VA-006",
+      "record_type": "visual",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "RWE-VA-007",
+      "record_type": "visual",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "RWE-VA-008",
+      "record_type": "visual",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "RWE-VA-009",
+      "record_type": "visual",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "RWE-VA-010",
+      "record_type": "visual",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "RWE-VA-011",
+      "record_type": "visual",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "RWE-VA-012",
+      "record_type": "visual",
+      "canonical_path": null,
+      "status": "reserved",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "RWE-VA-013",
+      "record_type": "visual",
+      "canonical_path": "/visual/RWE-VA-013",
+      "status": "migration-pending",
+      "searchable": false,
+      "publish_ready": false
+    },
+    {
+      "record_id": "RWE-P2088-FACTION-CONSTRUCT",
+      "record_type": "faction",
+      "title": "Construct",
+      "canonical_path": "/world/construct",
+      "status": "published",
+      "publish_ready": true,
+      "searchable": true,
+      "relations": [
+        "RWE-P2088-LOC-BRITANA",
+        "RWE-P2088-LOC-LONDON",
+        "RWE-P2088-LOC-NEOVICTORIA",
+        "RWE-P2088-CORP-ANAMIKA"
+      ],
+      "summary": "The infrastructure authority that maintains Hives, logistics and the systems keeping Britana alive, built around a doctrine of order as survival.",
+      "aliases": [
+        "Construct",
+        "Construct Infrastructure Authority"
+      ],
+      "tags": [
+        "Construct",
+        "faction",
+        "corporation",
+        "infrastructure",
+        "Hives",
+        "order",
+        "logistics"
+      ],
+      "keywords": [
+        "Construct provides",
+        "order above all",
+        "infrastructure",
+        "security",
+        "stability",
+        "Hive Crown",
+        "distribution",
+        "maintenance",
+        "supply chain"
+      ],
+      "platforms": []
+    },
+    {
+      "record_id": "RWE-P2088-CORP-ANAMIKA",
+      "record_type": "corporation",
+      "title": "Anamika",
+      "canonical_path": "/world/anamika",
+      "status": "published",
+      "publish_ready": true,
+      "searchable": true,
+      "relations": [
+        "RWE-P2088-FACTION-CONSTRUCT",
+        "RWE-P2088-LOC-NEOVICTORIA"
+      ],
+      "summary": "A pharmaceutical and human-advancement power whose clinical optimism frames augmentation, research and experimentation as the perfection of humanity.",
+      "aliases": [
+        "Anamika",
+        "Anamika Pharmaceuticals"
+      ],
+      "tags": [
+        "Anamika",
+        "corporation",
+        "pharmaceuticals",
+        "research",
+        "augmentation",
+        "human advancement"
+      ],
+      "keywords": [
+        "humanity can be perfected",
+        "clinical",
+        "scientific",
+        "optimistic",
+        "human experimentation",
+        "medical research",
+        "containment"
+      ],
+      "platforms": []
+    },
+    {
+      "record_id": "RWE-P2088-CORP-LOCKHEAD",
+      "record_type": "corporation",
+      "title": "Lockhead",
+      "canonical_path": "/world/lockhead",
+      "status": "published",
+      "publish_ready": true,
+      "searchable": true,
+      "relations": [
+        "RWE-P2088-LOC-BRITANA"
+      ],
+      "summary": "Project 2088's weapons-industrial power: disciplined, confident and built around the doctrine of peace through strength.",
+      "aliases": [
+        "Lockhead",
+        "Lockhead Weapons"
+      ],
+      "tags": [
+        "Lockhead",
+        "corporation",
+        "weapons",
+        "military",
+        "arms"
+      ],
+      "keywords": [
+        "peace through strength",
+        "military",
+        "disciplined",
+        "confident",
+        "weapons manufacturer",
+        "arms"
+      ],
+      "platforms": []
+    },
+    {
+      "record_id": "RWE-P2088-LOC-BRITANA",
+      "record_type": "location",
+      "title": "Britana",
+      "canonical_path": "/world/britana",
+      "status": "published",
+      "publish_ready": true,
+      "searchable": true,
+      "relations": [
+        "RWE-P2088-LOC-LONDON",
+        "RWE-P2088-LOC-NEOVICTORIA",
+        "RWE-P2088-FACTION-CONSTRUCT",
+        "RWE-P2088-CORP-LOCKHEAD"
+      ],
+      "summary": "The country that remained: a maintained Britain of corporate Hives, free territories and infrastructure that never stopped operating.",
+      "aliases": [
+        "Britana",
+        "Britain 2088",
+        "The country that remained"
+      ],
+      "tags": [
+        "Britana",
+        "location",
+        "Britain",
+        "Hives",
+        "Free Territories",
+        "world"
+      ],
+      "keywords": [
+        "corporate Hives",
+        "Free Territories",
+        "Construct",
+        "London Hive",
+        "Neo Victoria",
+        "country that remained",
+        "maintained world"
+      ],
+      "platforms": []
+    },
+    {
+      "record_id": "RWE-P2088-LOC-LONDON",
+      "record_type": "location",
+      "title": "London Prefecture",
+      "canonical_path": "/world/london-hive",
+      "status": "published",
+      "publish_ready": true,
+      "searchable": true,
+      "relations": [
+        "RWE-P2088-LOC-BRITANA",
+        "RWE-P2088-FACTION-CONSTRUCT",
+        "RWE-P2088-LOC-NEOVICTORIA"
+      ],
+      "summary": "Britana's largest Hive: immense, bureaucratic and self-confident, acting as though the other Hives fall naturally beneath its authority.",
+      "aliases": [
+        "London Prefecture",
+        "London Hive",
+        "City of London Hive",
+        "London"
+      ],
+      "tags": [
+        "London",
+        "London Prefecture",
+        "Hive",
+        "location",
+        "Britana"
+      ],
+      "keywords": [
+        "largest Hive",
+        "self-declared centre of authority",
+        "bureaucratic",
+        "prefecture",
+        "capital",
+        "provinces"
+      ],
+      "platforms": []
+    },
+    {
+      "record_id": "RWE-P2088-LOC-NEOVICTORIA",
+      "record_type": "location",
+      "title": "Neo Victoria",
+      "canonical_path": "/world/neo-victoria",
+      "status": "published",
+      "publish_ready": true,
+      "searchable": true,
+      "relations": [
+        "RWE-P2088-LOC-BRITANA",
+        "RWE-P2088-LOC-LONDON",
+        "RWE-P2088-FACTION-CONSTRUCT",
+        "RWE-P2088-CORP-ANAMIKA"
+      ],
+      "summary": "Nottingham's Hive and Britana's second largest, expanded down through coal pits, caves, transport tunnels and buried civil infrastructure.",
+      "aliases": [
+        "Neo Victoria",
+        "Neo-Victoria",
+        "Nottingham Hive",
+        "Nottingham"
+      ],
+      "tags": [
+        "Neo Victoria",
+        "Nottingham",
+        "Hive",
+        "location",
+        "Britana"
+      ],
+      "keywords": [
+        "second-largest Hive",
+        "coal pits",
+        "caves",
+        "transport tunnels",
+        "underground city",
+        "industrial",
+        "layered city",
+        "autonomous"
+      ],
+      "platforms": []
+    }
+  ],
+  "search_contract": {
+    "public_gate": [
+      "publish_ready=true",
+      "searchable=true"
+    ],
+    "searchable_fields": [
+      "record_id",
+      "record_type",
+      "title",
+      "status",
+      "summary",
+      "aliases",
+      "tags",
+      "keywords",
+      "platforms",
+      "relations"
+    ],
+    "relation_expansion": "A query may match the title, aliases or tags of a verified related record.",
+    "ranking": [
+      "exact record ID",
+      "exact alias/title",
+      "title/alias prefix",
+      "tag/keyword/platform",
+      "summary",
+      "verified related record"
+    ]
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "record_id": "RWE-P2088-DEV-158",
+  "record_type": "devlog",
+  "project": "Project 2088",
+  "canonical_path": "/devlog/158",
+  "canonical_url": "https://realworldentertainment.co.uk/devlog/158",
+  "title": "Build 098 — The Archive Grows",
+  "status": "published",
+  "visibility": "public",
+  "publish_ready": true,
+  "migration_status": "ready",
+  "published_at": "2026-09-13",
+  "summary": "Builds 97B and 98 extended the preserved public build line while the RWE website, RWE Bridge planning and a dedicated QA application moved toward a more traceable development system.",
+  "body": "This week strengthened Project 2088's public preservation and the infrastructure around the game. Builds 97B and 98 were published as GitHub releases, extending the preserved build line beyond 96D. The RWE website is now the public home for builds, devlogs, Signals, the Visual Archive, Founders, locations and submissions. Behind the runtime build, RWE Bridge planning advanced toward a dedicated private QA application with a mobile-first PWA direction, permanent deep links and durable server-side session and event history. The next milestone is traceability: document exact changes between 96D, 97B and 98, complete a recorded Quest 3 regression pass for Build 98, define the minimum Bridge event envelope and prove one end-to-end QA session path.",
+  "tags": [
+    "devlog",
+    "build-098",
+    "rwe-bridge",
+    "qa",
+    "meta-quest"
+  ],
+  "related_records": [
+    "RWE-P2088-DEV-157",
+    "RWE-P2088-BUILD-098",
+    "RWE-P2088-DEV-159"
+  ],
+  "source": {
+    "name": "Project_2088_Devlog_158.docx",
+    "reporting_period": "2026-09-07/2026-09-13",
+    "record_type": "internal-development-record"
+  },
+  "metadata": {
+    "engine": "Unreal Engine 5",
+    "platforms": [
+      "Meta Quest 2",
+      "Meta Quest 3"
+    ],
+    "release_channel": "Android ASTC",
+    "confirmed_progress": [
+      "Build 97B published as a GitHub release",
+      "Build 98 published as a GitHub release",
+      "Build 96D remains preserved",
+      "Public website/build archive active",
+      "QA direction separated into a dedicated private application"
+    ],
+    "next_priorities": [
+      "Authoritative 96D to 97B to 98 changelog",
+      "Recorded Quest 3 regression pass for Build 98",
+      "Minimum Bridge event envelope",
+      "One end-to-end QA session timeline path",
+      "One repeatable AI combat validation arena"
+    ]
+  }
+}

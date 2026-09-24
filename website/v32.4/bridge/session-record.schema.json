@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://realworldentertainment.co.uk/schemas/bridge/session-record-1.schema.json",
+  "title": "RWE Bridge Session Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "session_id",
+    "project_id",
+    "build_id",
+    "installation_id",
+    "state",
+    "created_at",
+    "last_activity_at",
+    "end_requested",
+    "recovery_status",
+    "pending_event_count"
+  ],
+  "properties": {
+    "session_id": {
+      "type": "string",
+      "pattern": "^SES-[A-Za-z0-9][A-Za-z0-9_-]+$"
+    },
+    "project_id": {
+      "type": "string",
+      "const": "RWE-P2088"
+    },
+    "build_id": {
+      "type": "string",
+      "pattern": "^RWE-P2088-BUILD-[A-Za-z0-9]+$"
+    },
+    "installation_id": {
+      "type": "string",
+      "pattern": "^INS-[A-Za-z0-9][A-Za-z0-9_-]+$"
+    },
+    "tester_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^TST-[A-Za-z0-9][A-Za-z0-9_-]+$"
+    },
+    "player_instance_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^PLY-[A-Za-z0-9][A-Za-z0-9_-]+$"
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "NO_SESSION",
+        "STARTING",
+        "OPEN",
+        "OPEN_OFFLINE",
+        "REPLAYING",
+        "ENDING",
+        "CLOSED"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "Z$"
+    },
+    "opened_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "last_activity_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "Z$"
+    },
+    "ended_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "end_reason": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        null,
+        "user_exit",
+        "test_completed",
+        "application_shutdown",
+        "crash_recovered",
+        "forced_reset",
+        "qa_terminated",
+        "unknown_interruption"
+      ]
+    },
+    "end_requested": {
+      "type": "boolean"
+    },
+    "recovery_status": {
+      "type": "string",
+      "enum": [
+        "clean",
+        "interrupted",
+        "recovering",
+        "recovered",
+        "sync_issues"
+      ]
+    },
+    "pending_event_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "first_queued_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "last_queued_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    }
+  }
+}

@@ -1,0 +1,1213 @@
+{
+  "registry_id": "RWE-P2088-EVENT-TYPES",
+  "registry_version": "V32.4.2-0.1",
+  "source_registry_file": "Project_2088_Canonical_Event_Registry_v0.1.xlsx",
+  "source_registry_version": "CER-0.1",
+  "bridge_schema_version": "CER-0.3",
+  "generated_from_sheet": "03_Event Registry",
+  "source_event_count": 36,
+  "dashboard_declared_total": 38,
+  "health": [
+    {
+      "code": "EVENT_COUNT_MISMATCH",
+      "severity": "warning",
+      "observed": 36,
+      "declared": 38,
+      "rule": "The Event Registry sheet is authoritative. Do not invent missing events to satisfy the dashboard count."
+    }
+  ],
+  "envelope_owned_fields": [
+    "session_id",
+    "build_id",
+    "timestamp"
+  ],
+  "migration_rule": "required_fields_original preserves the workbook exactly. required_payload_fields_v324 subtracts only fields owned by the V32.4.1 envelope.",
+  "events": [
+    {
+      "event_id": "EVT-SES-001",
+      "event_name": "session.started",
+      "version": 1,
+      "domain": "Session",
+      "meaning": "Start a gameplay/QA session",
+      "producer": "Bridge / UE5",
+      "consumers": [
+        "Backend",
+        "QA",
+        "Analytics"
+      ],
+      "required_fields_original": [
+        "session_id",
+        "build_id",
+        "timestamp"
+      ],
+      "required_payload_fields_v324": [],
+      "wire_id": "WIR-001",
+      "importance": "High",
+      "high_volume": false,
+      "pii": false,
+      "category": "Session lifecycle",
+      "status": "DRAFT"
+    },
+    {
+      "event_id": "EVT-SES-002",
+      "event_name": "session.ended",
+      "version": 1,
+      "domain": "Session",
+      "meaning": "End a gameplay/QA session",
+      "producer": "Bridge / UE5",
+      "consumers": [
+        "Backend",
+        "QA",
+        "Analytics"
+      ],
+      "required_fields_original": [
+        "session_id",
+        "end_reason",
+        "timestamp"
+      ],
+      "required_payload_fields_v324": [
+        "end_reason"
+      ],
+      "wire_id": "WIR-001",
+      "importance": "High",
+      "high_volume": false,
+      "pii": false,
+      "category": "Session lifecycle",
+      "status": "DRAFT"
+    },
+    {
+      "event_id": "EVT-PLY-001",
+      "event_name": "player.spawned",
+      "version": 1,
+      "domain": "Player",
+      "meaning": "Player pawn enters playable world",
+      "producer": "UE5",
+      "consumers": [
+        "QA",
+        "Analytics",
+        "Achievements"
+      ],
+      "required_fields_original": [
+        "session_id",
+        "player_id",
+        "location_id",
+        "timestamp"
+      ],
+      "required_payload_fields_v324": [
+        "player_id",
+        "location_id"
+      ],
+      "wire_id": "WIR-002",
+      "importance": "High",
+      "high_volume": false,
+      "pii": false,
+      "category": "Player lifecycle",
+      "status": "DRAFT"
+    },
+    {
+      "event_id": "EVT-PLY-002",
+      "event_name": "player.damaged",
+      "version": 1,
+      "domain": "Player",
+      "meaning": "Player receives damage",
+      "producer": "UE5",
+      "consumers": [
+        "QA",
+        "Analytics",
+        "Achievements"
+      ],
+      "required_fields_original": [
+        "session_id",
+        "player_id",
+        "damage",
+        "damage_type",
+        "source_id",
+        "location_id",
+        "timestamp"
+      ],
+      "required_payload_fields_v324": [
+        "player_id",
+        "damage",
+        "damage_type",
+        "source_id",
+        "location_id"
+      ],
+      "wire_id": "WIR-002",
+      "importance": "High",
+      "high_volume": true,
+      "pii": false,
+      "category": "Combat",
+      "status": "DRAFT"
+    },
+    {
+      "event_id": "EVT-PLY-003",
+      "event_name": "player.died",
+      "version": 1,
+      "domain": "Player",
+      "meaning": "Player death confirmed",
+      "producer": "UE5",
+      "consumers": [
+        "QA",
+        "Analytics",
+        "Achievements"
+      ],
+      "required_fields_original": [
+        "session_id",
+        "player_id",
+        "cause",
+        "killer_id",
+        "weapon_asset",
+        "location_id",
+        "timestamp"
+      ],
+      "required_payload_fields_v324": [
+        "player_id",
+        "cause",
+        "killer_id",
+        "weapon_asset",
+        "location_id"
+      ],
+      "wire_id": "WIR-002",
+      "importance": "High",
+      "high_volume": false,
+      "pii": false,
+      "category": "Combat",
+      "status": "DRAFT"
+    },
+    {
+      "event_id": "EVT-PLY-004",
+      "event_name": "player.respawned",
+      "version": 1,
+      "domain": "Player",
+      "meaning": "Player returns after death/reset",
+      "producer": "UE5",
+      "consumers": [
+        "QA",
+        "Analytics"
+      ],
+      "required_fields_original": [
+        "session_id",
+        "player_id",
+        "location_id",
+        "timestamp"
+      ],
+      "required_payload_fields_v324": [
+        "player_id",
+        "location_id"
+      ],
+      "wire_id": "WIR-002",
+      "importance": "Medium",
+      "high_volume": false,
+      "pii": false,
+      "category": "Player lifecycle",
+      "status": "DRAFT"
+    },
+    {
+      "event_id": "EVT-LOC-001",
+      "event_name": "location.entered",
+      "version": 1,
+      "domain": "Location",
+      "meaning": "Player enters canonical location",
+      "producer": "UE5",
+      "consumers": [
+        "QA",
+        "Analytics",
+        "Achievements"
+      ],
+      "required_fields_original": [
+        "session_id",
+        "player_id",
+        "location_id",
+        "previous_location_id",
+        "timestamp"
+      ],
+      "required_payload_fields_v324": [
+        "player_id",
+        "location_id",
+        "previous_location_id"
+      ],
+      "wire_id": "WIR-002",
+      "importance": "Medium",
+      "high_volume": false,
+      "pii": false,
+      "category": "Traversal",
+      "status": "DRAFT"
+    },
+    {
+      "event_id": "EVT-LOC-002",
+      "event_name": "location.exited",
+      "version": 1,
+      "domain": "Location",
+      "meaning": "Player exits canonical location",
+      "producer": "UE5",
+      "consumers": [
+        "QA",
+        "Analytics"
+      ],
+      "required_fields_original": [
+        "session_id",
+        "player_id",
+        "location_id",
+        "next_location_id",
+        "timestamp"
+      ],
+      "required_payload_fields_v324": [
+        "player_id",
+        "location_id",
+        "next_location_id"
+      ],
+      "wire_id": "WIR-002",
+      "importance": "Medium",
+      "high_volume": false,
+      "pii": false,
+      "category": "Traversal",
+      "status": "DRAFT"
+    },
+    {
+      "event_id": "EVT-WPN-001",
+      "event_name": "weapon.spawned",
+      "version": 1,
+      "domain": "Firearm",
+      "meaning": "Firearm child instance created",
+      "producer": "UE5 BP_Pistol lineage",
+      "consumers": [
+        "QA",
+        "Analytics"
+      ],
+      "required_fields_original": [
+        "session_id",
+        "weapon_instance_id",
+        "weapon_asset",
+        "parent_class",
+        "location_id",
+        "timestamp"
+      ],
+      "required_payload_fields_v324": [
+        "weapon_instance_id",
+        "weapon_asset",
+        "parent_class",
+        "location_id"
+      ],
+      "wire_id": "WIR-003",
+      "importance": "Medium",
+      "high_volume": false,
+      "pii": false,
+      "category": "Firearm",
+      "status": "DRAFT"
+    },
+    {
+      "event_id": "EVT-WPN-002",
+      "event_name": "weapon.picked_up",
+      "version": 1,
+      "domain": "Firearm",
+      "meaning": "Player takes possession of firearm",
+      "producer": "UE5 BP_Pistol lineage",
+      "consumers": [
+        "QA",
+        "Analytics",
+        "Achievements"
+      ],
+      "required_fields_original": [
+        "session_id",
+        "player_id",
+        "weapon_instance_id",
+        "weapon_asset",
+        "parent_class",
+        "location_id",
+        "timestamp"
+      ],
+      "required_payload_fields_v324": [
+        "player_id",
+        "weapon_instance_id",
+        "weapon_asset",
+        "parent_class",
+        "location_id"
+      ],
+      "wire_id": "WIR-003",
+      "importance": "High",
+      "high_volume": false,
+      "pii": false,
+      "category": "Firearm",
+      "status": "DRAFT"
+    },
+    {
+      "event_id": "EVT-WPN-003",
+      "event_name": "weapon.dropped",
+      "version": 1,
+      "domain": "Firearm",
+      "meaning": "Player releases firearm",
+      "producer": "UE5 BP_Pistol lineage",
+      "consumers": [
+        "QA",
+        "Analytics"
+      ],
+      "required_fields_original": [
+        "session_id",
+        "player_id",
+        "weapon_instance_id",
+        "weapon_asset",
+        "parent_class",
+        "location_id",
+        "timestamp"
+      ],
+      "required_payload_fields_v324": [
+        "player_id",
+        "weapon_instance_id",
+        "weapon_asset",
+        "parent_class",
+        "location_id"
+      ],
+      "wire_id": "WIR-003",
+      "importance": "Medium",
+      "high_volume": false,
+      "pii": false,
+      "category": "Firearm",
+      "status": "DRAFT"
+    },
+    {
+      "event_id": "EVT-WPN-004",
+      "event_name": "weapon.equipped",
+      "version": 1,
+      "domain": "Firearm",
+      "meaning": "Firearm becomes active weapon",
+      "producer": "UE5 BP_Pistol lineage",
+      "consumers": [
+        "QA",
+        "Analytics",
+        "Achievements"
+      ],
+      "required_fields_original": [
+        "session_id",
+        "player_id",
+        "weapon_instance_id",
+        "weapon_asset",
+        "parent_class",
+        "timestamp"
+      ],
+      "required_payload_fields_v324": [
+        "player_id",
+        "weapon_instance_id",
+        "weapon_asset",
+        "parent_class"
+      ],
+      "wire_id": "WIR-003",
+      "importance": "High",
+      "high_volume": false,
+      "pii": false,
+      "category": "Firearm",
+      "status": "DRAFT"
+    },
+    {
+      "event_id": "EVT-WPN-005",
+      "event_name": "weapon.unequipped",
+      "version": 1,
+      "domain": "Firearm",
+      "meaning": "Firearm ceases to be active weapon",
+      "producer": "UE5 BP_Pistol lineage",
+      "consumers": [
+        "QA",
+        "Analytics"
+      ],
+      "required_fields_original": [
+        "session_id",
+        "player_id",
+        "weapon_instance_id",
+        "weapon_asset",
+        "parent_class",
+        "timestamp"
+      ],
+      "required_payload_fields_v324": [
+        "player_id",
+        "weapon_instance_id",
+        "weapon_asset",
+        "parent_class"
+      ],
+      "wire_id": "WIR-003",
+      "importance": "Medium",
+      "high_volume": false,
+      "pii": false,
+      "category": "Firearm",
+      "status": "DRAFT"
+    },
+    {
+      "event_id": "EVT-WPN-006",
+      "event_name": "weapon.fired",
+      "version": 1,
+      "domain": "Firearm",
+      "meaning": "One trigger/fire action emits one or more rounds",
+      "producer": "UE5 BP_Pistol lineage",
+      "consumers": [
+        "QA",
+        "Analytics",
+        "Achievements"
+      ],
+      "required_fields_original": [
+        "session_id",
+        "player_id",
+        "weapon_instance_id",
+        "weapon_asset",
+        "parent_class",
+        "rounds_fired",
+        "ammo_type",
+        "location_id",
+        "timestamp"
+      ],
+      "required_payload_fields_v324": [
+        "player_id",
+        "weapon_instance_id",
+        "weapon_asset",
+        "parent_class",
+        "rounds_fired",
+        "ammo_type",
+        "location_id"
+      ],
+      "wire_id": "WIR-003",
+      "importance": "High",
+      "high_volume": true,
+      "pii": false,
+      "category": "Firearm",
+      "status": "DRAFT"
+    },
+    {
+      "event_id": "EVT-WPN-007",
+      "event_name": "weapon.dry_fired",
+      "version": 1,
+      "domain": "Firearm",
+      "meaning": "Fire requested with no valid round available",
+      "producer": "UE5 BP_Pistol lineage",
+      "consumers": [
+        "QA",
+        "Analytics"
+      ],
+      "required_fields_original": [
+        "session_id",
+        "player_id",
+        "weapon_instance_id",
+        "weapon_asset",
+        "parent_class",
+        "reason",
+        "timestamp"
+      ],
+      "required_payload_fields_v324": [
+        "player_id",
+        "weapon_instance_id",
+        "weapon_asset",
+        "parent_class",
+        "reason"
+      ],
+      "wire_id": "WIR-003",
+      "importance": "Low",
+      "high_volume": true,
+      "pii": false,
+      "category": "Firearm",
+      "status": "DRAFT"
+    },
+    {
+      "event_id": "EVT-WPN-008",
+      "event_name": "weapon.reload_started",
+      "version": 1,
+      "domain": "Firearm",
+      "meaning": "Reload sequence begins",
+      "producer": "UE5 BP_Pistol lineage",
+      "consumers": [
+        "QA",
+        "Analytics"
+      ],
+      "required_fields_original": [
+        "session_id",
+        "player_id",
+        "weapon_instance_id",
+        "weapon_asset",
+        "parent_class",
+        "timestamp"
+      ],
+      "required_payload_fields_v324": [
+        "player_id",
+        "weapon_instance_id",
+        "weapon_asset",
+        "parent_class"
+      ],
+      "wire_id": "WIR-003",
+      "importance": "Medium",
+      "high_volume": false,
+      "pii": false,
+      "category": "Firearm",
+      "status": "DRAFT"
+    },
+    {
+      "event_id": "EVT-WPN-009",
+      "event_name": "weapon.reload_completed",
+      "version": 1,
+      "domain": "Firearm",
+      "meaning": "Reload sequence completes",
+      "producer": "UE5 BP_Pistol lineage",
+      "consumers": [
+        "QA",
+        "Analytics",
+        "Achievements"
+      ],
+      "required_fields_original": [
+        "session_id",
+        "player_id",
+        "weapon_instance_id",
+        "weapon_asset",
+        "parent_class",
+        "magazine_instance_id",
+        "timestamp"
+      ],
+      "required_payload_fields_v324": [
+        "player_id",
+        "weapon_instance_id",
+        "weapon_asset",
+        "parent_class",
+        "magazine_instance_id"
+      ],
+      "wire_id": "WIR-003",
+      "importance": "Medium",
+      "high_volume": false,
+      "pii": false,
+      "category": "Firearm",
+      "status": "DRAFT"
+    },
+    {
+      "event_id": "EVT-MAG-001",
+      "event_name": "magazine.spawned",
+      "version": 1,
+      "domain": "Magazine",
+      "meaning": "Magazine child instance created",
+      "producer": "UE5 BP_Mag lineage",
+      "consumers": [
+        "QA",
+        "Analytics"
+      ],
+      "required_fields_original": [
+        "session_id",
+        "magazine_instance_id",
+        "magazine_asset",
+        "parent_class",
+        "ammo_type",
+        "capacity",
+        "location_id",
+        "timestamp"
+      ],
+      "required_payload_fields_v324": [
+        "magazine_instance_id",
+        "magazine_asset",
+        "parent_class",
+        "ammo_type",
+        "capacity",
+        "location_id"
+      ],
+      "wire_id": "WIR-004",
+      "importance": "Low",
+      "high_volume": false,
+      "pii": false,
+      "category": "Magazine",
+      "status": "DRAFT"
+    },
+    {
+      "event_id": "EVT-MAG-002",
+      "event_name": "magazine.picked_up",
+      "version": 1,
+      "domain": "Magazine",
+      "meaning": "Player takes possession of magazine",
+      "producer": "UE5 BP_Mag lineage",
+      "consumers": [
+        "QA",
+        "Analytics",
+        "Achievements"
+      ],
+      "required_fields_original": [
+        "session_id",
+        "player_id",
+        "magazine_instance_id",
+        "magazine_asset",
+        "parent_class",
+        "ammo_type",
+        "rounds_current",
+        "location_id",
+        "timestamp"
+      ],
+      "required_payload_fields_v324": [
+        "player_id",
+        "magazine_instance_id",
+        "magazine_asset",
+        "parent_class",
+        "ammo_type",
+        "rounds_current",
+        "location_id"
+      ],
+      "wire_id": "WIR-004",
+      "importance": "Medium",
+      "high_volume": false,
+      "pii": false,
+      "category": "Magazine",
+      "status": "DRAFT"
+    },
+    {
+      "event_id": "EVT-MAG-003",
+      "event_name": "magazine.dropped",
+      "version": 1,
+      "domain": "Magazine",
+      "meaning": "Player releases magazine",
+      "producer": "UE5 BP_Mag lineage",
+      "consumers": [
+        "QA",
+        "Analytics"
+      ],
+      "required_fields_original": [
+        "session_id",
+        "player_id",
+        "magazine_instance_id",
+        "magazine_asset",
+        "parent_class",
+        "rounds_current",
+        "location_id",
+        "timestamp"
+      ],
+      "required_payload_fields_v324": [
+        "player_id",
+        "magazine_instance_id",
+        "magazine_asset",
+        "parent_class",
+        "rounds_current",
+        "location_id"
+      ],
+      "wire_id": "WIR-004",
+      "importance": "Low",
+      "high_volume": false,
+      "pii": false,
+      "category": "Magazine",
+      "status": "DRAFT"
+    },
+    {
+      "event_id": "EVT-MAG-004",
+      "event_name": "magazine.inserted",
+      "version": 1,
+      "domain": "Magazine",
+      "meaning": "Magazine inserted into firearm",
+      "producer": "UE5 BP_Mag / BP_Pistol lineage",
+      "consumers": [
+        "QA",
+        "Analytics",
+        "Achievements"
+      ],
+      "required_fields_original": [
+        "session_id",
+        "player_id",
+        "magazine_instance_id",
+        "weapon_instance_id",
+        "ammo_type",
+        "rounds_current",
+        "timestamp"
+      ],
+      "required_payload_fields_v324": [
+        "player_id",
+        "magazine_instance_id",
+        "weapon_instance_id",
+        "ammo_type",
+        "rounds_current"
+      ],
+      "wire_id": "WIR-004",
+      "importance": "High",
+      "high_volume": false,
+      "pii": false,
+      "category": "Magazine",
+      "status": "DRAFT"
+    },
+    {
+      "event_id": "EVT-MAG-005",
+      "event_name": "magazine.removed",
+      "version": 1,
+      "domain": "Magazine",
+      "meaning": "Magazine removed from firearm",
+      "producer": "UE5 BP_Mag / BP_Pistol lineage",
+      "consumers": [
+        "QA",
+        "Analytics"
+      ],
+      "required_fields_original": [
+        "session_id",
+        "player_id",
+        "magazine_instance_id",
+        "weapon_instance_id",
+        "rounds_current",
+        "timestamp"
+      ],
+      "required_payload_fields_v324": [
+        "player_id",
+        "magazine_instance_id",
+        "weapon_instance_id",
+        "rounds_current"
+      ],
+      "wire_id": "WIR-004",
+      "importance": "Medium",
+      "high_volume": false,
+      "pii": false,
+      "category": "Magazine",
+      "status": "DRAFT"
+    },
+    {
+      "event_id": "EVT-MAG-006",
+      "event_name": "magazine.emptied",
+      "version": 1,
+      "domain": "Magazine",
+      "meaning": "Magazine reaches zero rounds",
+      "producer": "UE5 BP_Mag lineage",
+      "consumers": [
+        "QA",
+        "Analytics",
+        "Achievements"
+      ],
+      "required_fields_original": [
+        "session_id",
+        "player_id",
+        "magazine_instance_id",
+        "weapon_instance_id",
+        "ammo_type",
+        "timestamp"
+      ],
+      "required_payload_fields_v324": [
+        "player_id",
+        "magazine_instance_id",
+        "weapon_instance_id",
+        "ammo_type"
+      ],
+      "wire_id": "WIR-004",
+      "importance": "Low",
+      "high_volume": false,
+      "pii": false,
+      "category": "Magazine",
+      "status": "DRAFT"
+    },
+    {
+      "event_id": "EVT-NPC-001",
+      "event_name": "npc.encountered",
+      "version": 1,
+      "domain": "NPC",
+      "meaning": "Player first meaningfully encounters NPC in session/context",
+      "producer": "UE5",
+      "consumers": [
+        "QA",
+        "Analytics",
+        "Achievements"
+      ],
+      "required_fields_original": [
+        "session_id",
+        "player_id",
+        "npc_instance_id",
+        "npc_type",
+        "faction",
+        "location_id",
+        "timestamp"
+      ],
+      "required_payload_fields_v324": [
+        "player_id",
+        "npc_instance_id",
+        "npc_type",
+        "faction",
+        "location_id"
+      ],
+      "wire_id": "WIR-002",
+      "importance": "Medium",
+      "high_volume": false,
+      "pii": false,
+      "category": "NPC",
+      "status": "DRAFT"
+    },
+    {
+      "event_id": "EVT-NPC-002",
+      "event_name": "npc.damaged",
+      "version": 1,
+      "domain": "NPC",
+      "meaning": "NPC receives damage",
+      "producer": "UE5",
+      "consumers": [
+        "QA",
+        "Analytics"
+      ],
+      "required_fields_original": [
+        "session_id",
+        "npc_instance_id",
+        "damage",
+        "damage_type",
+        "source_id",
+        "location_id",
+        "timestamp"
+      ],
+      "required_payload_fields_v324": [
+        "npc_instance_id",
+        "damage",
+        "damage_type",
+        "source_id",
+        "location_id"
+      ],
+      "wire_id": "WIR-002",
+      "importance": "High",
+      "high_volume": true,
+      "pii": false,
+      "category": "Combat",
+      "status": "DRAFT"
+    },
+    {
+      "event_id": "EVT-NPC-003",
+      "event_name": "npc.killed",
+      "version": 1,
+      "domain": "NPC",
+      "meaning": "NPC death confirmed",
+      "producer": "UE5",
+      "consumers": [
+        "QA",
+        "Analytics",
+        "Achievements"
+      ],
+      "required_fields_original": [
+        "session_id",
+        "player_id",
+        "npc_instance_id",
+        "npc_type",
+        "faction",
+        "killer_id",
+        "weapon_asset",
+        "location_id",
+        "timestamp"
+      ],
+      "required_payload_fields_v324": [
+        "player_id",
+        "npc_instance_id",
+        "npc_type",
+        "faction",
+        "killer_id",
+        "weapon_asset",
+        "location_id"
+      ],
+      "wire_id": "WIR-002",
+      "importance": "High",
+      "high_volume": false,
+      "pii": false,
+      "category": "Combat",
+      "status": "DRAFT"
+    },
+    {
+      "event_id": "EVT-NPC-004",
+      "event_name": "npc.state_changed",
+      "version": 1,
+      "domain": "NPC",
+      "meaning": "AI state changes between canonical high-level states",
+      "producer": "UE5 AI",
+      "consumers": [
+        "QA",
+        "Analytics"
+      ],
+      "required_fields_original": [
+        "session_id",
+        "npc_instance_id",
+        "from_state",
+        "to_state",
+        "cause",
+        "location_id",
+        "timestamp"
+      ],
+      "required_payload_fields_v324": [
+        "npc_instance_id",
+        "from_state",
+        "to_state",
+        "cause",
+        "location_id"
+      ],
+      "wire_id": "WIR-005",
+      "importance": "High",
+      "high_volume": true,
+      "pii": false,
+      "category": "AI",
+      "status": "DRAFT"
+    },
+    {
+      "event_id": "EVT-CMB-001",
+      "event_name": "combat.started",
+      "version": 1,
+      "domain": "Combat",
+      "meaning": "Combat context begins",
+      "producer": "UE5",
+      "consumers": [
+        "QA",
+        "Analytics"
+      ],
+      "required_fields_original": [
+        "session_id",
+        "combat_id",
+        "initiator_id",
+        "location_id",
+        "timestamp"
+      ],
+      "required_payload_fields_v324": [
+        "combat_id",
+        "initiator_id",
+        "location_id"
+      ],
+      "wire_id": "WIR-002",
+      "importance": "Medium",
+      "high_volume": false,
+      "pii": false,
+      "category": "Combat",
+      "status": "DRAFT"
+    },
+    {
+      "event_id": "EVT-CMB-002",
+      "event_name": "combat.ended",
+      "version": 1,
+      "domain": "Combat",
+      "meaning": "Combat context ends",
+      "producer": "UE5",
+      "consumers": [
+        "QA",
+        "Analytics"
+      ],
+      "required_fields_original": [
+        "session_id",
+        "combat_id",
+        "outcome",
+        "duration_ms",
+        "location_id",
+        "timestamp"
+      ],
+      "required_payload_fields_v324": [
+        "combat_id",
+        "outcome",
+        "duration_ms",
+        "location_id"
+      ],
+      "wire_id": "WIR-002",
+      "importance": "Medium",
+      "high_volume": false,
+      "pii": false,
+      "category": "Combat",
+      "status": "DRAFT"
+    },
+    {
+      "event_id": "EVT-INT-001",
+      "event_name": "interaction.started",
+      "version": 1,
+      "domain": "Interaction",
+      "meaning": "Player begins canonical interaction",
+      "producer": "UE5",
+      "consumers": [
+        "QA",
+        "Analytics"
+      ],
+      "required_fields_original": [
+        "session_id",
+        "player_id",
+        "interaction_type",
+        "target_id",
+        "location_id",
+        "timestamp"
+      ],
+      "required_payload_fields_v324": [
+        "player_id",
+        "interaction_type",
+        "target_id",
+        "location_id"
+      ],
+      "wire_id": "WIR-002",
+      "importance": "Medium",
+      "high_volume": false,
+      "pii": false,
+      "category": "Interaction",
+      "status": "DRAFT"
+    },
+    {
+      "event_id": "EVT-INT-002",
+      "event_name": "interaction.completed",
+      "version": 1,
+      "domain": "Interaction",
+      "meaning": "Canonical interaction completes",
+      "producer": "UE5",
+      "consumers": [
+        "QA",
+        "Analytics",
+        "Achievements"
+      ],
+      "required_fields_original": [
+        "session_id",
+        "player_id",
+        "interaction_type",
+        "target_id",
+        "result",
+        "location_id",
+        "timestamp"
+      ],
+      "required_payload_fields_v324": [
+        "player_id",
+        "interaction_type",
+        "target_id",
+        "result",
+        "location_id"
+      ],
+      "wire_id": "WIR-002",
+      "importance": "Medium",
+      "high_volume": false,
+      "pii": false,
+      "category": "Interaction",
+      "status": "DRAFT"
+    },
+    {
+      "event_id": "EVT-CON-001",
+      "event_name": "contract.accepted",
+      "version": 1,
+      "domain": "Contract",
+      "meaning": "Player accepts contract",
+      "producer": "UE5 / Backend",
+      "consumers": [
+        "QA",
+        "Analytics",
+        "Achievements"
+      ],
+      "required_fields_original": [
+        "session_id",
+        "player_id",
+        "contract_id",
+        "issuer_id",
+        "terms_version",
+        "timestamp"
+      ],
+      "required_payload_fields_v324": [
+        "player_id",
+        "contract_id",
+        "issuer_id",
+        "terms_version"
+      ],
+      "wire_id": "WIR-006",
+      "importance": "High",
+      "high_volume": false,
+      "pii": false,
+      "category": "Contract",
+      "status": "DRAFT"
+    },
+    {
+      "event_id": "EVT-CON-002",
+      "event_name": "contract.completed",
+      "version": 1,
+      "domain": "Contract",
+      "meaning": "Contract completion confirmed",
+      "producer": "UE5 / Backend",
+      "consumers": [
+        "QA",
+        "Analytics",
+        "Achievements"
+      ],
+      "required_fields_original": [
+        "session_id",
+        "player_id",
+        "contract_id",
+        "outcome",
+        "reward_id",
+        "timestamp"
+      ],
+      "required_payload_fields_v324": [
+        "player_id",
+        "contract_id",
+        "outcome",
+        "reward_id"
+      ],
+      "wire_id": "WIR-006",
+      "importance": "High",
+      "high_volume": false,
+      "pii": false,
+      "category": "Contract",
+      "status": "DRAFT"
+    },
+    {
+      "event_id": "EVT-ACH-001",
+      "event_name": "achievement.unlocked",
+      "version": 1,
+      "domain": "Achievement",
+      "meaning": "Achievement Engine grants achievement",
+      "producer": "Achievement Engine",
+      "consumers": [
+        "RWE",
+        "QA",
+        "Analytics"
+      ],
+      "required_fields_original": [
+        "player_id",
+        "achievement_id",
+        "source_event_id",
+        "timestamp"
+      ],
+      "required_payload_fields_v324": [
+        "player_id",
+        "achievement_id",
+        "source_event_id"
+      ],
+      "wire_id": "WIR-007",
+      "importance": "High",
+      "high_volume": false,
+      "pii": false,
+      "category": "Achievement",
+      "status": "DRAFT"
+    },
+    {
+      "event_id": "EVT-QA-001",
+      "event_name": "qa.flag_created",
+      "version": 1,
+      "domain": "QA",
+      "meaning": "QA rule or reviewer creates flag",
+      "producer": "QA Engine / Console",
+      "consumers": [
+        "QA Console",
+        "Backend"
+      ],
+      "required_fields_original": [
+        "session_id",
+        "flag_id",
+        "severity",
+        "source_event_id",
+        "rule_id",
+        "timestamp"
+      ],
+      "required_payload_fields_v324": [
+        "flag_id",
+        "severity",
+        "source_event_id",
+        "rule_id"
+      ],
+      "wire_id": "WIR-008",
+      "importance": "High",
+      "high_volume": false,
+      "pii": false,
+      "category": "QA",
+      "status": "DRAFT"
+    },
+    {
+      "event_id": "EVT-QA-002",
+      "event_name": "qa.interview_prompted",
+      "version": 1,
+      "domain": "QA",
+      "meaning": "Adaptive interview question created from session evidence",
+      "producer": "QA Engine",
+      "consumers": [
+        "QA Console",
+        "RWE tester UI"
+      ],
+      "required_fields_original": [
+        "session_id",
+        "prompt_id",
+        "trigger_event_ids",
+        "question_key",
+        "timestamp"
+      ],
+      "required_payload_fields_v324": [
+        "prompt_id",
+        "trigger_event_ids",
+        "question_key"
+      ],
+      "wire_id": "WIR-008",
+      "importance": "Medium",
+      "high_volume": false,
+      "pii": false,
+      "category": "QA",
+      "status": "DRAFT"
+    }
+  ]
+}

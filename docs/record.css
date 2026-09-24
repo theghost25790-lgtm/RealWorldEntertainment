@@ -1,0 +1,75 @@
+:root{color-scheme:dark;--bg:#07090d;--panel:#0f151e;--panel2:#141c27;--line:#293544;--text:#edf1f5;--muted:#9aa8b7;--accent:#f0c84b;--accent2:#68b7ff;--good:#80d6a4;--warn:#e7b96a}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(180deg,#090d13 0,var(--bg) 45%);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif;line-height:1.65}
+a{color:inherit}
+.sitebar{border-bottom:1px solid var(--line);background:rgba(7,9,13,.94);position:sticky;top:0;z-index:10}
+.sitebar-inner,.record,.archive{width:min(1100px,calc(100% - 32px));margin:auto}
+.sitebar-inner{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{text-decoration:none;font-weight:800;letter-spacing:.12em;font-size:.82rem}
+.nav{display:flex;gap:16px;flex-wrap:wrap}
+.nav a{color:var(--muted);text-decoration:none;font-size:.85rem}
+.record,.archive{padding:clamp(48px,8vw,90px) 0 72px}
+.kicker{color:var(--muted);letter-spacing:.22em;text-transform:uppercase;font-size:.72rem}
+.breadcrumb{color:var(--muted);font-size:.8rem;margin-bottom:2rem}
+.breadcrumb a{text-decoration:none}
+h1{font-size:clamp(2.4rem,7vw,5.8rem);line-height:.94;margin:.18em 0 .35em;letter-spacing:-.035em}
+h2{font-size:1rem;letter-spacing:.14em;text-transform:uppercase;margin:0 0 1rem}
+.lead{font-size:clamp(1.1rem,2.4vw,1.55rem);color:#c6d0da;max-width:800px}
+.statusline{display:flex;flex-wrap:wrap;gap:10px;margin:1.6rem 0 2.6rem}
+.pill{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:.42rem .72rem;font-size:.76rem;letter-spacing:.08em;text-transform:uppercase}
+.pill.current{border-color:#586b30;color:#d9f09c}.pill.draft{border-color:#76552f;color:#f4d39f}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(250px,330px);gap:24px;align-items:start}
+.card{border:1px solid var(--line);background:rgba(15,21,30,.86);padding:clamp(20px,3vw,32px);border-radius:10px;margin-bottom:18px}
+.card p:first-child{margin-top:0}.card p:last-child{margin-bottom:0}
+.meta{display:grid;grid-template-columns:1fr;gap:0}
+.meta div{padding:.78rem 0;border-bottom:1px solid var(--line)}
+.meta div:last-child{border-bottom:0}
+.meta dt{font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+.meta dd{margin:.16rem 0 0;word-break:break-word}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:1.4rem}
+.button{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border:1px solid var(--line);border-radius:7px;padding:.75rem 1rem;background:var(--panel2)}
+.button.primary{background:var(--accent);border-color:var(--accent);color:#131006;font-weight:800}
+.button.blue{background:var(--accent2);border-color:var(--accent2);color:#07111b;font-weight:800}
+code,.mono{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.88em}
+.hash{overflow-wrap:anywhere;color:#cdd6df}
+.record-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.record-link{display:block;text-decoration:none;border:1px solid var(--line);border-radius:8px;background:var(--panel);padding:1rem}
+.record-link small{display:block;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.25rem}
+.notice{border-left:3px solid var(--warn);padding:1rem 1.2rem;background:#18140e;color:#eadac2}
+.archive-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.archive-card{border:1px solid var(--line);background:var(--panel);padding:1.3rem;border-radius:9px}
+.archive-card h3{margin:.25rem 0 .5rem;font-size:1.25rem}
+.archive-card a{text-decoration:none}
+.archive-card p{color:#b9c4cf}
+.footer{border-top:1px solid var(--line);color:var(--muted);padding:30px 0 50px;margin-top:50px;font-size:.82rem}
+.copy-note{color:var(--muted);font-size:.78rem;margin-top:.5rem;min-height:1.2em}
+ol.install li{margin-bottom:.55rem}
+@media(max-width:780px){.layout{grid-template-columns:1fr}.nav{display:none}.sitebar-inner{min-height:56px}.record,.archive{padding-top:52px}}
+/* World atlas */
+.world-atlas{max-width:1180px}
+.atlas-levels,.battle-logic{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.atlas-levels div,.battle-logic div{border:1px solid var(--line);background:var(--panel2);border-radius:8px;padding:1rem}
+.atlas-levels strong,.battle-logic strong{display:block;font-size:.72rem;letter-spacing:.12em;margin-bottom:.35rem;color:var(--accent)}
+.atlas-levels span,.battle-logic span{display:block;color:#c2ccd6;font-size:.92rem}
+.atlas-note{margin-top:1.2rem;color:var(--muted)}
+.atlas-jump{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:0 0 18px}
+.atlas-jump a{text-decoration:none;border:1px solid var(--line);background:var(--panel);border-radius:8px;padding:.8rem;text-align:center;font-size:.78rem;letter-spacing:.08em}
+.diagram-section{scroll-margin-top:86px}
+.diagram-section>p:not(.kicker){color:#c2ccd6}
+.spider{overflow-x:auto;margin-top:1.4rem;border:1px solid var(--line);border-radius:10px;background:radial-gradient(circle at center,rgba(104,183,255,.06),transparent 48%),#0a0f16}
+.spider svg{display:block;width:100%;height:auto;min-width:700px}
+.spider-links line{stroke:#425266;stroke-width:2}
+.war-links line{stroke:#725b41;stroke-width:2.4}
+.spider-node rect{fill:#121a24;stroke:#3e4f63;stroke-width:2}
+.spider-node text{fill:#edf1f5;font-family:Inter,Segoe UI,Arial,sans-serif;font-size:15px;font-weight:800;letter-spacing:.04em;text-anchor:middle}
+.spider-node text.minor{fill:#9aa8b7;font-size:11px;font-weight:500;letter-spacing:.03em}
+.spider-node.location rect{stroke:var(--accent);stroke-width:3}
+.spider-node.area rect{stroke:var(--accent2)}
+.spider-node.cell rect{stroke:#627487}
+.spider-node.front rect{stroke:#e7b96a;stroke-width:3}
+.spider-node.support rect{stroke:#80d6a4}
+.spider-node.civilian rect{stroke:#b99cff}
+.middlelands-section{border-color:#5a4935}
+.battle-logic{margin-top:1.2rem}
+@media(max-width:780px){.spider svg{min-width:760px}.atlas-jump{grid-template-columns:repeat(2,1fr)}}

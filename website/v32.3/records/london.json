@@ -1,0 +1,44 @@
+{
+  "record_id": "RWE-P2088-LOC-LONDON",
+  "record_type": "location",
+  "project": "Project 2088",
+  "canonical_path": "/world/london-hive",
+  "canonical_url": "https://realworldentertainment.co.uk/world/london-hive",
+  "title": "London Prefecture",
+  "status": "published",
+  "visibility": "public",
+  "publish_ready": true,
+  "searchable": true,
+  "summary": "Britana's largest Hive: immense, bureaucratic and self-confident, acting as though the other Hives fall naturally beneath its authority.",
+  "aliases": [
+    "London Prefecture",
+    "London Hive",
+    "City of London Hive",
+    "London"
+  ],
+  "tags": [
+    "London",
+    "London Prefecture",
+    "Hive",
+    "location",
+    "Britana"
+  ],
+  "keywords": [
+    "largest Hive",
+    "self-declared centre of authority",
+    "bureaucratic",
+    "prefecture",
+    "capital",
+    "provinces"
+  ],
+  "relations": [
+    "RWE-P2088-LOC-BRITANA",
+    "RWE-P2088-FACTION-CONSTRUCT",
+    "RWE-P2088-LOC-NEOVICTORIA"
+  ],
+  "metadata": {
+    "rank": "Largest Hive in Britana",
+    "character": "Clean, immense, bureaucratic and politically confident.",
+    "authority_claim": "London behaves as if it governs the other Hives, whether or not they accept its authority."
+  }
+}

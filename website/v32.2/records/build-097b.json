@@ -1,0 +1,50 @@
+{
+  "record_id": "RWE-P2088-BUILD-097B",
+  "record_type": "build",
+  "project": "Project 2088",
+  "canonical_path": "/build/097B",
+  "canonical_url": "https://realworldentertainment.co.uk/build/097B",
+  "title": "Project 2088 — Build 097B",
+  "status": "archived",
+  "visibility": "public",
+  "publish_ready": true,
+  "migration_status": "ready",
+  "published_at": "2026-09-10T14:06:33Z",
+  "summary": "Experimental Meta Quest development build preserved as the immediate predecessor to Build 098.",
+  "tags": [
+    "build",
+    "097B",
+    "meta-quest",
+    "android-astc",
+    "experimental",
+    "archived"
+  ],
+  "related_records": [
+    "RWE-P2088-BUILD-096D",
+    "RWE-P2088-BUILD-098",
+    "RWE-P2088-DEV-158"
+  ],
+  "source": {
+    "provider": "GitHub Releases",
+    "release_tag": "build-097b",
+    "release_name": "Project 2088 — Build 97B",
+    "release_url": "https://github.com/theghost25790-lgtm/RealWorldEntertainment/releases/tag/build-097b"
+  },
+  "metadata": {
+    "build_number": "097B",
+    "lifecycle_status": "archived",
+    "release_status": "experimental",
+    "platforms": [
+      "Meta Quest 2 testing",
+      "Meta Quest 3 testing"
+    ],
+    "package_type": "Android ASTC",
+    "pc_requirement": "Windows PC required for installation",
+    "asset_name": "Project-2088-Build-097B.zip",
+    "asset_size_bytes": 972714496,
+    "asset_size_display": "927.6 MiB",
+    "sha256": "db36ca4fc82f5c24b412b66bab37c0b38317dd81213076add66b8fdd7f09b254",
+    "download_url": "https://github.com/theghost25790-lgtm/RealWorldEntertainment/releases/download/build-097b/Project-2088-Build-097B.zip",
+    "superseded_by": "RWE-P2088-BUILD-098"
+  }
+}

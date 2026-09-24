@@ -1,0 +1,89 @@
+{
+  "test_set": "V32.4.3-entity-resolution",
+  "vectors": [
+    {
+      "id": "ID-TV-001",
+      "kind": "canonical",
+      "field": "build_id",
+      "value": "RWE-P2088-BUILD-098",
+      "expected": "ACCEPT"
+    },
+    {
+      "id": "ID-TV-002",
+      "kind": "canonical",
+      "field": "build_id",
+      "value": "RWE-P2088-BUILD-096D",
+      "expected": "ACCEPT"
+    },
+    {
+      "id": "ID-TV-003",
+      "kind": "canonical",
+      "field": "location_id",
+      "value": "RWE-P2088-LOC-NEOVICTORIA",
+      "expected": "ACCEPT"
+    },
+    {
+      "id": "ID-TV-004",
+      "kind": "canonical",
+      "field": "location_id",
+      "value": "Neo Victoria",
+      "expected": "ERR-ID-004"
+    },
+    {
+      "id": "ID-TV-005",
+      "kind": "canonical",
+      "field": "build_id",
+      "value": "RWE-P2088-LOC-NEOVICTORIA",
+      "expected": "ERR-ID-002"
+    },
+    {
+      "id": "ID-TV-006",
+      "kind": "canonical",
+      "field": "location_id",
+      "value": "RWE-P2088-LOC-MARS",
+      "expected": "ERR-ID-001"
+    },
+    {
+      "id": "ID-TV-007",
+      "kind": "instance",
+      "field": "npc_instance_id",
+      "value": "NPCI-DEMO-0091",
+      "expected": "ACCEPT"
+    },
+    {
+      "id": "ID-TV-008",
+      "kind": "instance",
+      "field": "npc_instance_id",
+      "value": "NPC-DEMO-0091",
+      "expected": "ERR-ID-003"
+    },
+    {
+      "id": "ID-TV-009",
+      "kind": "legacy",
+      "field": "faction",
+      "value": "Construct",
+      "expected": "RWE-P2088-FACTION-CONSTRUCT"
+    },
+    {
+      "id": "ID-TV-010",
+      "kind": "legacy",
+      "field": "faction",
+      "value": "Scavs",
+      "expected": "WARN-ID-001"
+    },
+    {
+      "id": "ID-TV-011",
+      "kind": "form_id",
+      "field": "form_id",
+      "value": "F0300042",
+      "expected": "ACCEPT"
+    },
+    {
+      "id": "ID-TV-012",
+      "kind": "form_id",
+      "field": "form_id",
+      "value": "F300042",
+      "expected": "ERR-ID-003"
+    }
+  ]
+}

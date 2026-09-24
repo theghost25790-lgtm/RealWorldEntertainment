@@ -1,0 +1,59 @@
+{
+  "record_id": "RWE-P2088-DEV-161",
+  "record_type": "devlog",
+  "project": "Project 2088",
+  "canonical_path": "/devlog/161",
+  "canonical_url": "https://realworldentertainment.co.uk/devlog/161",
+  "title": "The World Remembers",
+  "status": "published",
+  "visibility": "public",
+  "publish_ready": true,
+  "migration_status": "ready",
+  "published_at": "2026-09-21",
+  "summary": "Project 2088 formalises World Cells, Cell Health, Conflict Pressure, social observation and faction memory as one systemic world-simulation layer built on the existing AI architecture.",
+  "body": "Project 2088 is formalising the systems that allow Albion to feel inhabited rather than staged. World Cells gain Cell Health to measure civic resilience and Conflict Pressure to measure destabilising forces without equating stability with any one faction. Population and activity systems feed the existing SpawnFaction, perception, relationship and AI-state infrastructure. NPC observation can become witness memory, reporting, rumour and faction or regional reputation. Low Cell Health increases vulnerability and changes the activities weighted by the World Activity Director, while high pressure can produce shortages, strikes, fear, opportunism, raids and eventually open faction conflict. Recovery is intended to be as systemic as collapse. Albion remains a living England: destruction is localised, repair is common, abandoned places are noteworthy, and the world can remember what the player chose to do when someone had the chance to see it.",
+  "tags": [
+    "devlog",
+    "world simulation",
+    "Cell Health",
+    "Conflict Pressure",
+    "World Cells",
+    "AI",
+    "faction reputation",
+    "witness memory",
+    "Albion",
+    "RWE Bridge"
+  ],
+  "related_records": [
+    "RWE-P2088-DEV-160",
+    "RWE-P2088-LOC-BRITANA",
+    "RWE-P2088-LOC-NEOVICTORIA"
+  ],
+  "source": {
+    "type": "development-record",
+    "established_at": "2026-09-21",
+    "based_on": "21 September 2026 world simulation, Albion and Cell Health design work"
+  },
+  "metadata": {
+    "architecture_loop": [
+      "World state",
+      "Population",
+      "Activity",
+      "Existing AI",
+      "Consequences",
+      "Memory",
+      "Changed world state"
+    ],
+    "cell_health_principle": "Cell Health measures civic resilience and remains separate from faction control.",
+    "conflict_pressure_principle": "Pressure determines how strongly instability acts on a cell; low health makes a cell more vulnerable but does not deterministically force combat.",
+    "world_laws": [
+      "Albion is alive",
+      "Destruction is localised, not universal",
+      "Repair is more common than ruin",
+      "Abandoned places are noteworthy because most places are not abandoned",
+      "Surveillance is often social before technological",
+      "Nobody stops you. Everybody sees you.",
+      "The world does not wait for the player"
+    ]
+  }
+}

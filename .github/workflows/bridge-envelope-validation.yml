@@ -1,0 +1,35 @@
+name: Bridge Contract Validation
+
+on:
+  pull_request:
+    paths:
+      - "website/v32.3/master-record-registry.json"
+      - "website/v32.4/bridge/**"
+      - ".github/workflows/bridge-envelope-validation.yml"
+  push:
+    branches: [main]
+    paths:
+      - "website/v32.3/master-record-registry.json"
+      - "website/v32.4/bridge/**"
+      - ".github/workflows/bridge-envelope-validation.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate Bridge machine contracts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Validate event type registry
+        run: node website/v32.4/bridge/validate-event-types.mjs
+      - name: Validate entity and ID resolution
+        run: node website/v32.4/bridge/validate-entity-resolution.mjs
+      - name: Validate session lifecycle
+        run: node website/v32.4/bridge/validate-session-lifecycle.mjs
+      - name: Validate canonical event envelope
+        run: node website/v32.4/bridge/validate-envelope.mjs

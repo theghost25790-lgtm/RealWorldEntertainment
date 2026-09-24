@@ -6,7 +6,18 @@ The intended player-facing model is free access, supported by selective sponsors
 
 ## How is it installed?
 
-Each current release is distributed as a complete Windows ZIP containing the APK, required OBB data, Unreal-generated installer and supporting files. Extract the ZIP, connect a developer-enabled Quest headset and run the included installation script.
+Use this canonical sequence for Build 098:
+
+1. Download the complete Project 2088 Build 098 ZIP.
+2. Extract the entire archive to a normal folder. Do not run the installer from inside the ZIP preview.
+3. Connect a developer-enabled Meta Quest headset to a Windows PC using a USB data cable.
+4. Put on the headset, approve the USB debugging request and choose Always allow from this computer if offered.
+5. Run `Install_Project_2088_SD-arm64.bat`.
+6. Keep the installer running. Open Project 2088 from Unknown Sources inside the headset to establish the bridge, then wait for the PC installer to confirm completion.
+7. Disconnect the headset only after the PC installer confirms success.
+8. Launch Project 2088 again from Unknown Sources.
+
+Read the [full installation guide](https://github.com/theghost25790-lgtm/RealWorldEntertainment/blob/main/documentation/INSTALL_SIDEQUEST.md) or [request installation help](https://github.com/theghost25790-lgtm/RealWorldEntertainment/issues/new?assignees=&labels=installation&projects=&template=installation-help.md&title=%5BINSTALL%5D+).
 
 ## Why is the OBB required?
 

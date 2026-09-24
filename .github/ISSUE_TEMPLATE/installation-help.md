@@ -11,6 +11,8 @@ labels: installation
 
 **USB or wireless SideQuest connection?**
 
+**Did you launch Project 2088 from Unknown Sources while the installer was running?**
+
 **Exact error message**
 
 **Was another Project 2088 build already installed?**
