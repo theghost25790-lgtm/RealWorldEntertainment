@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://realworldentertainment.co.uk/schema/archive-record-v1.json",
+  "title": "RWE Archive Record",
+  "type": "object",
+  "required": [
+    "record_id",
+    "record_type",
+    "project",
+    "canonical_path",
+    "status",
+    "visibility",
+    "publish_ready",
+    "related_records"
+  ],
+  "properties": {
+    "record_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "record_type": {
+      "enum": [
+        "devlog",
+        "signal",
+        "visual",
+        "build"
+      ]
+    },
+    "project": {
+      "type": "string"
+    },
+    "canonical_path": {
+      "type": "string",
+      "pattern": "^/"
+    },
+    "canonical_url": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "title": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "type": "string"
+    },
+    "visibility": {
+      "enum": [
+        "public",
+        "draft",
+        "private"
+      ]
+    },
+    "publish_ready": {
+      "type": "boolean"
+    },
+    "migration_status": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "published_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "updated_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "summary": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "body": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "related_records": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source": {
+      "type": "object"
+    },
+    "metadata": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}
