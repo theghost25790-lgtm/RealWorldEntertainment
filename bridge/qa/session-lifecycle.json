@@ -1,0 +1,312 @@
+{
+  "contract_id": "RWE-P2088-SESSION-LIFECYCLE",
+  "contract_version": "RWE-SESSION-0.1",
+  "updated_at": "2026-09-20",
+  "source_commands": {
+    "start": "session.start",
+    "end": "session.end",
+    "submit_one": "event.submit",
+    "submit_batch": "events.submit_batch"
+  },
+  "source_events": {
+    "started": "session.started",
+    "ended": "session.ended"
+  },
+  "session_id_policy": {
+    "format": "SES-<collision-resistant token>",
+    "required_before_gameplay": true,
+    "authority": "Bridge/backend contract",
+    "offline_rule": "Bridge may generate a collision-resistant session_id before network availability. Backend must reject collisions, but must not silently remap an accepted offline session ID because queued events already reference it.",
+    "immutable": true
+  },
+  "states": {
+    "NO_SESSION": {
+      "terminal": false,
+      "gameplay_event_policy": "reject",
+      "command_policy": [
+        "session.start"
+      ],
+      "description": "No active or recoverable gameplay session is bound to the client."
+    },
+    "STARTING": {
+      "terminal": false,
+      "gameplay_event_policy": "reject",
+      "command_policy": [
+        "session.start retry/cancel"
+      ],
+      "description": "Session identity/context is being committed. Gameplay evidence must not begin until the session has a durable local context."
+    },
+    "OPEN": {
+      "terminal": false,
+      "gameplay_event_policy": "accept_live",
+      "command_policy": [
+        "event.submit",
+        "events.submit_batch",
+        "session.end"
+      ],
+      "description": "Normal connected session. Canonical events may be validated and transmitted live."
+    },
+    "OPEN_OFFLINE": {
+      "terminal": false,
+      "gameplay_event_policy": "accept_local_queue",
+      "command_policy": [
+        "session.end sets end_requested",
+        "local event queue"
+      ],
+      "description": "Session continues without backend connectivity. Canonical event bodies are created normally and persisted locally."
+    },
+    "REPLAYING": {
+      "terminal": false,
+      "gameplay_event_policy": "buffer_behind_replay",
+      "command_policy": [
+        "events.submit_batch",
+        "session.end sets end_requested"
+      ],
+      "description": "Queued immutable events are being submitted in original order. New gameplay may continue, but newly created events stay behind the backlog until earlier evidence is resolved."
+    },
+    "ENDING": {
+      "terminal": false,
+      "gameplay_event_policy": "reject_new_gameplay",
+      "command_policy": [
+        "final flush",
+        "session.end retry"
+      ],
+      "description": "Gameplay evidence creation has stopped. Remaining accepted/queued evidence is flushed and the canonical session.ended fact is finalised."
+    },
+    "CLOSED": {
+      "terminal": true,
+      "gameplay_event_policy": "reject_new_gameplay",
+      "command_policy": [
+        "idempotent receipt only"
+      ],
+      "description": "Session is immutable and closed. New gameplay facts cannot be attached."
+    }
+  },
+  "transitions": [
+    {
+      "from": "NO_SESSION",
+      "to": "STARTING",
+      "trigger": "session.start",
+      "guard": "valid project/build/installation context"
+    },
+    {
+      "from": "STARTING",
+      "to": "OPEN",
+      "trigger": "session.started",
+      "guard": "durable session context established and connectivity available"
+    },
+    {
+      "from": "STARTING",
+      "to": "OPEN_OFFLINE",
+      "trigger": "offline_start_committed",
+      "guard": "offline mode permitted and durable local session context established"
+    },
+    {
+      "from": "STARTING",
+      "to": "NO_SESSION",
+      "trigger": "start_rejected_or_cancelled",
+      "guard": "no gameplay evidence has been accepted"
+    },
+    {
+      "from": "OPEN",
+      "to": "OPEN_OFFLINE",
+      "trigger": "network_unavailable",
+      "guard": "local durable queue available"
+    },
+    {
+      "from": "OPEN",
+      "to": "ENDING",
+      "trigger": "session.end",
+      "guard": "end_reason supplied"
+    },
+    {
+      "from": "OPEN_OFFLINE",
+      "to": "REPLAYING",
+      "trigger": "network_restored",
+      "guard": "queued evidence exists"
+    },
+    {
+      "from": "OPEN_OFFLINE",
+      "to": "OPEN",
+      "trigger": "network_restored_no_backlog",
+      "guard": "no queued evidence and end_requested=false"
+    },
+    {
+      "from": "REPLAYING",
+      "to": "OPEN",
+      "trigger": "backlog_drained",
+      "guard": "end_requested=false"
+    },
+    {
+      "from": "REPLAYING",
+      "to": "ENDING",
+      "trigger": "backlog_drained",
+      "guard": "end_requested=true"
+    },
+    {
+      "from": "ENDING",
+      "to": "CLOSED",
+      "trigger": "session.ended",
+      "guard": "all required final evidence resolved"
+    }
+  ],
+  "state_mutations": [
+    {
+      "state": "OPEN_OFFLINE",
+      "trigger": "session.end",
+      "effect": "end_requested=true; remain OPEN_OFFLINE until connectivity returns and queued evidence can replay"
+    },
+    {
+      "state": "REPLAYING",
+      "trigger": "session.end",
+      "effect": "end_requested=true; remain REPLAYING until backlog drains"
+    },
+    {
+      "state": "ENDING",
+      "trigger": "network_unavailable",
+      "effect": "remain ENDING; persist finalisation work and retry when connectivity returns"
+    },
+    {
+      "state": "CLOSED",
+      "trigger": "duplicate event/session end retry",
+      "effect": "return idempotent already-accepted/already-closed receipt when identity matches; never append a duplicate fact"
+    }
+  ],
+  "event_acceptance": {
+    "NO_SESSION": "ERR-SES-002",
+    "STARTING": "ERR-SES-002",
+    "OPEN": "ACCEPT_LIVE",
+    "OPEN_OFFLINE": "ACCEPT_QUEUE_LOCAL",
+    "REPLAYING": "ACCEPT_BUFFER_ORDERED",
+    "ENDING": "ERR-SES-002 for newly created gameplay events; existing queued/final lifecycle evidence may flush",
+    "CLOSED": "ERR-SES-003 for new evidence; exact duplicate retries may receive idempotent acknowledgement"
+  },
+  "offline_queue": {
+    "immutable_event_body": true,
+    "preserve_event_id": true,
+    "preserve_occurrence_timestamp": true,
+    "transport_metadata_separate": true,
+    "ordering": "local queue sequence, with canonical timestamp retained as occurrence time",
+    "replay_command": "events.submit_batch",
+    "replay_policy": [
+      "Submit oldest unresolved queued event first.",
+      "Do not mint a new event_id during replay.",
+      "Do not replace the original occurrence timestamp with upload time.",
+      "Backend records receipt time separately from canonical occurrence timestamp.",
+      "Accepted or duplicate-confirmed events leave the queue.",
+      "Retryable transport failures remain queued.",
+      "Permanent validation failures move to retained sync-failure evidence for QA rather than being silently discarded."
+    ],
+    "offline_session_start": "When a session begins offline, session.started is created as canonical evidence and durably queued before gameplay evidence; offline_start_committed changes state only after that durable write succeeds."
+  },
+  "crash_recovery": {
+    "resume_same_gameplay_session_after_process_restart": false,
+    "rule": "A process restart does not silently resume gameplay into the old session. Recover/persist the old session evidence, close it as interrupted, then create a new session for new gameplay.",
+    "recoverable_states": [
+      "STARTING",
+      "OPEN",
+      "OPEN_OFFLINE",
+      "REPLAYING",
+      "ENDING"
+    ],
+    "procedure": [
+      "Load durable session and queue metadata.",
+      "Mark recovery_status=interrupted.",
+      "If queued evidence exists and connectivity is available, replay it using original event IDs/timestamps.",
+      "Move to ENDING after recoverable evidence is resolved.",
+      "Emit/finalise session.ended with an interruption end_reason.",
+      "Mark recovery_status=recovered and state=CLOSED.",
+      "Start a fresh session_id for subsequent gameplay."
+    ]
+  },
+  "end_reasons": [
+    "user_exit",
+    "test_completed",
+    "application_shutdown",
+    "crash_recovered",
+    "forced_reset",
+    "qa_terminated",
+    "unknown_interruption"
+  ],
+  "session_record_required": [
+    "session_id",
+    "project_id",
+    "build_id",
+    "installation_id",
+    "state",
+    "created_at",
+    "last_activity_at",
+    "end_requested",
+    "recovery_status"
+  ],
+  "session_record_optional": [
+    "tester_id",
+    "player_instance_id",
+    "opened_at",
+    "ended_at",
+    "end_reason",
+    "pending_event_count",
+    "first_queued_at",
+    "last_queued_at"
+  ],
+  "qa_completion": {
+    "complete_when": [
+      "state=CLOSED",
+      "session.ended accepted or canonical closure evidence recorded",
+      "no unresolved replayable event remains"
+    ],
+    "complete_with_sync_issues_when": [
+      "state=CLOSED",
+      "one or more permanent validation/sync failures retained as QA evidence"
+    ],
+    "incomplete_when": [
+      "session remains in STARTING/OPEN/OPEN_OFFLINE/REPLAYING/ENDING",
+      "recoverable queue/finalisation is unresolved"
+    ]
+  },
+  "errors": [
+    {
+      "code": "ERR-SES-001",
+      "name": "UNKNOWN_SESSION",
+      "meaning": "session_id does not resolve to a known session."
+    },
+    {
+      "code": "ERR-SES-002",
+      "name": "INVALID_SESSION_STATE",
+      "meaning": "Command or event is not permitted in the session's current lifecycle state."
+    },
+    {
+      "code": "ERR-SES-003",
+      "name": "SESSION_CLOSED",
+      "meaning": "New canonical evidence cannot be appended to a closed session."
+    },
+    {
+      "code": "ERR-SES-004",
+      "name": "BUILD_SESSION_MISMATCH",
+      "meaning": "Event build_id does not match the immutable build_id bound to the session."
+    },
+    {
+      "code": "ERR-SES-005",
+      "name": "INSTALLATION_SESSION_MISMATCH",
+      "meaning": "Event installation_id does not match the installation bound to the session."
+    },
+    {
+      "code": "ERR-SES-006",
+      "name": "SESSION_START_CONFLICT",
+      "meaning": "A new incompatible session.start was requested while another session context is starting/open/recoverable."
+    }
+  ],
+  "idempotence": {
+    "session_start": {
+      "same_session_same_context": "Return the existing STARTING/current session context. Do not create another session.",
+      "same_session_different_context": "ERR-SES-006 SESSION_START_CONFLICT",
+      "different_session_while_active_or_recoverable": "ERR-SES-006 SESSION_START_CONFLICT"
+    },
+    "session_end": {
+      "ENDING": "Return current ending status; do not emit a second session.ended fact.",
+      "CLOSED": "Return already-closed receipt when the same session identity is retried; do not mutate the session.",
+      "OPEN_OFFLINE_or_REPLAYING": "Set/retain end_requested=true; do not create a second close request."
+    },
+    "event_retry": "An exact retry with the same event_id represents the same fact. Accepted duplicates receive an idempotent receipt rather than a second stored event."
+  }
+}
