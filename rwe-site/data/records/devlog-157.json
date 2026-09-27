@@ -1,0 +1,29 @@
+{
+  "record_id": "RWE-P2088-DEV-157",
+  "record_type": "devlog",
+  "project": "Project 2088",
+  "canonical_path": "/devlog/157",
+  "canonical_url": "https://realworldentertainment.co.uk/devlog/157",
+  "title": null,
+  "status": "preserved",
+  "visibility": "draft",
+  "publish_ready": false,
+  "migration_status": "awaiting-original-record",
+  "published_at": "2026-09-10",
+  "summary": "Website V25 established Devlog 157 as the first structured permanent devlog record.",
+  "body": null,
+  "tags": [
+    "devlog",
+    "structured-archive"
+  ],
+  "related_records": [
+    "RWE-P2088-DEV-156",
+    "RWE-P2088-DEV-158"
+  ],
+  "source": {
+    "known_fact": "Website V25 defined /devlogs/157 as the first structured devlog record."
+  },
+  "metadata": {
+    "migration_note": "The original public Devlog 157 body/title was not recoverable from preserved sources available to this pass. Do not reconstruct it."
+  }
+}
