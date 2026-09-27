@@ -1,0 +1,24 @@
+{
+  "event_id": "EVT-NPC-DEMO-0001",
+  "event_name": "npc.killed",
+  "event_version": 1,
+  "schema_version": "CER-0.3",
+  "bridge_version": "RWE-BRIDGE-0.1",
+  "timestamp": "2026-09-20T07:45:09Z",
+  "project_id": "RWE-P2088",
+  "build_id": "RWE-P2088-BUILD-098",
+  "installation_id": "INS-DEMO-0001",
+  "session_id": "SES-DEMO-0001",
+  "source_system": "UE5 AI",
+  "tester_id": "TST-DEMO-001",
+  "player_instance_id": "PLY-DEMO-0001",
+  "payload": {
+    "player_id": "PLY-DEMO-0001",
+    "npc_instance_id": "NPCI-DEMO-0091",
+    "npc_type": "Mk2_Blank_Security",
+    "faction": "Construct",
+    "killer_id": "PLY-DEMO-0001",
+    "weapon_asset": "v57",
+    "location_id": "RWE-P2088-LOC-NEOVICTORIA"
+  }
+}
