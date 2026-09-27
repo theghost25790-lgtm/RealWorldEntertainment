@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#111410">
+  <meta name="description" content="RWE QR and NFC access hub for Project 2088.">
+  <title>RWE Access</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="masthead">
+      <div class="brand-mark" aria-hidden="true">RWE</div>
+      <div>
+        <p class="eyebrow">REAL WORLD ENTERTAINMENT</p>
+        <h1>Access Hub</h1>
+      </div>
+      <span class="status-dot" data-network-dot title="Connection status"></span>
+    </header>
+
+    <section class="hero panel">
+      <p class="kicker">PROJECT 2088 / PHYSICAL ACCESS</p>
+      <h2>One scan. The right destination.</h2>
+      <p class="muted">Fast routes for NFC tags, QR cards, builds, submissions and in-world experiences.</p>
+      <div class="meta-row">
+        <span class="chip">Mobile first</span>
+        <span class="chip">No account required</span>
+        <span class="chip" data-network-label>Checking connection</span>
+      </div>
+    </section>
+
+    <nav class="route-grid" aria-label="RWE quick routes">
+      <a class="route-card" href="./submissions/">
+        <span class="route-code">01</span>
+        <span>
+          <strong>Submissions</strong>
+          <small>Visual Archive and artwork entry point</small>
+        </span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+
+      <a class="route-card" href="./devlog/">
+        <span class="route-code">02</span>
+        <span>
+          <strong>Latest Devlog</strong>
+          <small>Current Project 2088 development record</small>
+        </span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+
+      <a class="route-card" href="./build/098/">
+        <span class="route-code">03</span>
+        <span>
+          <strong>Build 098</strong>
+          <small>Build record, install information and testing</small>
+        </span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+
+      <a class="route-card route-card--construct" href="./terminal/">
+        <span class="route-code">04</span>
+        <span>
+          <strong>Construct Terminal</strong>
+          <small>Project 2088 in-world access demonstration</small>
+        </span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+    </nav>
+
+    <section class="panel compact">
+      <div class="section-heading">
+        <span class="eyebrow">ROUTE POLICY</span>
+        <span class="mono">QR/NFC v0.1</span>
+      </div>
+      <p class="muted">Physical tags should point to stable RWE routes. Destinations can then change without rewriting the tag.</p>
+    </section>
+
+    <footer>
+      <span>RWE / Project 2088</span>
+      <span data-clock aria-label="Current local time"></span>
+    </footer>
+  </main>
+</body>
+</html>
