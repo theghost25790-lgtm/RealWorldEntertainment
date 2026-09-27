@@ -1,0 +1,58 @@
+{
+  "record_id": "RWE-P2088-DEV-160",
+  "record_type": "devlog",
+  "project": "Project 2088",
+  "canonical_path": "/devlog/160",
+  "canonical_url": "https://realworldentertainment.co.uk/devlog/160",
+  "title": "QA Becomes a System",
+  "status": "published",
+  "visibility": "public",
+  "publish_ready": true,
+  "migration_status": "ready",
+  "published_at": "2026-09-15",
+  "summary": "Project 2088 QA separates into its own application with permanent deep links, mobile PWA access and deeper desktop investigation.",
+  "body": "Project 2088's internal QA tooling has grown beyond the point where it makes sense to hide it inside the normal RWE administration interface. QA is becoming its own application. The planned system provides dedicated views for builds, sessions, testers, QA flags, feedback, adaptive interviews, achievements, performance, evidence and administration. Mobile and tablet devices use a lightweight PWA-style interface suited to active testing, while desktop systems expose deeper analytical tools. Every important object is designed around a permanent deep link. The architecture is deliberately divided: Bridge records facts. QA interprets them. Evidence preserves what happened.",
+  "tags": [
+    "devlog",
+    "qa",
+    "rwe-bridge",
+    "pwa",
+    "deep-links"
+  ],
+  "related_records": [
+    "RWE-P2088-DEV-159",
+    "RWE-P2088-DEV-161"
+  ],
+  "source": {
+    "type": "public-draft",
+    "established_at": "2026-09-19",
+    "based_on": "15 September 2026 QA architecture work"
+  },
+  "metadata": {
+    "planned_views": [
+      "Builds",
+      "Sessions",
+      "Testers",
+      "QA flags",
+      "Feedback",
+      "Adaptive interviews",
+      "Achievements",
+      "Performance",
+      "Evidence",
+      "Administration"
+    ],
+    "example_routes": [
+      "/build/108",
+      "/session/82F91",
+      "/tester/017",
+      "/flag/2041",
+      "/achievement/first-contact",
+      "/event/E8D391"
+    ],
+    "architecture_principle": [
+      "Bridge records facts",
+      "QA interprets them",
+      "Evidence preserves what happened"
+    ]
+  }
+}
