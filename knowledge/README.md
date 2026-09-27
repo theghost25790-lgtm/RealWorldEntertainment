@@ -25,6 +25,27 @@ Use this folder for information that must remain available even when a chat ends
 - `PROJECT_2088.md` — high-level game/world/system memory
 - `WORKFLOW.md` — how the owner, tablet, GitHub and AI work together
 
+## Design documents
+
+Major Project 2088 design-document families are catalogued under:
+
+`/docs/library/design-documents/`
+
+The register includes:
+
+- GDD revision history and current authority
+- BDD foundation and Bridge continuation
+- SDD revision history
+- TDD scope/current technical authority
+- World Bible status
+- level/region design authority
+- QA design authority
+- legacy master notes
+
+Before making a major design change, check:
+
+`/docs/library/design-documents/REGISTER.md`
+
 ## Update protocol
 
 When an important decision is made:
@@ -41,10 +62,11 @@ When information conflicts, prefer:
 
 1. current canonical schema / code
 2. current knowledge-base decision
-3. current project documentation
-4. legacy/versioned material
-5. chat recollection
+3. current design-document register / current version
+4. current project documentation
+5. legacy/versioned material
+6. chat recollection
 
 ## AI instruction
 
-Future AI sessions should read `/AI_START_HERE.md` and this directory before making major structural changes.
+Future AI sessions should read `/AI_START_HERE.md`, this directory and the Design Document Register before making major structural or canonical changes.
