@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://realworldentertainment.co.uk/schemas/bridge/canonical-event-envelope-1.schema.json",
+  "title": "RWE Bridge Canonical Event Envelope",
+  "description": "V32.4.1 stable wrapper for Project 2088 canonical events. Event-specific payload contracts remain owned by the Canonical Event Registry.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "event_id",
+    "event_name",
+    "event_version",
+    "schema_version",
+    "bridge_version",
+    "timestamp",
+    "project_id",
+    "build_id",
+    "installation_id",
+    "session_id",
+    "source_system",
+    "payload"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "minLength": 8,
+      "pattern": "^EVT-[A-Za-z0-9][A-Za-z0-9_-]+$",
+      "description": "Client-generated immutable event occurrence ID. Reused for idempotent retries of the same event."
+    },
+    "event_name": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*\\.[a-z][a-z0-9_]*$",
+      "description": "Exact registered canonical event name in lowercase domain.action notation."
+    },
+    "event_version": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Version of the registered event contract."
+    },
+    "schema_version": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Canonical Event Registry/schema version used to validate this message."
+    },
+    "bridge_version": {
+      "type": "string",
+      "minLength": 1,
+      "description": "RWE Bridge producer/transport contract version."
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "Z$",
+      "description": "UTC occurrence time, ISO-8601 with Z suffix."
+    },
+    "project_id": {
+      "type": "string",
+      "minLength": 3,
+      "description": "Canonical project/product identity. Project 2088 currently uses RWE-P2088."
+    },
+    "build_id": {
+      "type": "string",
+      "minLength": 3,
+      "description": "Canonical registered build identity, e.g. RWE-P2088-BUILD-098."
+    },
+    "installation_id": {
+      "type": "string",
+      "minLength": 3,
+      "description": "Identity of the installed game instance. One installation may produce many sessions."
+    },
+    "session_id": {
+      "type": "string",
+      "minLength": 3,
+      "description": "Canonical session identity. Required on canonical gameplay/QA events."
+    },
+    "source_system": {
+      "type": "string",
+      "minLength": 2,
+      "description": "Registered producer/source system. It must be authorised to emit the event domain."
+    },
+    "tester_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Longitudinal QA tester identity. Nullable for approved anonymous/local test modes."
+    },
+    "player_instance_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Per-session player actor identity. Distinct from tester/account identity."
+    },
+    "payload": {
+      "type": "object",
+      "description": "Event-specific fields defined by the Canonical Event Registry. This envelope does not invent payload synonyms."
+    }
+  }
+}
