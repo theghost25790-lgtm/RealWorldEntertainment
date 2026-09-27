@@ -1,0 +1,53 @@
+{
+  "record_id": "RWE-P2088-LOC-NEOVICTORIA",
+  "record_type": "location",
+  "project": "Project 2088",
+  "canonical_path": "/world/neo-victoria",
+  "canonical_url": "https://realworldentertainment.co.uk/world/neo-victoria",
+  "title": "Neo Victoria",
+  "status": "published",
+  "visibility": "public",
+  "publish_ready": true,
+  "searchable": true,
+  "summary": "Nottingham's Hive and Britana's second largest, expanded down through coal pits, caves, transport tunnels and buried civil infrastructure.",
+  "aliases": [
+    "Neo Victoria",
+    "Neo-Victoria",
+    "Nottingham Hive",
+    "Nottingham"
+  ],
+  "tags": [
+    "Neo Victoria",
+    "Nottingham",
+    "Hive",
+    "location",
+    "Britana"
+  ],
+  "keywords": [
+    "second-largest Hive",
+    "coal pits",
+    "caves",
+    "transport tunnels",
+    "underground city",
+    "industrial",
+    "layered city",
+    "autonomous"
+  ],
+  "relations": [
+    "RWE-P2088-LOC-BRITANA",
+    "RWE-P2088-LOC-LONDON",
+    "RWE-P2088-FACTION-CONSTRUCT",
+    "RWE-P2088-CORP-ANAMIKA"
+  ],
+  "metadata": {
+    "rank": "Second-largest Hive in Britana",
+    "foundation": "Built beneath and through Nottingham.",
+    "growth": [
+      "Abandoned coal pits",
+      "Cave systems",
+      "Transport tunnels",
+      "Old civil infrastructure"
+    ],
+    "character": "Improvised, industrial and visibly layered."
+  }
+}

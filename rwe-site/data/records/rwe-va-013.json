@@ -1,0 +1,33 @@
+{
+  "record_id": "RWE-VA-013",
+  "record_type": "visual",
+  "project": "Project 2088",
+  "canonical_path": "/visual/RWE-VA-013",
+  "canonical_url": "https://realworldentertainment.co.uk/visual/RWE-VA-013",
+  "title": null,
+  "status": "preserved",
+  "visibility": "draft",
+  "publish_ready": false,
+  "migration_status": "awaiting-original-record",
+  "published_at": null,
+  "summary": null,
+  "body": null,
+  "tags": [
+    "visual-archive"
+  ],
+  "related_records": [
+    "RWE-VA-012",
+    "RWE-VA-014"
+  ],
+  "source": {},
+  "metadata": {
+    "artwork": null,
+    "artist": null,
+    "collection": null,
+    "district": null,
+    "faction_or_subject": null,
+    "provenance": null,
+    "rights_and_attribution": null,
+    "migration_note": "The original RWE-VA-013 title, artwork, artist credit, story and archive metadata were not present in the preserved sources available to this pass. Preserve the existing live record exactly when migrated; do not infer from nearby artwork."
+  }
+}

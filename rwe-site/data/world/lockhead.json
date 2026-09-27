@@ -1,0 +1,43 @@
+{
+  "record_id": "RWE-P2088-CORP-LOCKHEAD",
+  "record_type": "corporation",
+  "project": "Project 2088",
+  "canonical_path": "/world/lockhead",
+  "canonical_url": "https://realworldentertainment.co.uk/world/lockhead",
+  "title": "Lockhead",
+  "status": "published",
+  "visibility": "public",
+  "publish_ready": true,
+  "searchable": true,
+  "summary": "Project 2088's weapons-industrial power: disciplined, confident and built around the doctrine of peace through strength.",
+  "aliases": [
+    "Lockhead",
+    "Lockhead Weapons"
+  ],
+  "tags": [
+    "Lockhead",
+    "corporation",
+    "weapons",
+    "military",
+    "arms"
+  ],
+  "keywords": [
+    "peace through strength",
+    "military",
+    "disciplined",
+    "confident",
+    "weapons manufacturer",
+    "arms"
+  ],
+  "relations": [
+    "RWE-P2088-LOC-BRITANA"
+  ],
+  "metadata": {
+    "core_belief": "Peace through strength.",
+    "speech_style": "Military, disciplined, confident.",
+    "public_role": [
+      "Weapons manufacture",
+      "Military supply"
+    ]
+  }
+}

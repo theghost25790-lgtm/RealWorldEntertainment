@@ -1,0 +1,53 @@
+{
+  "record_id": "RWE-P2088-FACTION-CONSTRUCT",
+  "record_type": "faction",
+  "project": "Project 2088",
+  "canonical_path": "/world/construct",
+  "canonical_url": "https://realworldentertainment.co.uk/world/construct",
+  "title": "Construct",
+  "status": "published",
+  "visibility": "public",
+  "publish_ready": true,
+  "searchable": true,
+  "summary": "The infrastructure authority that maintains Hives, logistics and the systems keeping Britana alive, built around a doctrine of order as survival.",
+  "aliases": [
+    "Construct",
+    "Construct Infrastructure Authority"
+  ],
+  "tags": [
+    "Construct",
+    "faction",
+    "corporation",
+    "infrastructure",
+    "Hives",
+    "order",
+    "logistics"
+  ],
+  "keywords": [
+    "Construct provides",
+    "order above all",
+    "infrastructure",
+    "security",
+    "stability",
+    "Hive Crown",
+    "distribution",
+    "maintenance",
+    "supply chain"
+  ],
+  "relations": [
+    "RWE-P2088-LOC-BRITANA",
+    "RWE-P2088-LOC-LONDON",
+    "RWE-P2088-LOC-NEOVICTORIA",
+    "RWE-P2088-CORP-ANAMIKA"
+  ],
+  "metadata": {
+    "core_belief": "Order above all.",
+    "speech_style": "Calm, reassuring, bureaucratic. Never angry.",
+    "public_role": [
+      "Infrastructure",
+      "Security",
+      "Stability"
+    ],
+    "worldview": "Disorder is treated as failure of the systems that keep people alive."
+  }
+}
