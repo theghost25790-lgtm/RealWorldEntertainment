@@ -1,0 +1,232 @@
+{
+  "test_set": "V32.4.4-session-lifecycle",
+  "vectors": [
+    {
+      "id": "SES-TV-001",
+      "kind": "transition",
+      "from": "NO_SESSION",
+      "trigger": "session.start",
+      "context": {},
+      "expected": "STARTING"
+    },
+    {
+      "id": "SES-TV-002",
+      "kind": "transition",
+      "from": "STARTING",
+      "trigger": "session.started",
+      "context": {
+        "online": true
+      },
+      "expected": "OPEN"
+    },
+    {
+      "id": "SES-TV-003",
+      "kind": "transition",
+      "from": "STARTING",
+      "trigger": "offline_start_committed",
+      "context": {
+        "offline_allowed": true
+      },
+      "expected": "OPEN_OFFLINE"
+    },
+    {
+      "id": "SES-TV-004",
+      "kind": "transition",
+      "from": "OPEN",
+      "trigger": "network_unavailable",
+      "context": {
+        "durable_queue": true
+      },
+      "expected": "OPEN_OFFLINE"
+    },
+    {
+      "id": "SES-TV-005",
+      "kind": "transition",
+      "from": "OPEN_OFFLINE",
+      "trigger": "network_restored",
+      "context": {
+        "queued": true
+      },
+      "expected": "REPLAYING"
+    },
+    {
+      "id": "SES-TV-006",
+      "kind": "transition",
+      "from": "REPLAYING",
+      "trigger": "backlog_drained",
+      "context": {
+        "end_requested": false
+      },
+      "expected": "OPEN"
+    },
+    {
+      "id": "SES-TV-007",
+      "kind": "transition",
+      "from": "REPLAYING",
+      "trigger": "backlog_drained",
+      "context": {
+        "end_requested": true
+      },
+      "expected": "ENDING"
+    },
+    {
+      "id": "SES-TV-008",
+      "kind": "transition",
+      "from": "OPEN",
+      "trigger": "session.end",
+      "context": {
+        "end_reason": "user_exit"
+      },
+      "expected": "ENDING"
+    },
+    {
+      "id": "SES-TV-009",
+      "kind": "transition",
+      "from": "ENDING",
+      "trigger": "session.ended",
+      "context": {
+        "resolved": true
+      },
+      "expected": "CLOSED"
+    },
+    {
+      "id": "SES-TV-010",
+      "kind": "transition",
+      "from": "CLOSED",
+      "trigger": "session.start",
+      "context": {},
+      "expected": "ERR-SES-002"
+    },
+    {
+      "id": "SES-TV-011",
+      "kind": "event_policy",
+      "state": "OPEN",
+      "expected": "ACCEPT_LIVE"
+    },
+    {
+      "id": "SES-TV-012",
+      "kind": "event_policy",
+      "state": "OPEN_OFFLINE",
+      "expected": "ACCEPT_QUEUE_LOCAL"
+    },
+    {
+      "id": "SES-TV-013",
+      "kind": "event_policy",
+      "state": "REPLAYING",
+      "expected": "ACCEPT_BUFFER_ORDERED"
+    },
+    {
+      "id": "SES-TV-014",
+      "kind": "event_policy",
+      "state": "STARTING",
+      "expected": "ERR-SES-002"
+    },
+    {
+      "id": "SES-TV-015",
+      "kind": "event_policy",
+      "state": "CLOSED",
+      "expected": "ERR-SES-003"
+    },
+    {
+      "id": "SES-TV-016",
+      "kind": "offline_end",
+      "state": "OPEN_OFFLINE",
+      "trigger": "session.end",
+      "expected_state": "OPEN_OFFLINE",
+      "expected_end_requested": true
+    },
+    {
+      "id": "SES-TV-017",
+      "kind": "binding",
+      "session_build_id": "RWE-P2088-BUILD-098",
+      "event_build_id": "RWE-P2088-BUILD-098",
+      "expected": "ACCEPT"
+    },
+    {
+      "id": "SES-TV-018",
+      "kind": "binding",
+      "session_build_id": "RWE-P2088-BUILD-098",
+      "event_build_id": "RWE-P2088-BUILD-097B",
+      "expected": "ERR-SES-004"
+    },
+    {
+      "id": "SES-TV-019",
+      "kind": "installation_binding",
+      "session_installation_id": "INS-A",
+      "event_installation_id": "INS-A",
+      "expected": "ACCEPT"
+    },
+    {
+      "id": "SES-TV-020",
+      "kind": "installation_binding",
+      "session_installation_id": "INS-A",
+      "event_installation_id": "INS-B",
+      "expected": "ERR-SES-005"
+    },
+    {
+      "id": "SES-TV-021",
+      "kind": "replay_identity",
+      "original": {
+        "event_id": "EVT-DEMO-1",
+        "timestamp": "2026-09-20T10:00:00Z"
+      },
+      "replayed": {
+        "event_id": "EVT-DEMO-1",
+        "timestamp": "2026-09-20T10:00:00Z"
+      },
+      "expected": "ACCEPT"
+    },
+    {
+      "id": "SES-TV-022",
+      "kind": "replay_identity",
+      "original": {
+        "event_id": "EVT-DEMO-1",
+        "timestamp": "2026-09-20T10:00:00Z"
+      },
+      "replayed": {
+        "event_id": "EVT-DEMO-2",
+        "timestamp": "2026-09-20T10:05:00Z"
+      },
+      "expected": "ERR-SES-002"
+    },
+    {
+      "id": "SES-TV-023",
+      "kind": "start_idempotence",
+      "state": "STARTING",
+      "existing_session_id": "SES-DEMO-1",
+      "requested_session_id": "SES-DEMO-1",
+      "context_match": true,
+      "expected": "RETURN_EXISTING_SESSION"
+    },
+    {
+      "id": "SES-TV-024",
+      "kind": "start_idempotence",
+      "state": "OPEN",
+      "existing_session_id": "SES-DEMO-1",
+      "requested_session_id": "SES-DEMO-2",
+      "context_match": false,
+      "expected": "ERR-SES-006"
+    },
+    {
+      "id": "SES-TV-025",
+      "kind": "end_idempotence",
+      "state": "ENDING",
+      "same_session": true,
+      "expected": "RETURN_ENDING"
+    },
+    {
+      "id": "SES-TV-026",
+      "kind": "end_idempotence",
+      "state": "CLOSED",
+      "same_session": true,
+      "expected": "RETURN_ALREADY_CLOSED"
+    },
+    {
+      "id": "SES-TV-027",
+      "kind": "offline_start_evidence",
+      "state": "STARTING",
+      "durable_first_event": "session.started",
+      "expected": "ACCEPT"
+    }
+  ]
+}
