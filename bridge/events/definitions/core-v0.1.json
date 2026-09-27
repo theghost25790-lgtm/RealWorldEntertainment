@@ -1,0 +1,55 @@
+{
+  "definition_set": "RWE-P2088-CORE-EVENTS-0.1",
+  "schema_version": "CER-0.3",
+  "bridge_version": "RWE-BRIDGE-0.1",
+  "status": "DRAFT",
+  "authority": "bridge/events/canonical-event-registry.json",
+  "note": "This subset makes the first implementation targets easy to consume. The canonical event registry remains authoritative.",
+  "events": [
+    {
+      "event_id": "EVT-SES-001",
+      "event_name": "session.started",
+      "event_version": 1,
+      "domain": "Session",
+      "producer": "Bridge / UE5",
+      "consumers": ["Backend", "QA", "Analytics"],
+      "required_payload_fields": []
+    },
+    {
+      "event_id": "EVT-SES-002",
+      "event_name": "session.ended",
+      "event_version": 1,
+      "domain": "Session",
+      "producer": "Bridge / UE5",
+      "consumers": ["Backend", "QA", "Analytics"],
+      "required_payload_fields": ["end_reason"]
+    },
+    {
+      "event_id": "EVT-PLY-003",
+      "event_name": "player.died",
+      "event_version": 1,
+      "domain": "Player",
+      "producer": "UE5",
+      "consumers": ["QA", "Analytics", "Achievements"],
+      "required_payload_fields": ["player_id", "cause", "killer_id", "weapon_asset", "location_id"]
+    },
+    {
+      "event_id": "EVT-LOC-001",
+      "event_name": "location.entered",
+      "event_version": 1,
+      "domain": "Location",
+      "producer": "UE5",
+      "consumers": ["QA", "Analytics", "Achievements"],
+      "required_payload_fields": ["player_id", "location_id", "previous_location_id"]
+    },
+    {
+      "event_id": "EVT-WPN-006",
+      "event_name": "weapon.fired",
+      "event_version": 1,
+      "domain": "Firearm",
+      "producer": "UE5 BP_Pistol lineage",
+      "consumers": ["QA", "Analytics", "Achievements"],
+      "required_payload_fields": ["player_id", "weapon_instance_id", "weapon_asset", "parent_class", "rounds_fired", "ammo_type", "location_id"]
+    }
+  ]
+}
