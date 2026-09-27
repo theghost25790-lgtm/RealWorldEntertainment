@@ -1,0 +1,49 @@
+{
+  "record_id": "RWE-P2088-BUILD-096D",
+  "record_type": "build",
+  "project": "Project 2088",
+  "canonical_path": "/build/096D",
+  "canonical_url": "https://realworldentertainment.co.uk/build/096D",
+  "title": "Project 2088 — Build 096D",
+  "status": "archived",
+  "visibility": "public",
+  "publish_ready": true,
+  "migration_status": "ready",
+  "published_at": "2026-09-01T21:02:03Z",
+  "summary": "Preserved experimental standalone Meta Quest development build, built primarily for Meta Quest 3.",
+  "tags": [
+    "build",
+    "096D",
+    "meta-quest-3",
+    "android-astc",
+    "experimental",
+    "archived"
+  ],
+  "related_records": [
+    "RWE-P2088-BUILD-097B"
+  ],
+  "source": {
+    "provider": "GitHub Releases",
+    "release_tag": "build-096d",
+    "release_name": "Project 2088 — Build 96D",
+    "release_url": "https://github.com/theghost25790-lgtm/RealWorldEntertainment/releases/tag/build-096d"
+  },
+  "metadata": {
+    "build_number": "096D",
+    "lifecycle_status": "archived",
+    "release_status": "experimental",
+    "platforms": [
+      "Meta Quest 3 primary",
+      "Meta Quest 2 compatibility not guaranteed"
+    ],
+    "package_type": "Standalone VR / Android ASTC",
+    "pc_requirement": "Developer Mode and Windows PC required",
+    "asset_name": "Project2088_Build096D_Quest3_ASTC.zip",
+    "asset_size_bytes": 979817901,
+    "asset_size_display": "934.4 MiB",
+    "sha256": "adb64cbae5087c3cc2e3bcc2e3ed7c9d325998f656f0234c725e8238ce42a17f",
+    "download_url": "https://github.com/theghost25790-lgtm/RealWorldEntertainment/releases/download/build-096d/Project2088_Build096D_Quest3_ASTC.zip",
+    "superseded_by": "RWE-P2088-BUILD-097B",
+    "save_warning": "Save-data compatibility between builds is not guaranteed."
+  }
+}
