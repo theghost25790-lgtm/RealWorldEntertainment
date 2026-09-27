@@ -1,0 +1,56 @@
+{
+  "record_id": "RWE-P2088-DEV-159",
+  "record_type": "devlog",
+  "project": "Project 2088",
+  "canonical_path": "/devlog/159",
+  "canonical_url": "https://realworldentertainment.co.uk/devlog/159",
+  "title": "Building the Bridge",
+  "status": "published",
+  "visibility": "public",
+  "publish_ready": true,
+  "migration_status": "ready",
+  "published_at": "2026-09-15",
+  "summary": "Project 2088 formalises one canonical language across builds, sessions, events, UE5, Bridge, QA and future services.",
+  "body": "A significant amount of Project 2088 development is now happening beneath the visible game. The RWE Bridge architecture has continued to take shape. The core hierarchy is Project → Build → Installation → Session → Event. Rather than individual systems inventing their own terminology, Project 2088 will increasingly describe gameplay through a shared canonical event language. The Canonical Event Registry has reached its next stage, including build and session registries, lifecycle events, compatibility handling and explicit schema and Bridge version information. Weapon architecture has also been formally documented: BP_Pistol remains the parent class for Project 2088 firearms and BP_Mag remains the parent class for magazines. Where possible, systems should communicate through these parent classes rather than becoming dependent on individual variants. The goal is one language across the entire RWE ecosystem.",
+  "tags": [
+    "devlog",
+    "rwe-bridge",
+    "canonical-events",
+    "ue5",
+    "bdd"
+  ],
+  "related_records": [
+    "RWE-P2088-DEV-158",
+    "RWE-P2088-DEV-160"
+  ],
+  "source": {
+    "type": "public-draft",
+    "established_at": "2026-09-19",
+    "based_on": "15 September 2026 Bridge/BDD architecture work"
+  },
+  "metadata": {
+    "canonical_hierarchy": [
+      "Project",
+      "Build",
+      "Installation",
+      "Session",
+      "Event"
+    ],
+    "confirmed_parent_classes": {
+      "firearms": "BP_Pistol",
+      "magazines": "BP_Mag"
+    },
+    "implementation_order": [
+      "Naming and identifiers",
+      "Builds and sessions",
+      "Player",
+      "NPCs",
+      "Weapons and magazines",
+      "Combat",
+      "Locations",
+      "Bridge",
+      "QA",
+      "Achievements"
+    ]
+  }
+}
